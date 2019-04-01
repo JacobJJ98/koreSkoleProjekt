@@ -12,6 +12,7 @@ import { OmSideComponent } from './om-side/om-side.component';
 import {AppRoutingModule} from './app-routing.module';
 import { LoginComponent } from './koerelaerer-side/login/login.component';
 import { LoggedindComponent } from './koerelaerer-side/loggedind/loggedind.component';
+import {HttpModule} from '@angular/http';
 
 
 
@@ -30,7 +31,8 @@ import { LoggedindComponent } from './koerelaerer-side/loggedind/loggedind.compo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
