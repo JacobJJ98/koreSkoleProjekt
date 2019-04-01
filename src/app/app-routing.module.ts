@@ -4,10 +4,12 @@ import {ForsideComponent} from './forside/forside.component';
 import {KoerelaererComponent} from './forside/soeg/koerelaerer/koerelaerer.component';
 import {OmSideComponent} from './om-side/om-side.component';
 import {KoerelaererSideComponent} from './koerelaerer-side/koerelaerer-side.component';
+import {LoggedindComponent} from './koerelaerer-side/loggedind/loggedind.component';
 
 const appRoutes: Routes = [
   { path: 'forside', component: ForsideComponent},
   { path: 'erdukoerelarer', component: KoerelaererSideComponent},
+  { path: 'erdukoerelarer/loggedind', component: LoggedindComponent},
   { path: 'omos', component: OmSideComponent},
   { path: '**', redirectTo: '/forside', pathMatch: 'full'}
 ];
