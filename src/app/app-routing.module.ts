@@ -6,10 +6,10 @@ import {OmSideComponent} from './om-side/om-side.component';
 import {KoerelaererSideComponent} from './koerelaerer-side/koerelaerer-side.component';
 
 const appRoutes: Routes = [
-  { path: '', component: ForsideComponent},
+  { path: 'forside', component: ForsideComponent},
   { path: 'erdukoerelarer', component: KoerelaererSideComponent},
   { path: 'omos', component: OmSideComponent},
-  { path: '**', redirectTo: '', pathMatch: 'full'}
+  { path: '**', redirectTo: '/forside', pathMatch: 'full'}
 ];
 
 @NgModule({
