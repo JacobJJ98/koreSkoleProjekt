@@ -3,9 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import {SoegComponent} from './soeg/soeg.component';
-import {KoerelaererComponent} from './soeg/koerelaerer/koerelaerer.component';
-import {KoereskoleComponent} from './soeg/koereskole/koereskole.component';
+import {SoegComponent} from './forside/soeg/soeg.component';
+import {KoerelaererComponent} from './forside/soeg/koerelaerer/koerelaerer.component';
+import {KoereskoleComponent} from './forside/soeg/koereskole/koereskole.component';
+import { ForsideComponent } from './forside/forside.component';
+import { KoerelaererSideComponent } from './koerelaerer-side/koerelaerer-side.component';
+import { OmSideComponent } from './om-side/om-side.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +16,10 @@ import {KoereskoleComponent} from './soeg/koereskole/koereskole.component';
     HeaderComponent,
     SoegComponent,
     KoerelaererComponent,
-    KoereskoleComponent
+    KoereskoleComponent,
+    ForsideComponent,
+    KoerelaererSideComponent,
+    OmSideComponent
   ],
   imports: [
     BrowserModule,
