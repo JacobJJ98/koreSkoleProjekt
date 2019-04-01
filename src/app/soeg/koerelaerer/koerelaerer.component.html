@@ -1,0 +1,53 @@
+<form class="form-horizontal">
+  <fieldset>
+
+    <!-- Form Name -->
+    <legend>Kørelærer</legend>
+
+    <!-- Multiple Radios -->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Køn</label>
+      <div class="col-md-4">
+        <div class="radio">
+          <label for="koenr-0">
+            <input type="radio" name="koenr" id="koenr-0" value="1" checked="checked">
+            Mand
+          </label>
+        </div>
+        <div class="radio">
+          <label for="koenr-1">
+            <input type="radio" name="koenr" id="koenr-1" value="2">
+            Kvinde
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Select Multiple -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="bilmærke">Bilmærke</label>
+      <div class="col-md-4">
+        <select id="bilmærke" name="bilmærke" class="form-control" multiple="multiple">
+          <option value="VW">VW</option>
+          <option value="Audi">Audi</option>
+          <option value="Mercedes">Mercedes</option>
+          <option value="Citroén">Citroén</option>
+          <option value="Honda">Honda</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="selectbasic">Bilstørrelse</label>
+      <div class="col-md-4">
+        <select id="selectbasic" name="selectbasic" class="form-control">
+          <option value="1">Lille bil</option>
+          <option value="2">Medium bil</option>
+          <option value="3">Stor bil</option>
+        </select>
+      </div>
+    </div>
+
+  </fieldset>
+</form>
