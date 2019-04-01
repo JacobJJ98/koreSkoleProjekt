@@ -9,6 +9,9 @@ import {KoereskoleComponent} from './forside/soeg/koereskole/koereskole.componen
 import { ForsideComponent } from './forside/forside.component';
 import { KoerelaererSideComponent } from './koerelaerer-side/koerelaerer-side.component';
 import { OmSideComponent } from './om-side/om-side.component';
+import {AppRoutingModule} from './app-routing.module';
+
+
 
 @NgModule({
   declarations: [
@@ -23,6 +26,7 @@ import { OmSideComponent } from './om-side/om-side.component';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
