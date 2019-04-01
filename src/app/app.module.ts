@@ -10,6 +10,7 @@ import { ForsideComponent } from './forside/forside.component';
 import { KoerelaererSideComponent } from './koerelaerer-side/koerelaerer-side.component';
 import { OmSideComponent } from './om-side/om-side.component';
 import {AppRoutingModule} from './app-routing.module';
+import { LoginComponent } from './koerelaerer-side/login/login.component';
 
 
 
@@ -22,7 +23,8 @@ import {AppRoutingModule} from './app-routing.module';
     KoereskoleComponent,
     ForsideComponent,
     KoerelaererSideComponent,
-    OmSideComponent
+    OmSideComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
