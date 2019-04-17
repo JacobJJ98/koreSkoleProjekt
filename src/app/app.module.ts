@@ -15,6 +15,8 @@ import {AuthGuard} from './auth-guard.service';
 import { ForsideKoerelaererComponent } from './koerelaerer-side/forside-koerelaerer/forside-koerelaerer.component';
 import { LoginSideComponent } from './login-side/login-side.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { VisTilbudSoegComponent } from './forside/vis-tilbud-soeg/vis-tilbud-soeg.component';
+import {TilbudService} from './tilbud.service';
 
 
 
@@ -29,14 +31,15 @@ import { NotFoundComponent } from './not-found/not-found.component';
     KoerelaererSideComponent,
     ForsideKoerelaererComponent,
     LoginSideComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    VisTilbudSoegComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [AuthGuard, AuthService, TilbudService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
