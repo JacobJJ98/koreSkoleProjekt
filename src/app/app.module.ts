@@ -17,6 +17,9 @@ import { LoginSideComponent } from './login-side/login-side.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { VisTilbudSoegComponent } from './forside/vis-tilbud-soeg/vis-tilbud-soeg.component';
 import {TilbudService} from './tilbud.service';
+import { MinetilbudComponent } from './koerelaerer-side/minetilbud/minetilbud.component';
+import { OprettilbudComponent } from './koerelaerer-side/oprettilbud/oprettilbud.component';
+import { MinprofilComponent } from './koerelaerer-side/minprofil/minprofil.component';
 
 
 
@@ -32,7 +35,10 @@ import {TilbudService} from './tilbud.service';
     ForsideKoerelaererComponent,
     LoginSideComponent,
     NotFoundComponent,
-    VisTilbudSoegComponent
+    VisTilbudSoegComponent,
+    MinetilbudComponent,
+    OprettilbudComponent,
+    MinprofilComponent
   ],
   imports: [
     BrowserModule,
