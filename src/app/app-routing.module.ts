@@ -15,11 +15,10 @@ const appRoutes: Routes = [
   { path: 'erdukoerelaerer', component: LoginSideComponent},
 
   {
-    path: 'koerelaerer',
+    path: 'korelaerer',
      canActivate: [AuthGuard],
-     // canActivateChild: [AuthGuard],
     component: KoerelaererSideComponent, children: [
-      { path: '', component: MinetilbudComponent },
+      { path: '', redirectTo: 'minetilbud', pathMatch: 'full'},
       { path: 'minetilbud', component: MinetilbudComponent },
       { path: 'oprettilbud', component: OprettilbudComponent },
       { path: 'minprofil', component: MinprofilComponent }]
