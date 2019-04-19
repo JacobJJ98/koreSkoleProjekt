@@ -31,6 +31,10 @@ export class TilbudService {
   }
 
   getTilbud() {
+    this.tilbud[0]._mail = 'hej@koreskole.dk';
+    this.tilbud[1]._mail = 'hejhej@koreskole.dk';
+    this.tilbud[0]._mobilnummer = 12345678;
+    this.tilbud[1]._mobilnummer = 87654321;
     return this.tilbud;
   }
 }
