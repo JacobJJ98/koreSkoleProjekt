@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Http, Response} from '@angular/http/';
 import {AuthService} from '../auth.service';
+import {KoreskoleModel} from '../koreskole.model';
+import {MyObjModel} from '../myObj.model';
 
 @Component({
   selector: 'app-login-side',
@@ -8,7 +10,7 @@ import {AuthService} from '../auth.service';
   styleUrls: ['./login-side.component.css']
 })
 export class LoginSideComponent implements OnInit {
-  lol: string = 'stand';
+  lol: String = 'stand';
   bk: string;
 
   constructor(private http: Http, private authService: AuthService) { }
@@ -19,11 +21,12 @@ export class LoginSideComponent implements OnInit {
 
   logIn(brugernavn: HTMLInputElement, kode: HTMLInputElement) {
     this.bk = brugernavn.value + ' ' + kode.value;
-    this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/login', this.bk).subscribe(
+    this.http.get('http://localhost:8080/koereskole_REST/webresources/generic/alleTilbud').subscribe(
       (response: Response) => {
         const data = response.text();
         console.log(data);
-        this.lol = response.text().toString();
+
+        // this.lol = response.text().toString();
       },
       (error) => console.log(error),
     );
@@ -31,6 +34,7 @@ export class LoginSideComponent implements OnInit {
 
   onLogin() {
     this.authService.login();
+
   }
 
   onLogout() {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {TilbudModel} from '../../tilbud.model';
 import {TilbudService} from '../../tilbud.service';
+import {MyObjModel} from '../../myObj.model';
+import {TilbudTilBrugereModel} from '../../tilbudTilBrugere.model';
 
 @Component({
   selector: 'app-vis-tilbud-soeg',
@@ -8,16 +10,19 @@ import {TilbudService} from '../../tilbud.service';
   styleUrls: ['./vis-tilbud-soeg.component.css']
 })
 export class VisTilbudSoegComponent implements OnInit {
-  tilbudene: TilbudModel[];
+  tilbudene: TilbudTilBrugereModel[];
 
 
 
   constructor(private tilbudsservice: TilbudService) { }
 
   ngOnInit() {
-    this.tilbudene = this.tilbudsservice.getTilbud();
-    console.log(this.tilbudene.length);
-    console.log(this.tilbudene[0].koreskole_id);
+    const obj: MyObjModel = JSON.parse('{ "myString": "string", "myNumber": 4 }');
+    console.log(obj.myString);
+    console.log(obj.myNumber);
+    this.tilbudene = this.tilbudsservice.henttilbud();
+   console.log(this.tilbudene.length);
+   console.log(this.tilbudene[0].tilbud.koreskole_id);
   }
 
 }
