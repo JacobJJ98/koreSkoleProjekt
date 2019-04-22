@@ -18,7 +18,7 @@ const appRoutes: Routes = [
 
   {
     path: 'korelaerer',
-     canActivate: [AuthGuard],
+     //canActivate: [AuthGuard],
     component: KoerelaererSideComponent, children: [
       { path: '', redirectTo: 'minetilbud', pathMatch: 'full'},
       { path: 'minetilbud', component: MinetilbudComponent, children: [
