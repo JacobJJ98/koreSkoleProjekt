@@ -1,0 +1,12 @@
+<div class="row">
+</div>
+<div class="list-group">
+  <a
+    class="list-group-item"
+    *ngFor="let tilbud of tilbud; let i = index">
+    <h2>Navn: {{ tilbud.navn }}</h2>
+    <h3>Pris: {{ tilbud.pris }} kr. </h3>
+    <h4>Bilmærke: {{ tilbud.bilmaerke }} </h4>
+    <h4>id: {{ tilbud.id }} </h4>
+  </a>
+</div>

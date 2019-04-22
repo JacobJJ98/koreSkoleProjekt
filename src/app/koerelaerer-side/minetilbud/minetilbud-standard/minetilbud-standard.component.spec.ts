@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ForsideKoerelaererComponent } from './forside-koerelaerer.component';
+import { MinetilbudStandardComponent } from './minetilbud-standard.component';
 
-describe('ForsideKoerelaererComponent', () => {
-  let component: ForsideKoerelaererComponent;
-  let fixture: ComponentFixture<ForsideKoerelaererComponent>;
+describe('MinetilbudStandardComponent', () => {
+  let component: MinetilbudStandardComponent;
+  let fixture: ComponentFixture<MinetilbudStandardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ForsideKoerelaererComponent ]
+      declarations: [ MinetilbudStandardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ForsideKoerelaererComponent);
+    fixture = TestBed.createComponent(MinetilbudStandardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

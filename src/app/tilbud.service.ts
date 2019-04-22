@@ -28,10 +28,13 @@ export class TilbudService {
     // this.tilbud1.koreskole.telefonnummer 12345678;
     this.tilbud1.koreskole.mail = 'koreskolen@bæ.dk';
 
-  this.tilbuddene = [this.tilbud1];
+    this.tilbuddene = [this.tilbud1];
   }
   henttilbud() {
     return this.tilbuddene;
+  }
+  hentTilbudMedId(index: number) {
+    return this.tilbuddene[index];
   }
 
 

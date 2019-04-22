@@ -12,7 +12,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {HttpModule} from '@angular/http';
 import {AuthService} from './auth.service';
 import {AuthGuard} from './auth-guard.service';
-import { ForsideKoerelaererComponent } from './koerelaerer-side/forside-koerelaerer/forside-koerelaerer.component';
 import { LoginSideComponent } from './login-side/login-side.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { VisTilbudSoegComponent } from './forside/vis-tilbud-soeg/vis-tilbud-soeg.component';
@@ -20,6 +19,10 @@ import {TilbudService} from './tilbud.service';
 import { MinetilbudComponent } from './koerelaerer-side/minetilbud/minetilbud.component';
 import { OprettilbudComponent } from './koerelaerer-side/oprettilbud/oprettilbud.component';
 import { MinprofilComponent } from './koerelaerer-side/minprofil/minprofil.component';
+import { MinetilbudStandardComponent } from './koerelaerer-side/minetilbud/minetilbud-standard/minetilbud-standard.component';
+import { MinetilbudListeComponent } from './koerelaerer-side/minetilbud/minetilbud-liste/minetilbud-liste.component';
+import { MinetilbudEditComponent } from './koerelaerer-side/minetilbud/minetilbud-edit/minetilbud-edit.component';
+import {Tilbud2Service} from './model2/tilbud2.service';
 
 
 
@@ -32,20 +35,22 @@ import { MinprofilComponent } from './koerelaerer-side/minprofil/minprofil.compo
     KoereskoleComponent,
     ForsideComponent,
     KoerelaererSideComponent,
-    ForsideKoerelaererComponent,
     LoginSideComponent,
     NotFoundComponent,
     VisTilbudSoegComponent,
     MinetilbudComponent,
     OprettilbudComponent,
-    MinprofilComponent
+    MinprofilComponent,
+    MinetilbudStandardComponent,
+    MinetilbudListeComponent,
+    MinetilbudEditComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
   ],
-  providers: [AuthGuard, AuthService, TilbudService],
+  providers: [AuthGuard, AuthService, TilbudService, Tilbud2Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

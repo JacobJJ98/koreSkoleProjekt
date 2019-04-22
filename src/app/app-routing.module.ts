@@ -8,6 +8,8 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {MinetilbudComponent} from './koerelaerer-side/minetilbud/minetilbud.component';
 import {OprettilbudComponent} from './koerelaerer-side/oprettilbud/oprettilbud.component';
 import {MinprofilComponent} from './koerelaerer-side/minprofil/minprofil.component';
+import {MinetilbudStandardComponent} from './koerelaerer-side/minetilbud/minetilbud-standard/minetilbud-standard.component';
+import {MinetilbudEditComponent} from './koerelaerer-side/minetilbud/minetilbud-edit/minetilbud-edit.component';
 
 const appRoutes: Routes = [
   { path: '', component: ForsideComponent},
@@ -19,7 +21,9 @@ const appRoutes: Routes = [
      canActivate: [AuthGuard],
     component: KoerelaererSideComponent, children: [
       { path: '', redirectTo: 'minetilbud', pathMatch: 'full'},
-      { path: 'minetilbud', component: MinetilbudComponent },
+      { path: 'minetilbud', component: MinetilbudComponent, children: [
+          {path: ':id', component: MinetilbudEditComponent}]
+      },
       { path: 'oprettilbud', component: OprettilbudComponent },
       { path: 'minprofil', component: MinprofilComponent }]
     },
