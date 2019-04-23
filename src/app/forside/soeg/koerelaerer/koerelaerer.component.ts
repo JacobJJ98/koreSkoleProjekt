@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-koerelaerer',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./koerelaerer.component.css']
 })
 export class KoerelaererComponent implements OnInit {
+  @ViewChild('str') str: ElementRef;
 
   constructor() { }
 
   ngOnInit() {
+   // console.log('INDE FRA KØRERLÆRERSØG' + this.prisen.nativeElement.value );
+  }
+  bla() {
+   // console.log('INDE FRA KØRERLÆRERSØG' + this.prisen.nativeElement.value );
+    return 'INDE FRA KØRERLÆRERSØG' + this.str.nativeElement.value ;
   }
 
 }

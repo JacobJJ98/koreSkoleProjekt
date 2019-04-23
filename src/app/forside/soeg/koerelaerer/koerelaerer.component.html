@@ -11,7 +11,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label">Køn</label>
           <div class="col-md-4">
-            <div class="radio">
+            <div class="radio" #mandkvinde>
               <label for="koenr-0">
                 <input type="radio" name="koenr" id="koenr-0" value="1" checked="checked">
                 Mand
@@ -44,7 +44,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="selectbasic">Bilstørrelse</label>
           <div class="col-md-4">
-            <select id="selectbasic" name="selectbasic" class="form-control">
+            <select id="selectbasic" name="selectbasic" class="form-control" #str>
               <option value="1">Lille bil</option>
               <option value="2">Medium bil</option>
               <option value="3">Stor bil</option>

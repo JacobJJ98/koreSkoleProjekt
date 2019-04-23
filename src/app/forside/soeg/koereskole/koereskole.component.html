@@ -10,7 +10,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="selectbasic">Kørekort pris</label>
           <div class="col-md-4">
-            <select id="selectbasic" name="selectbasic" class="form-control">
+            <select id="selectbasic" name="selectbasic" class="form-control" #prisen>
               <option value="1">8000-10.000kr</option>
               <option value="2">10.000-12.000kr</option>
               <option value="3">12.000-14.000kr</option>
@@ -21,9 +21,9 @@
       <div class="column">
         <!-- Search input-->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="searchinput">Postnummer</label>
+          <label class="col-md-4 control-label" for="searchinput" >Postnummer</label>
           <div class="col-md-4">
-            <input id="searchinput" name="searchinput" type="search" placeholder="placeholder" class="form-control input-md">
+            <input id="searchinput" name="searchinput" type="search" placeholder="placeholder" class="form-control input-md" #postnr>
             <p class="help-block">help</p>
           </div>
         </div>

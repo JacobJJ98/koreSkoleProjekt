@@ -46,34 +46,7 @@ export class TilbudService {
         console.log(obj[1].koreskole.id);
         console.log(obj[2].tilbud.pris);
         console.log('obj[0]');
-         for (let o = 0; o < obj.length; o++) {
-          const tilll = new TilbudTilBrugere();
-          // tilbud
-          // tilll.tilbud.koreskole_id = obj[o].tilbud.koreskole_id;
-          tilll.tilbud.pris = obj[o].tilbud.pris;
-          tilll.tilbud.korekort_type = obj[o].tilbud.korekort_type;
-          tilll.tilbud.lynkursus = obj[o].tilbud.lynkursus;
-          tilll.tilbud.bilmarke = obj[o].tilbud.bilmarke;
-          tilll.tilbud.bilstørrelse = obj[o].tilbud.bilstørrelse;
-          tilll.tilbud.køn = obj[o].tilbud.køn;
-          tilll.tilbud.beskrivelse = obj[o].tilbud.beskrivelse;
-          tilll.tilbud.tilgængeligedage = obj[o].tilbud.tilgængeligedage;
-          tilll.tilbud.id = obj[o].tilbud.id;
-          // køreskole
-          tilll.koreskole.id = obj[o].koreskole.id;
-          tilll.koreskole.navn = obj[o].koreskole.navn;
-          tilll.koreskole.adresse = obj[o].koreskole.adresse;
-          tilll.koreskole.postnummer = obj[o].koreskole.postnummer;
-          tilll.koreskole.telefonnummer = obj[o].koreskole.telefonnummer;
-          tilll.koreskole.mail = obj[o].koreskole.mail;
-          this.tilbuddeneV4.push(tilll);
-          // this.tilbuddene.push(tilll);
-        }
-       // this.tilbuddene[0].tilbud.pris = obj[1].tilbud.pris;
-
-       // this.tilbuddene = obj;
-       // return obj;
-        // this.lol = response.text().toString();
+        this.fraObjTilListen(obj);
       },
       (error) => console.log(error),
     );
@@ -82,7 +55,43 @@ export class TilbudService {
   hentTilbudMedId(index: number) {
     return this.tilbuddene[index];
   }
+  hentTilbudMedPostnummer(postnummer: number) {
+    this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/tilbudMedGiventPostnummer', postnummer).subscribe(
+      (response: Response) => {
+        const data = response.text();
+        const obj: TilbudTilBrugere[] = JSON.parse(data.toString());
+        console.log('DETTE ER BLEVET HENTET FRA SERVEREN MED GIVET POSTNUMMER: ' + data);
+        this.fraObjTilListen(obj);
+      },
+      (error) => console.log(error),
+    );
+  }
 
+  fraObjTilListen(obj: TilbudTilBrugere[]) {
+    this.tilbuddeneV4.splice(0, this.tilbuddeneV4.length);
+    for (let o = 0; o < obj.length; o++) {
+      const tilll = new TilbudTilBrugere();
+      // tilbud
+      // tilll.tilbud.koreskole_id = obj[o].tilbud.koreskole_id;
+      tilll.tilbud.pris = obj[o].tilbud.pris;
+      tilll.tilbud.korekort_type = obj[o].tilbud.korekort_type;
+      tilll.tilbud.lynkursus = obj[o].tilbud.lynkursus;
+      tilll.tilbud.bilmarke = obj[o].tilbud.bilmarke;
+      tilll.tilbud.bilstørrelse = obj[o].tilbud.bilstørrelse;
+      tilll.tilbud.køn = obj[o].tilbud.køn;
+      tilll.tilbud.beskrivelse = obj[o].tilbud.beskrivelse;
+      tilll.tilbud.tilgængeligedage = obj[o].tilbud.tilgængeligedage;
+      tilll.tilbud.id = obj[o].tilbud.id;
+      // køreskole
+      tilll.koreskole.id = obj[o].koreskole.id;
+      tilll.koreskole.navn = obj[o].koreskole.navn;
+      tilll.koreskole.adresse = obj[o].koreskole.adresse;
+      tilll.koreskole.postnummer = obj[o].koreskole.postnummer;
+      tilll.koreskole.telefonnummer = obj[o].koreskole.telefonnummer;
+      tilll.koreskole.mail = obj[o].koreskole.mail;
+      this.tilbuddeneV4.push(tilll);
+    }
+  }
 
 }
 
