@@ -1,13 +1,13 @@
-import {TilgængeligedageModel} from '../tilgængeligedage.model';
-import {TilbudModel} from '../tilbud.model';
+import {TilgængeligeDage} from '../tilgængeligedage.model';
+import {Tilbud} from '../tilbud.model';
 
 
 export class Tilbud2Service {
 
-  private tilg: TilgængeligedageModel = new TilgængeligedageModel(1, 1, 1, 1, 1, 0, 0);
-  private tilbud1 = new TilbudModel;
-  private tilbud2 = new TilbudModel;
-  private tilbuddene: TilbudModel[];
+  private tilg: TilgængeligeDage = new TilgængeligeDage();
+  private tilbud1 = new Tilbud;
+  private tilbud2 = new Tilbud;
+  private tilbuddene: Tilbud[];
   constructor() {
     this.tilbud1.koreskole_id = 's175132';
     this.tilbud1.pris = 13449;
@@ -18,7 +18,7 @@ export class Tilbud2Service {
     this.tilbud1.køn = 'kvinde';
     this.tilbud1.beskrivelse = 'Hos os bliver du en god bilist';
     this.tilbud1.tilgængeligedage = this.tilg;
-    this.tilbud1.id = 1234
+    this.tilbud1.id = 1234;
 
 
     this.tilbud2.koreskole_id = 's175132';
@@ -30,9 +30,9 @@ export class Tilbud2Service {
     this.tilbud2.køn = 'kvinde';
     this.tilbud2.beskrivelse = 'Hos os bliver xcvvvvvvvdu en god bixcvxlist';
     this.tilbud2.tilgængeligedage = this.tilg;
-    this.tilbud2.id = 1234
+    this.tilbud2.id = 1234;
 
-    this.tilbuddene = [this.tilbud1,this.tilbud2];
+    this.tilbuddene = [this.tilbud1, this.tilbud2];
   }
   henttilbud() {
     return this.tilbuddene;

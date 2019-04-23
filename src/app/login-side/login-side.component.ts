@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Http, Response} from '@angular/http/';
 import {AuthService} from '../auth.service';
-import {KoreskoleModel} from '../koreskole.model';
+import {Koreskole} from '../koreskole.model';
 import {MyObjModel} from '../myObj.model';
 
 @Component({

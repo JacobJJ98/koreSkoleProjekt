@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TilbudService} from '../../tilbud.service';
-import {TilbudTilBrugereModel} from '../../tilbudTilBrugere.model';
+import {TilbudTilBrugere} from '../../tilbudTilBrugere.model';
 
 @Component({
   selector: 'app-minetilbud',
@@ -8,11 +8,11 @@ import {TilbudTilBrugereModel} from '../../tilbudTilBrugere.model';
   styleUrls: ['./minetilbud.component.css']
 })
 export class MinetilbudComponent implements OnInit {
-  tilbudene: TilbudTilBrugereModel[];
+  tilbudene: TilbudTilBrugere[];
   constructor(private tilbudsservice: TilbudService) { }
 
   ngOnInit() {
-    this.tilbudene = this.tilbudsservice.henttilbud();
+    this.tilbudene = this.tilbudsservice.henttilbudTilBruger();
   }
 
 }

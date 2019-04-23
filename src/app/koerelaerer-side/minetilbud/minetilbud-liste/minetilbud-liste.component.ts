@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {TilbudModel} from '../../../tilbud.model';
+import {Tilbud} from '../../../tilbud.model';
 import {TilbudService} from '../../../tilbud.service';
-import {TilbudTilBrugereModel} from '../../../tilbudTilBrugere.model';
+import {TilbudTilBrugere} from '../../../tilbudTilBrugere.model';
 import {Tilbud2Service} from '../../../model2/tilbud2.service';
 
 @Component({
@@ -10,7 +10,7 @@ import {Tilbud2Service} from '../../../model2/tilbud2.service';
   styleUrls: ['./minetilbud-liste.component.css']
 })
 export class MinetilbudListeComponent implements OnInit {
-  tilbud: TilbudModel[];
+  tilbud: Tilbud[];
   constructor(private tilbudsservice: Tilbud2Service) { }
 
   ngOnInit() {

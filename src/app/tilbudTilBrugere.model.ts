@@ -1,12 +1,12 @@
-import {KoreskoleModel} from './koreskole.model';
-import {TilbudModel} from './tilbud.model';
+import {Koreskole} from './koreskole.model';
+import {Tilbud} from './tilbud.model';
 
-export class TilbudTilBrugereModel {
-  public koreskole: KoreskoleModel;
-  public tilbud: TilbudModel;
+export class TilbudTilBrugere {
+  public koreskole: Koreskole;
+  public tilbud: Tilbud;
 
   constructor() {
-    this.koreskole = new KoreskoleModel();
-    this.tilbud = new TilbudModel();
+    this.koreskole = new Koreskole();
+    this.tilbud = new Tilbud();
   }
 }

@@ -1,6 +1,6 @@
 
 
-export class KoreskoleModel {
+export class Koreskole {
   public id: string;
   public navn: string;
   public adresse: string;

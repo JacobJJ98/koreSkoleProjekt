@@ -1,13 +1,13 @@
-export class TilgængeligedageModel {
-  public mandag: number;
-  public tirsdag: number;
-  public onsdag: number;
-  public torsdag: number;
-  public fredag: number;
-  public lørdag: number;
-  public søndag: number;
+export class TilgængeligeDage {
+  public tilgængelig_mandag: number;
+  public tilgængelig_tirsdag: number;
+  public tilgængelig_onsdag: number;
+  public tilgængelig_torsdag: number;
+  public tilgængelig_fredag: number;
+  public tilgængelig_lørdag: number;
+  public tilgængelig_søndag: number;
 
-  constructor(mandag: number, tirsdag: number, onsdag: number, torsdag: number, fredag: number, lørdag: number, søndag: number) {
+  constructor() {
   }
 
 }

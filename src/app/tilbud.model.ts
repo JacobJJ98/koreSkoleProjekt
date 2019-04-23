@@ -1,6 +1,6 @@
-import {TilgængeligedageModel} from './tilgængeligedage.model';
+import {TilgængeligeDage} from './tilgængeligedage.model';
 
-export class TilbudModel {
+export class Tilbud {
   public koreskole_id: string;
   public pris: number;
   public korekort_type: string;
@@ -9,9 +9,9 @@ export class TilbudModel {
   public bilstørrelse: string;
   public køn: string;
   public beskrivelse: string;
-  public tilgængeligedage: TilgængeligedageModel;
+  public tilgængeligedage: TilgængeligeDage;
   public  id: number;
 
-  constructor(){
+  constructor() {
   }
 }
