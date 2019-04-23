@@ -19,7 +19,7 @@ export class TilbudService {
     this.tilbud1.tilbud.pris = 13449;
     this.tilbud1.tilbud.korekort_type = 'A';
     this.tilbud1.tilbud.lynkursus = 1;
-    this.tilbud1.tilbud.bilmaerke = 'Toyota';
+    this.tilbud1.tilbud.bilmarke = 'Toyota';
     this.tilbud1.tilbud.bilstørrelse = 'Stor bil';
     this.tilbud1.tilbud.køn = 'kvinde';
     this.tilbud1.tilbud.beskrivelse = 'Hos os bliver du en god bilist';
@@ -53,7 +53,7 @@ export class TilbudService {
           tilll.tilbud.pris = obj[o].tilbud.pris;
           tilll.tilbud.korekort_type = obj[o].tilbud.korekort_type;
           tilll.tilbud.lynkursus = obj[o].tilbud.lynkursus;
-          tilll.tilbud.bilmaerke = obj[o].tilbud.bilmaerke;
+          tilll.tilbud.bilmarke = obj[o].tilbud.bilmarke;
           tilll.tilbud.bilstørrelse = obj[o].tilbud.bilstørrelse;
           tilll.tilbud.køn = obj[o].tilbud.køn;
           tilll.tilbud.beskrivelse = obj[o].tilbud.beskrivelse;

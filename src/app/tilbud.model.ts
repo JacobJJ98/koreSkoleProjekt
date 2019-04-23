@@ -5,7 +5,7 @@ export class Tilbud {
   public pris: number;
   public korekort_type: string;
   public lynkursus: number;
-  public bilmaerke: string;
+  public bilmarke: string;
   public bilstørrelse: string;
   public køn: string;
   public beskrivelse: string;
