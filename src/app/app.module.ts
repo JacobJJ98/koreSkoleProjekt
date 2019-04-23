@@ -23,6 +23,7 @@ import { MinetilbudStandardComponent } from './koerelaerer-side/minetilbud/minet
 import { MinetilbudListeComponent } from './koerelaerer-side/minetilbud/minetilbud-liste/minetilbud-liste.component';
 import { MinetilbudEditComponent } from './koerelaerer-side/minetilbud/minetilbud-edit/minetilbud-edit.component';
 import {Tilbud2Service} from './model2/tilbud2.service';
+import { MinetilbudItemComponent } from './koerelaerer-side/minetilbud/minetilbud-liste/minetilbud-item/minetilbud-item.component';
 
 
 
@@ -44,6 +45,7 @@ import {Tilbud2Service} from './model2/tilbud2.service';
     MinetilbudStandardComponent,
     MinetilbudListeComponent,
     MinetilbudEditComponent,
+    MinetilbudItemComponent,
   ],
   imports: [
     BrowserModule,
