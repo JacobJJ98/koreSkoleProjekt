@@ -39,13 +39,13 @@ export class TilbudService {
     this.http.get('http://localhost:8080/koereskole_REST/webresources/generic/alleTilbud').subscribe(
       (response: Response) => {
         const data = response.text();
-        console.log(data.toString());
+       // console.log(data.toString());
         const obj: TilbudTilBrugere[] = JSON.parse(data.toString());
-        console.log('obj[0]');
-        console.log(obj[0].tilbud.koreskole_id);
-        console.log(obj[1].koreskole.id);
-        console.log(obj[2].tilbud.pris);
-        console.log('obj[0]');
+        // console.log('obj[0]');
+      //  console.log(obj[0].tilbud.koreskole_id);
+      //  console.log(obj[1].koreskole.id);
+      //  console.log(obj[2].tilbud.pris);
+      //  console.log('obj[0]');
         this.fraObjTilListen(obj);
       },
       (error) => console.log(error),
@@ -60,7 +60,7 @@ export class TilbudService {
       (response: Response) => {
         const data = response.text();
         const obj: TilbudTilBrugere[] = JSON.parse(data.toString());
-        console.log('DETTE ER BLEVET HENTET FRA SERVEREN MED GIVET POSTNUMMER: ' + data);
+        // console.log('DETTE ER BLEVET HENTET FRA SERVEREN MED GIVET POSTNUMMER: ' + data);
         this.fraObjTilListen(obj);
       },
       (error) => console.log(error),

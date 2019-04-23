@@ -1,4 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-koereskole',
@@ -7,6 +8,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 })
 export class KoereskoleComponent implements OnInit {
   @ViewChild('postnr') postnr: ElementRef;
+  @ViewChild('f') form: NgForm;
   constructor() {
  //  console.log(document.getElementById('selectbasic').toString());
 
@@ -16,6 +18,10 @@ export class KoereskoleComponent implements OnInit {
   }
 
   hentpostnummer() {
-    return this.postnr.nativeElement.value;
+    return this.form.value.postnummer;
+  }
+
+  hentPrisen() {
+    return this.form.value.prisen.value_;
   }
 }

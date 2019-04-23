@@ -22,7 +22,7 @@ export class VisTilbudSoegComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.tilbudene = this.tilbudsservice.henttilbudTilBruger();
-   console.log(this.tilbudene.length);
+   // console.log(this.tilbudene.length);
   // console.log(this.tilbudene[0].tilbud.koreskole_id);
   }
   ngAfterViewInit() {

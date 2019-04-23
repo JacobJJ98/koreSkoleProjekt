@@ -1,7 +1,8 @@
-<form class="form-horizontal">
+<form class="form-horizontal" #f="ngForm" >
   <fieldset>
 
     <!-- Form Name -->
+
     <legend>Kørelærer</legend>
 
     <div class="row">
@@ -11,16 +12,15 @@
         <div class="form-group">
           <label class="col-md-4 control-label">Køn</label>
           <div class="col-md-4">
-            <div class="radio" #mandkvinde>
-              <label for="koenr-0">
-                <input type="radio" name="koenr" id="koenr-0" value="1" checked="checked">
-                Mand
-              </label>
-            </div>
-            <div class="radio">
-              <label for="koenr-1">
-                <input type="radio" name="koenr" id="koenr-1" value="2">
-                Kvinde
+            <div class="radio" *ngFor="let gender of konnn" >
+              <label>
+                <input
+                  type="radio"
+                  name="gender"
+                  ngModel
+                  [value]="gender"
+                  required>
+                {{ gender }}
               </label>
             </div>
           </div>
@@ -30,7 +30,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="bilmærke">Bilmærke</label>
           <div class="col-md-4">
-            <select id="bilmærke" name="bilmærke" class="form-control" multiple="multiple">
+            <select id="bilmærke" name="bilmærke" class="form-control" multiple="multiple" ngModel required>
               <option value="VW">VW</option>
               <option value="Audi">Audi</option>
               <option value="Mercedes">Mercedes</option>
@@ -44,7 +44,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="selectbasic">Bilstørrelse</label>
           <div class="col-md-4">
-            <select id="selectbasic" name="selectbasic" class="form-control" #str>
+            <select id="selectbasic" name="bilstr" class="form-control" ngModel required>
               <option value="1">Lille bil</option>
               <option value="2">Medium bil</option>
               <option value="3">Stor bil</option>
@@ -58,7 +58,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="selectbasic">Kørekort type</label>
           <div class="col-md-4">
-            <select id="selectbasicc" name="selectbasic" class="form-control">
+            <select id="selectbasicc" name="kktype" class="form-control" ngModel required>
               <option value="1">AM</option>
               <option value="2">A1</option>
               <option value="3">A2</option>
@@ -80,14 +80,14 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="selectbasic">Lynkursus</label>
           <div class="col-md-4">
-            <input type="checkbox" name="vehicle1" value="Bike"><br>
+            <input type="checkbox" name="lynkurus" value="Bike" ngModel required><br>
           </div>
         </div>
         <!-- Select Multiple -->
         <div class="form-group">
           <label class="col-md-4 control-label" for="bilmærke">Ønskede dage</label>
           <div class="col-md-4">
-            <select id="dage" name="dage" class="form-control" multiple="multiple">
+            <select id="dage" name="dage" class="form-control" multiple="multiple" ngModel required>
               <option value="Mandag">Mandag</option>
               <option value="Tirsdag">Tirsdag</option>
               <option value="onsdag">Onsdag</option>

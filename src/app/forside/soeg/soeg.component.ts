@@ -16,11 +16,32 @@ export class SoegComponent implements OnInit {
 
   ngOnInit() {
   }
-  hentvaerdiernefrakk() {
-    return this.korelærecomp.bla();
+  hentStørrelse() {
+    return this.korelærecomp.hentBilStr();
   }
   hentPostNummer() {
     return this.koreskolecomp.hentpostnummer();
   }
+  hentPrisen() {
+    return this.koreskolecomp.hentPrisen();
+  }
+  hentKøn() {
+    return this.korelærecomp.hentKønn();
+  }
 
+  hentMarke() {
+    return this.korelærecomp.hentMaerke();
+  }
+
+  hentKKType() {
+    return this.korelærecomp.hentKKType();
+  }
+
+  hentLK() {
+    return this.korelærecomp.hentLK();
+  }
+
+  onskedeDage() {
+    return this.korelærecomp.hentOnskedeDage();
+  }
 }

@@ -24,6 +24,7 @@ import { MinetilbudListeComponent } from './koerelaerer-side/minetilbud/minetilb
 import { MinetilbudEditComponent } from './koerelaerer-side/minetilbud/minetilbud-edit/minetilbud-edit.component';
 import {Tilbud2Service} from './model2/tilbud2.service';
 import { MinetilbudItemComponent } from './koerelaerer-side/minetilbud/minetilbud-liste/minetilbud-item/minetilbud-item.component';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -50,6 +51,7 @@ import { MinetilbudItemComponent } from './koerelaerer-side/minetilbud/minetilbu
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpModule,
   ],
   providers: [AuthGuard, AuthService, TilbudService, Tilbud2Service],
