@@ -13,7 +13,7 @@ export class Tilbud2Service {
     this.tilbud1.pris = 13449;
     this.tilbud1.korekort_type = 'A';
     this.tilbud1.lynkursus = 1;
-    this.tilbud1.bilmaerke = 'Toyota';
+    this.tilbud1.bilmarke = 'Toyota';
     this.tilbud1.bilstørrelse = 'Stor bil';
     this.tilbud1.køn = 'kvinde';
     this.tilbud1.beskrivelse = 'Hos os bliver du en god bilist';
@@ -25,7 +25,7 @@ export class Tilbud2Service {
     this.tilbud2.pris = 13449;
     this.tilbud2.korekort_type = 'xcvvA';
     this.tilbud2.lynkursus = 1;
-    this.tilbud2.bilmaerke = 'Toyoxcvxta';
+    this.tilbud2.bilmarke = 'Toyoxcvxta';
     this.tilbud2.bilstørrelse = 'Stoxcvr bil';
     this.tilbud2.køn = 'kvinde';
     this.tilbud2.beskrivelse = 'Hos os bliver xcvvvvvvvdu en god bixcvxlist';
