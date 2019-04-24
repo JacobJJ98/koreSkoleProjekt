@@ -1,2 +1,146 @@
-<app-koerelaerer></app-koerelaerer>
-<app-koereskole></app-koereskole>
+<form class="form-horizontal" #f="ngForm" >
+  <fieldset>
+
+    <!-- Form Name -->
+
+    <legend>Kørelærer</legend>
+
+    <div class="row">
+      <div class="column">
+
+        <!-- Multiple Radios -->
+        <div class="form-group">
+          <label class="col-md-4 control-label">Køn</label>
+          <div class="col-md-4">
+            <div class="radio" *ngFor="let gender of konnn" >
+              <label>
+                <input
+                  type="radio"
+                  name="gender"
+                  ngModel
+                  [value]="gender"
+                  required>
+                {{ gender }}
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Select Multiple -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="bilmærke">Bilmærke</label>
+          <div class="col-md-4">
+            <select id="bilmærke" name="bilmærke" class="form-control" multiple="multiple" ngModel required>
+              <option value="VW">VW</option>
+              <option value="Audi">Audi</option>
+              <option value="Mercedes">Mercedes</option>
+              <option value="Citroén">Citroén</option>
+              <option value="Honda">Honda</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="selectbasic">Bilstørrelse</label>
+          <div class="col-md-4">
+            <select id="selectbasic" name="bilstr" class="form-control" ngModel required>
+              <option value="1">Lille bil</option>
+              <option value="2">Medium bil</option>
+              <option value="3">Stor bil</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+      <div class="column">
+        <!-- Select Basic -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="selectbasic">Kørekort type</label>
+          <div class="col-md-4">
+            <select id="selectbasicc" name="kktype" class="form-control" ngModel required>
+              <option value="1">AM</option>
+              <option value="2">A1</option>
+              <option value="3">A2</option>
+              <option value="4">A</option>
+              <option value="5">B</option>
+              <option value="6">BE</option>
+              <option value="7">B1</option>
+              <option value="8">C1</option>
+              <option value="9">C1E</option>
+              <option value="10">C</option>
+              <option value="11">CE</option>
+              <option value="12">D1</option>
+              <option value="13">D1E</option>
+              <option value="14">D</option>
+              <option value="15">DE</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="selectbasic">Lynkursus</label>
+          <div class="col-md-4">
+            <input type="checkbox" name="lynkurus" value="Bike" ngModel required><br>
+          </div>
+        </div>
+        <!-- Select Multiple -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="bilmærke">Ønskede dage</label>
+          <div class="col-md-4">
+            <select id="dage" name="dage" class="form-control" multiple="multiple" ngModel required>
+              <option value="Mandag">Mandag</option>
+              <option value="Tirsdag">Tirsdag</option>
+              <option value="onsdag">Onsdag</option>
+              <option value="Torsdag">Torsdag</option>
+              <option value="Fredag">Fredag</option>
+              <option value="Lørdag">Lørdag</option>
+              <option value="Søndag">Søndag</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Select Basic -->
+    <div class="row">
+      <div class="column" >
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="selectbasic">Kørekort pris</label>
+          <div class="col-md-4">
+            <select id="selectbasic2" name="prisen" class="form-control" ngModel required>
+              <option value="1">8000-10.000kr</option>
+              <option value="2">10.000-12.000kr</option>
+              <option value="3">12.000-14.000kr</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <!-- Search input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="searchinput" >Postnummer</label>
+          <div class="col-md-4">
+            <input id="searchinput" name="postnummer" type="search" placeholder="placeholder" class="form-control input-md" #postnr ngModel required>
+            <p class="help-block">help</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button (click)="onClick()">Button</button>
+
+  </fieldset>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+

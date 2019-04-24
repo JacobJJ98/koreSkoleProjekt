@@ -40,6 +40,9 @@ export class Tilbud2Service {
   hentTilbudMedIndex(index: number) {
     return this.tilbuddene[index];
   }
+  addTilbud(tilbud: Tilbud) {
+    this.tilbuddene.push(tilbud);
+  }
 
 
 }
