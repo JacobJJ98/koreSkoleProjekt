@@ -30,8 +30,10 @@
 
 </form>
 
-<h1>{{lol}}</h1>
+<button (click)="onLogin(brugernavn.value,kode.value)">ÆGTE login</button>
 
+<h1>{{lol}}</h1>
+<button class="btn-primary" (click)="testMedRest()">test med rest 26-04</button>
 <button class="btn btn-default" (click)="onLogin()">Login</button>
 <button class="btn btn-default" (click)="onLogout()">Logout</button>
 <button class="btn-primary" routerLink="/korelaerer">Login</button>

@@ -3,6 +3,7 @@ import {Http, Response} from '@angular/http/';
 import {AuthService} from '../auth.service';
 import {Koreskole} from '../koreskole.model';
 import {MyObjModel} from '../myObj.model';
+import {TilbudService} from '../tilbud.service';
 
 @Component({
   selector: 'app-login-side',
@@ -12,8 +13,10 @@ import {MyObjModel} from '../myObj.model';
 export class LoginSideComponent implements OnInit {
   lol: String = 'stand';
   bk: string;
+  samletString: String;
+  b;
 
-  constructor(private http: Http, private authService: AuthService) { }
+  constructor(private http: Http, private authService: AuthService, private tilbudTilBrugerService: TilbudService) { }
 
   ngOnInit() {
 
@@ -32,13 +35,22 @@ export class LoginSideComponent implements OnInit {
     );
   }
 
-  onLogin() {
-    this.authService.login();
-
+  onLogin(brugernavn: String, kodeord: String) {
+    this.samletString = brugernavn + ' ' + kodeord;
+    this.b = this.loginRest(this.samletString);
+    if (this.b = 'true') {
+      this.authService.login();
+    }
   }
-
-  onLogout() {
-    this.authService.logout();
+  loginRest(string: String) {
+    this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/login', string).subscribe(
+      (response: Response) => {
+        const data = response;
+        console.log('DETTE ER BLEVET HENTET FRA SERVEREN MED GIVET POSTNUMMER: ' + data + data.text() + data.toString()
+          + data.statusText.toString());
+        return data;
+      },
+      (error) => console.log(error),
+    );
   }
-
 }

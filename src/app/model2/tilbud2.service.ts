@@ -20,7 +20,6 @@ export class Tilbud2Service {
     this.tilbud1.tilgængeligedage = this.tilg;
     this.tilbud1.id = 1234;
 
-
     this.tilbud2.koreskole_id = 's175132';
     this.tilbud2.pris = 13449;
     this.tilbud2.korekort_type = 'xcvvA';

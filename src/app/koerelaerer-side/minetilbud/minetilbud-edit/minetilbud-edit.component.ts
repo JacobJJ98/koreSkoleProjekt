@@ -22,9 +22,7 @@ export class MinetilbudEditComponent implements OnInit {
         (params: Params) => {
           this.id = +params['id'];
           this.tilbud = this.tilbudsservice.hentTilbudMedIndex(this.id);
-
         }
       );
   }
-
 }
