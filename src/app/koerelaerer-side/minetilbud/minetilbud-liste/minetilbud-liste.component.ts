@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Tilbud} from '../../../tilbud.model';
+import {Tilbud} from '../../../Model/tilbud.model';
 import {TilbudService} from '../../../tilbud.service';
-import {TilbudTilBrugere} from '../../../tilbudTilBrugere.model';
+import {TilbudTilBrugere} from '../../../Model/tilbudTilBrugere.model';
 import {Tilbud2Service} from '../../../model2/tilbud2.service';
 
 @Component({

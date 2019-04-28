@@ -1,5 +1,5 @@
-import {TilgængeligeDage} from '../tilgængeligedage.model';
-import {Tilbud} from '../tilbud.model';
+import {TilgængeligeDage} from '../Model/tilgængeligedage.model';
+import {Tilbud} from '../Model/tilbud.model';
 
 
 export class Tilbud2Service {

@@ -9,7 +9,6 @@
       <label class="col-md-4 control-label" for="textinput">Brugernavn</label>
       <div class="col-md-4">
         <input #brugernavn id="textinput" name="textinput" type="text" placeholder="placeholder" class="form-control input-md" required="required">
-        <span class="help-block">help</span>
       </div>
     </div>
 
@@ -18,7 +17,6 @@
       <label class="col-md-4 control-label" for="searchinput">Password</label>
       <div class="col-md-4">
         <input #kode id="searchinput" name="searchinput" type="search" placeholder="placeholder" class="form-control input-md" required="required">
-        <p class="help-block">help</p>
       </div>
     </div>
     <hr>
@@ -30,11 +28,9 @@
 
 </form>
 
-<button (click)="onLogin(brugernavn.value,kode.value)">ÆGTE login</button>
+<button (click)="onLogin(brugernavn.value,kode.value)">TEST med REST</button>
 
-<h1>{{lol}}</h1>
-<button class="btn-primary" (click)="testMedRest()">test med rest 26-04</button>
-<button class="btn btn-default" (click)="onLogin()">Login</button>
-<button class="btn btn-default" (click)="onLogout()">Logout</button>
+<button class="btn btn-default" (click)="onLogin()">Login Metode</button>
+<button class="btn btn-default" (click)="onLogout()">Logout Metode</button>
 <button class="btn-primary" routerLink="/korelaerer">Login</button>
-<button class="btn-primary" (click)="logIn(brugernavn,kode)">Leg med rest</button>
+

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Tilbud} from '../../../../tilbud.model';
+import {Tilbud} from '../../../../Model/tilbud.model';
 
 @Component({
   selector: 'app-minetilbud-item',

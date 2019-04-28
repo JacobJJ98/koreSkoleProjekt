@@ -1,8 +1,8 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {Tilbud} from '../../tilbud.model';
+import {Tilbud} from '../../Model/tilbud.model';
 import {TilbudService} from '../../tilbud.service';
-import {MyObjModel} from '../../myObj.model';
-import {TilbudTilBrugere} from '../../tilbudTilBrugere.model';
+import {MyObjModel} from '../../Model/myObj.model';
+import {TilbudTilBrugere} from '../../Model/tilbudTilBrugere.model';
 import {KoereskoleComponent} from '../soeg/koereskole/koereskole.component';
 import {KoerelaererComponent} from '../soeg/koerelaerer/koerelaerer.component';
 

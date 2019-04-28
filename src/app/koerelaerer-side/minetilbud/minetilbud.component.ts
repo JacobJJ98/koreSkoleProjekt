@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TilbudService} from '../../tilbud.service';
-import {TilbudTilBrugere} from '../../tilbudTilBrugere.model';
+import {TilbudTilBrugere} from '../../Model/tilbudTilBrugere.model';
 
 @Component({
   selector: 'app-minetilbud',

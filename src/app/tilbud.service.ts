@@ -1,9 +1,9 @@
-import {TilgængeligeDage} from './tilgængeligedage.model';
+import {TilgængeligeDage} from './Model/tilgængeligedage.model';
 import {ngAppResolve} from '@angular-devkit/build-angular/src/angular-cli-files/models/webpack-configs';
-import {TilbudTilBrugere} from './tilbudTilBrugere.model';
+import {TilbudTilBrugere} from './Model/tilbudTilBrugere.model';
 import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
-import {MyObjModel} from './myObj.model';
+import {MyObjModel} from './Model/myObj.model';
 
 @Injectable()
 export class TilbudService {

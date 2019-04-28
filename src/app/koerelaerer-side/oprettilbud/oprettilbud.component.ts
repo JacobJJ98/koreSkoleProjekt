@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Tilbud2Service} from '../../model2/tilbud2.service';
-import {Tilbud} from '../../tilbud.model';
+import {Tilbud} from '../../Model/tilbud.model';
 import {element} from 'protractor';
-import {TilgængeligeDage} from '../../tilgængeligedage.model';
+import {TilgængeligeDage} from '../../Model/tilgængeligedage.model';
 
 @Component({
   selector: 'app-oprettilbud',
@@ -20,37 +20,6 @@ export class OprettilbudComponent implements OnInit {
   ngOnInit() {
   }
 
-  hentBilStr() {
-    // console.log('INDE FRA KØRERLÆRERSØG' + this.prisen.nativeElement.value );
-    return this.form.value.bilstr;
-  }
-
-  hentKønn() {
-    return this.form.value.gender;
-  }
-
-  hentMaerke() {
-    return this.form.value.bilmærke;
-  }
-
-  hentKKType() {
-    return this.form.value.kktype;
-  }
-
-  hentLK() {
-    return this.form.value.lynkurus;
-  }
-
-  hentOnskedeDage() {
-    return this.form.value.dage;
-  }
-  hentpostnummer() {
-    return this.form.value.postnummer;
-  }
-
-  hentPrisen() {
-    return this.form.value.prisen.value_;
-  }
   onClick() {
     this.tilbud1.køn = this.form.value.gender;
     this.tilbud1.bilmarke = this.form.value.bilmærke;

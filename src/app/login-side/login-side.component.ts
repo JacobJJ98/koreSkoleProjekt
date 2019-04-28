@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Http, Response} from '@angular/http/';
 import {AuthService} from '../auth.service';
-import {Koreskole} from '../koreskole.model';
-import {MyObjModel} from '../myObj.model';
+import {Koreskole} from '../Model/koreskole.model';
+import {MyObjModel} from '../Model/myObj.model';
 import {TilbudService} from '../tilbud.service';
 
 @Component({
