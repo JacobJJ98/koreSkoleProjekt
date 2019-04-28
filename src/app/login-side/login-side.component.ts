@@ -42,6 +42,9 @@ export class LoginSideComponent implements OnInit {
       this.authService.login();
     }
   }
+  onLogout(brugernavn: String, kodeord: String) {
+      this.authService.logout();
+  }
   loginRest(string: String) {
     this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/login', string).subscribe(
       (response: Response) => {
