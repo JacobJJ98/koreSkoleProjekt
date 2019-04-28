@@ -7,7 +7,5 @@ export class TilgængeligeDage {
   public tilgængelig_lørdag: number;
   public tilgængelig_søndag: number;
 
-  constructor() {
-  }
 
 }

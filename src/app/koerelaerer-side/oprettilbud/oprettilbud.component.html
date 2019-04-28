@@ -3,7 +3,7 @@
 
     <!-- Form Name -->
 
-    <legend>Kørelærer</legend>
+
 
     <div class="row">
       <div class="column">
@@ -28,14 +28,16 @@
 
         <!-- Select Multiple -->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="bilmærke">Bilmærke</label>
+          <label class="col-md-4 control-label" for="selectbasic">Bilmærke</label>
           <div class="col-md-4">
-            <select id="bilmærke" name="bilmærke" class="form-control" multiple="multiple" ngModel required>
+            <select id="bilmærke" name="bilmærke" class="form-control" ngModel required>
               <option value="VW">VW</option>
               <option value="Audi">Audi</option>
               <option value="Mercedes">Mercedes</option>
               <option value="Citroén">Citroén</option>
               <option value="Honda">Honda</option>
+              <option value="Opel">Opel</option>
+              <option value="Peugeot">Peugeot</option>
             </select>
           </div>
         </div>
@@ -59,28 +61,28 @@
           <label class="col-md-4 control-label" for="selectbasic">Kørekort type</label>
           <div class="col-md-4">
             <select id="selectbasicc" name="kktype" class="form-control" ngModel required>
-              <option value="1">AM</option>
-              <option value="2">A1</option>
-              <option value="3">A2</option>
-              <option value="4">A</option>
-              <option value="5">B</option>
-              <option value="6">BE</option>
-              <option value="7">B1</option>
-              <option value="8">C1</option>
-              <option value="9">C1E</option>
-              <option value="10">C</option>
-              <option value="11">CE</option>
-              <option value="12">D1</option>
-              <option value="13">D1E</option>
-              <option value="14">D</option>
-              <option value="15">DE</option>
+              <option value="AM">AM</option>
+              <option value="A1">A1</option>
+              <option value="A2">A2</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="BE">BE</option>
+              <option value="B1">B1</option>
+              <option value="C1">C1</option>
+              <option value="C1E">C1E</option>
+              <option value="C">C</option>
+              <option value="CE">CE</option>
+              <option value="D1">D1</option>
+              <option value="D1E">D1E</option>
+              <option value="D">D</option>
+              <option value="DE">DE</option>
             </select>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-4 control-label" for="selectbasic">Lynkursus</label>
           <div class="col-md-4">
-            <input type="checkbox" name="lynkurus" value="Bike" ngModel required><br>
+            <input type="checkbox" name="lynkurus" ngModel required><br>
           </div>
         </div>
         <!-- Select Multiple -->
@@ -90,7 +92,7 @@
             <select id="dage" name="dage" class="form-control" multiple="multiple" ngModel required>
               <option value="Mandag">Mandag</option>
               <option value="Tirsdag">Tirsdag</option>
-              <option value="onsdag">Onsdag</option>
+              <option value="Onsdag">Onsdag</option>
               <option value="Torsdag">Torsdag</option>
               <option value="Fredag">Fredag</option>
               <option value="Lørdag">Lørdag</option>
@@ -105,32 +107,34 @@
     <div class="row">
       <div class="column" >
         <div class="form-group">
-          <label class="col-md-4 control-label" for="selectbasic">Kørekort pris</label>
+          <label class="col-md-4 control-label" for="selectbasic">Pris i kr.</label>
           <div class="col-md-4">
-            <select id="selectbasic2" name="prisen" class="form-control" ngModel required>
-              <option value="1">8000-10.000kr</option>
-              <option value="2">10.000-12.000kr</option>
-              <option value="3">12.000-14.000kr</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <!-- Search input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="searchinput" >Postnummer</label>
-          <div class="col-md-4">
-            <input id="searchinput" name="postnummer" type="search" placeholder="placeholder" class="form-control input-md" #postnr ngModel required>
-            <p class="help-block">help</p>
+            <input id="selectbasic2" name="prisen" type="number" placeholder="Kørekort pris" class="form-control input-md" #postnr ngModel required>
           </div>
         </div>
       </div>
     </div>
 
-    <button (click)="onClick()">Button</button>
+    <div class="row">
+      <div class="column" >
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="selectbasic">Beskrivelse</label>
+          <div class="col-md-4">
+            <input id="selectbasic3" name="beskrivelse" type="text" placeholder="Beskrivelse" class="form-control input-md" #beskrivelse ngModel required>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
 
   </fieldset>
 </form>
+
+<div class="col-md-10">
+  <button class="btn-primary" (click)="onClick()">Opret Tilbud</button>
+</div>
 
 
 
