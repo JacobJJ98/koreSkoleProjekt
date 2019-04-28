@@ -9,3 +9,7 @@
   display: table;
   clear: both;
 }
+.row{
+  display: flex;
+  align-items: center;
+}
