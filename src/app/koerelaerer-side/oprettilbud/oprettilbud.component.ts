@@ -58,7 +58,7 @@ export class OprettilbudComponent implements OnInit {
     this.tilbud1.bilstørrelse = this.form.value.bilstr;
     this.tilbud1.korekort_type = this.form.value.kktype;
     this.tilbud1.lynkursus = this.lynkursusBooleantilBit(this.form.value.lynkurus);
-    this.tilbud1.tilgængeligedage = this.fraArrayTilObject(this.form.dage);
+    //this.tilbud1.tilgængeligedage = this.fraArrayTilObject(this.form.dage);
     this.tilbud1.pris = this.form.value.prisen;
     this.tilbud1.beskrivelse = this.form.value.beskrivelse;
     this.tilbudsservice.addTilbud(this.tilbud1);
