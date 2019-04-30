@@ -4,6 +4,8 @@ import {TilbudTilBrugere} from './Model/tilbudTilBrugere.model';
 import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {MyObjModel} from './Model/myObj.model';
+import {Tilbud} from './Model/tilbud.model';
+import {Koreskole} from './Model/koreskole.model';
 
 @Injectable()
 export class TilbudService {
@@ -23,7 +25,7 @@ export class TilbudService {
     this.tilbud1.tilbud.bilstorrelse = 'Stor bil';
     this.tilbud1.tilbud.kon = 'kvinde';
     this.tilbud1.tilbud.beskrivelse = 'Hos os bliver du en god bilist';
-    this.tilbud1.tilbud.tilgangeligedage = this.tilg;
+    this.tilbud1.tilbud.tilgangeligeDage = this.tilg;
     this.tilbud1.tilbud.id = 1234;
 
     this.tilbud1.koreskole.id = 's175132';
@@ -36,16 +38,16 @@ export class TilbudService {
     this.tilbuddene2.push(this.tilbud1);
   }
   henttilbudTilBruger() {
-    this.http.get('http://localhost:8080/koereskole_REST/webresources/generic/alleTilbud').subscribe(
+    this.http.get('http://localhost:8080/koereskole_REST/webresources/generic/getAlleTilbud').subscribe(
       (response: Response) => {
         const data = response.text();
        // console.log(data.toString());
         const obj: TilbudTilBrugere[] = JSON.parse(data.toString());
-        // console.log('obj[0]');
-      //  console.log(obj[0].tilbud.koreskole_id);
-      //  console.log(obj[1].koreskole.id);
-      //  console.log(obj[2].tilbud.pris);
-      //  console.log('obj[0]');
+       console.log('GAMLE MÅDE ' + obj[0].tilbud.tilgangeligeDage.tilgangelig_mandag);
+      //  var customer: ITilbudTilBruger[] = JSON.parse(data.toString()) as ITilbudTilBruger[];
+      //  console.log(customer[0].tilbud.tilgangeligeDage.tilgangelig_fredag);
+      //  console.log(customer[0].tilbud.tilgangeligeDage.tilgangelig_mandag);
+      //  console.log(customer[0].tilbud.pris);
         this.fraObjTilListen(obj);
       },
       (error) => console.log(error),
@@ -78,7 +80,7 @@ export class TilbudService {
       tilll.tilbud.bilstorrelse = obj[o].tilbud.bilstorrelse;
       tilll.tilbud.kon = obj[o].tilbud.kon;
       tilll.tilbud.beskrivelse = obj[o].tilbud.beskrivelse;
-      tilll.tilbud.tilgangeligedage = obj[o].tilbud.tilgangeligedage;
+      tilll.tilbud.tilgangeligeDage = obj[o].tilbud.tilgangeligeDage;
       tilll.tilbud.id = obj[o].tilbud.id;
       // køreskole
       tilll.koreskole.id = obj[o].koreskole.id;
@@ -91,5 +93,10 @@ export class TilbudService {
     }
   }
 
+}
+
+interface ITilbudTilBruger {
+  koreskole: Koreskole;
+  tilbud: Tilbud;
 }
 

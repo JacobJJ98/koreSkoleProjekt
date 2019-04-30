@@ -7,6 +7,10 @@ export class TilgangeligeDage {
   public tilgangelig_lordag: number;
   public tilgangelig_sondag: number;
 
-
+  constructor() {
+  }
+  public toString() {
+    return this.tilgangelig_mandag;
+  }
 
 }

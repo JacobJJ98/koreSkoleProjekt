@@ -17,7 +17,7 @@ export class Tilbud2Service {
     this.tilbud1.bilstorrelse = 'Stor bil';
     this.tilbud1.kon = 'kvinde';
     this.tilbud1.beskrivelse = 'Hos os bliver du en god bilist';
-    this.tilbud1.tilgangeligedage = this.tilg;
+    this.tilbud1.tilgangeligeDage = this.tilg;
     this.tilbud1.id = 1234;
 
     this.tilbud2.koreskole_id = 's175132';
@@ -28,7 +28,7 @@ export class Tilbud2Service {
     this.tilbud2.bilstorrelse = 'Stoxcvr bil';
     this.tilbud2.kon = 'kvinde';
     this.tilbud2.beskrivelse = 'Hos os bliver xcvvvvvvvdu en god bixcvxlist';
-    this.tilbud2.tilgangeligedage = this.tilg;
+    this.tilbud2.tilgangeligeDage = this.tilg;
     this.tilbud2.id = 1234;
 
     this.tilbuddene = [this.tilbud1, this.tilbud2];

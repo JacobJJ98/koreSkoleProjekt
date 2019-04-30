@@ -9,9 +9,10 @@ export class Tilbud {
   public bilstorrelse: string;
   public kon: string;
   public beskrivelse: string;
-  public tilgangeligedage: TilgangeligeDage;
+  public tilgangeligeDage: TilgangeligeDage;
   public  id: number;
 
   constructor() {
+    this.tilgangeligeDage = new TilgangeligeDage();
   }
 }
