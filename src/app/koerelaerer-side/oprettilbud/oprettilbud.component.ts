@@ -3,7 +3,7 @@ import {NgForm} from '@angular/forms';
 import {Tilbud2Service} from '../../model2/tilbud2.service';
 import {Tilbud} from '../../Model/tilbud.model';
 import {element} from 'protractor';
-import {TilgængeligeDage} from '../../Model/tilgængeligedage.model';
+import {TilgangeligeDage} from '../../Model/tilgængeligedage.model';
 
 @Component({
   selector: 'app-oprettilbud',
@@ -13,7 +13,7 @@ import {TilgængeligeDage} from '../../Model/tilgængeligedage.model';
 export class OprettilbudComponent implements OnInit {
   @ViewChild('f') form: NgForm;
   private tilbud1 = new Tilbud();
-  private TilgængeligeDage = new TilgængeligeDage();
+  private TilgangeligeDage = new TilgangeligeDage();
   konnn = ['Mand', 'Kvinde'];
   constructor(private tilbudsservice: Tilbud2Service) { }
 
@@ -21,17 +21,17 @@ export class OprettilbudComponent implements OnInit {
   }
 
   onClick() {
-    this.tilbud1.køn = this.form.value.gender;
+    this.tilbud1.kon = this.form.value.gender;
     this.tilbud1.bilmarke = this.form.value.bilmærke;
-    this.tilbud1.bilstørrelse = this.form.value.bilstr;
-    this.tilbud1.bilstørrelse = this.form.value.bilstr;
+    this.tilbud1.bilstorrelse = this.form.value.bilstr;
+    this.tilbud1.bilstorrelse = this.form.value.bilstr;
     this.tilbud1.korekort_type = this.form.value.kktype;
     this.tilbud1.lynkursus = this.lynkursusBooleantilBit(this.form.value.lynkurus);
-    //this.tilbud1.tilgængeligedage = this.fraArrayTilObject(this.form.dage);
+    // this.tilbud1.tilgængeligedage = this.fraArrayTilObject(this.form.dage);
     this.tilbud1.pris = this.form.value.prisen;
     this.tilbud1.beskrivelse = this.form.value.beskrivelse;
     this.tilbudsservice.addTilbud(this.tilbud1);
-    //console.log(this.tilbud1);
+    // console.log(this.tilbud1);
     console.log(this.form);
     console.log(this.tilbud1);
   }
@@ -47,13 +47,13 @@ export class OprettilbudComponent implements OnInit {
   // TODO lav metode der tager i mod et array og laver det om til et tilgængeligedage
   //  objekt med 0 og 1 for hver dag. (lav loop der kører igennem array og checker stringens navn; Mandag, Tirsdag osv)
   fraArrayTilObject(ar: String[]) {
-    TilgængeligeDage.prototype.tilgængelig_mandag = 1;
-    TilgængeligeDage.prototype.tilgængelig_tirsdag = 0;
-    TilgængeligeDage.prototype.tilgængelig_onsdag = 0;
-    TilgængeligeDage.prototype.tilgængelig_torsdag = 1;
-    TilgængeligeDage.prototype.tilgængelig_fredag = 1;
-    TilgængeligeDage.prototype.tilgængelig_lørdag = 1;
-    TilgængeligeDage.prototype.tilgængelig_søndag = 0;
-    return TilgængeligeDage;
+    TilgangeligeDage.prototype.tilgangelig_mandag = 1;
+    TilgangeligeDage.prototype.tilgangelig_tirsdag = 0;
+    TilgangeligeDage.prototype.tilgangelig_onsdag = 0;
+    TilgangeligeDage.prototype.tilgangelig_torsdag = 1;
+    TilgangeligeDage.prototype.tilgangelig_fredag = 1;
+    TilgangeligeDage.prototype.tilgangelig_lordag = 1;
+    TilgangeligeDage.prototype.tilgangelig_sondag = 0;
+    return TilgangeligeDage;
     }
 }

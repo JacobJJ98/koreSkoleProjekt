@@ -1,11 +1,12 @@
-export class TilgængeligeDage {
-  public tilgængelig_mandag: number;
-  public tilgængelig_tirsdag: number;
-  public tilgængelig_onsdag: number;
-  public tilgængelig_torsdag: number;
-  public tilgængelig_fredag: number;
-  public tilgængelig_lørdag: number;
-  public tilgængelig_søndag: number;
+export class TilgangeligeDage {
+  public tilgangelig_mandag: number;
+  public tilgangelig_tirsdag: number;
+  public tilgangelig_onsdag: number;
+  public tilgangelig_torsdag: number;
+  public tilgangelig_fredag: number;
+  public tilgangelig_lordag: number;
+  public tilgangelig_sondag: number;
+
 
 
 }

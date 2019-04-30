@@ -13,7 +13,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class MinetilbudEditComponent implements OnInit {
   id: number;
-  status_valuess: any = ['VW', 'Audi', 'Mercedes', 'Citroén', 'Honda', 'Opel', 'Peugeot']; //Burde nok samled i en klasse med andet data så det hele kan ændres på én gang
+  status_valuess: any = ['VW', 'Audi', 'Mercedes', 'Citroén', 'Honda', 'Opel', 'Peugeot']; // Burde nok samled i en klasse med andet data så det hele kan ændres på én gang
   statuss: any = 'Audi';
   tilbudForm: FormGroup;
   konnn = ['Mand', 'Kvinde'];
@@ -46,7 +46,7 @@ export class MinetilbudEditComponent implements OnInit {
     console.log(tilbud);
     this.tilbudForm = new FormGroup({
       'beskrivelse': new FormControl(tilbud.beskrivelse),
-      'kon': new FormControl(tilbud.køn),
+      'kon': new FormControl(tilbud.kon),
       'bilmarke': new FormControl(tilbud.bilmarke)
     });
   }
