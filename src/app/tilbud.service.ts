@@ -61,8 +61,9 @@ export class TilbudService {
     this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/tilbudMedGiventPostnummer', postnummer).subscribe(
       (response: Response) => {
         const data = response.text();
+        const obj: TilbudTilBrugere[] = JSON.parse(data.toString());
         console.log('DETTE ER BLEVET HENTET FRA SERVEREN MED GIVET POSTNUMMER: ' + data);
-        return data.toString();
+        this.fraObjTilListen(obj);
       },
       (error) => console.log(error),
     );
