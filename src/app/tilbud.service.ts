@@ -81,6 +81,43 @@ export class TilbudService {
       tilll.tilbud.kon = obj[o].tilbud.kon;
       tilll.tilbud.beskrivelse = obj[o].tilbud.beskrivelse;
       tilll.tilbud.tilgangeligeDage = obj[o].tilbud.tilgangeligeDage;
+      // oversætter alle dage fra int til string
+      if (tilll.tilbud.tilgangeligeDage.tilgangelig_mandag === 1) {
+        tilll.tilbud.tilgangeligeDage.tilgangeligstring_mandag = 'Mandag';
+      } else {
+        tilll.tilbud.tilgangeligeDage.tilgangeligstring_mandag = '';
+      }
+      if (tilll.tilbud.tilgangeligeDage.tilgangelig_tirsdag === 1) {
+        tilll.tilbud.tilgangeligeDage.tilgangeligstring_tirsdag = ', Tirsdag';
+      } else {
+        tilll.tilbud.tilgangeligeDage.tilgangeligstring_tirsdag = '';
+      }
+      if (tilll.tilbud.tilgangeligeDage.tilgangelig_onsdag === 1) {
+        tilll.tilbud.tilgangeligeDage.tilgangeligstring_onsdag = ', Onsdag';
+      } else {
+        tilll.tilbud.tilgangeligeDage.tilgangeligstring_onsdag = '';
+      }
+      if (tilll.tilbud.tilgangeligeDage.tilgangelig_torsdag === 1) {
+        tilll.tilbud.tilgangeligeDage.tilgangeligstring_torsdag = ', Torsdag';
+      } else {
+        tilll.tilbud.tilgangeligeDage.tilgangeligstring_torsdag = '';
+      }
+      if (tilll.tilbud.tilgangeligeDage.tilgangelig_fredag === 1) {
+        tilll.tilbud.tilgangeligeDage.tilgangeligstring_fredag = ', Fredag';
+      } else {
+        tilll.tilbud.tilgangeligeDage.tilgangeligstring_fredag = '';
+      }
+      if (tilll.tilbud.tilgangeligeDage.tilgangelig_lordag === 1) {
+        tilll.tilbud.tilgangeligeDage.tilgangeligstring_lordag = ', Lørdag';
+      } else {
+        tilll.tilbud.tilgangeligeDage.tilgangeligstring_lordag = '';
+      }
+      if (tilll.tilbud.tilgangeligeDage.tilgangelig_sondag === 1) {
+        tilll.tilbud.tilgangeligeDage.tilgangeligstring_sondag = ', Søndag';
+      } else {
+        tilll.tilbud.tilgangeligeDage.tilgangeligstring_sondag = '';
+      }
+      // her slutter oversættelse af dage!!
       tilll.tilbud.id = obj[o].tilbud.id;
       // køreskole
       tilll.koreskole.id = obj[o].koreskole.id;
