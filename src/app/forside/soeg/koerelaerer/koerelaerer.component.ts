@@ -32,6 +32,7 @@ export class KoerelaererComponent implements OnInit, AfterViewInit {
 
   hentMaerke() {
     const ss: string = this.form.value.bilmærke;
+    // ss.toString().toLowerCase();
     return ss;
   }
 

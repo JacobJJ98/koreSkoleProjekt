@@ -123,10 +123,13 @@ export class TilbudService {
     const pris2: number = this.prisUdfraIndex(pris);
     const type2: string = this.typeUdfraIndex(typ);
     const lyn2: number =  this.lynUdfraBool(lyn);
+    const str2: string  = this.strUdfraIndex(str);
     const count: number = this.tilbuddeneV4.length;
     const sletDisseID: number[] = [];
     for (let o = 0; o < count; o++) {
       let erBlevetNoteret = false;
+
+
       // tjekker for prisen
       if (this.tilbuddeneV4[o].tilbud.pris > pris2 && !erBlevetNoteret) {
         console.log('PRIS-------IF');
@@ -151,6 +154,19 @@ export class TilbudService {
         sletDisseID.push(o);
         erBlevetNoteret = true;
       }
+      // tjekekr for størrelse
+      if (this.tilbuddeneV4[o].tilbud.bilstorrelse !== str2 && !erBlevetNoteret) {
+        console.log('STØRRELSE---------IF');
+        sletDisseID.push(o);
+        erBlevetNoteret = true;
+      }
+      // tjekker for mærke
+      if (!this.tilbuddeneV4[o].tilbud.bilmarke.includes(maerke.toString().toLowerCase()) && !erBlevetNoteret) {
+        console.log('MÆRKE---------IF');
+        sletDisseID.push(o);
+        erBlevetNoteret = true;
+      }
+
     }
     for (let k = 0; k < sletDisseID.length; k++) {
       this.tilbuddeneV4.splice(sletDisseID[k] - k, 1) ;
@@ -266,6 +282,8 @@ export class TilbudService {
       case '15':
         return 'DE';
         break;
+      default:
+        break;
     }
   }
 
@@ -275,6 +293,24 @@ export class TilbudService {
     } else {
       return 0 ;
     }
+  }
+
+  private strUdfraIndex(str: string) {
+    switch (str) {
+      case '1':
+        return 'lille';
+        break;
+      case '2':
+        return 'mellem';
+        break;
+      case '3':
+        return 'stor';
+        break;
+      default:
+        return '';
+            break;
+    }
+    return '';
   }
 }
 
