@@ -31,7 +31,8 @@ export class KoerelaererComponent implements OnInit, AfterViewInit {
   }
 
   hentMaerke() {
-    return this.form.value.bilmærke;
+    const ss: string = this.form.value.bilmærke;
+    return ss;
   }
 
   hentKKType() {
@@ -43,6 +44,7 @@ export class KoerelaererComponent implements OnInit, AfterViewInit {
   }
 
   hentOnskedeDage() {
-    return this.form.value.dage;
+    const s: string = this.form.value.dage;
+    return s;
   }
 }

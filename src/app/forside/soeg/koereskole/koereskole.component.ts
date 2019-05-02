@@ -22,6 +22,6 @@ export class KoereskoleComponent implements OnInit {
   }
 
   hentPrisen() {
-    return this.form.value.prisen.value_;
+    return this.form.value.prisen;
   }
 }

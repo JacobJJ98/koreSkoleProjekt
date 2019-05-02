@@ -22,7 +22,7 @@ export class TilbudService {
        console.log('GAMLE MÅDE ' + obj[0].tilbud.tilgangeligeDage.tilgangelig_mandag);
 
         this.tilbuddeneV4.splice(0, this.tilbuddeneV4.length);
-        this.fraObjTilListen(obj);
+        // this.fraObjTilListen(obj);
       },
       (error) => console.log(error),
     );
@@ -30,20 +30,28 @@ export class TilbudService {
   }
   hentTilbudMedId(index: number) {
   }
-  hentTilbudMedPostnummer(postnummer: number) {
+  hentTilbudMedPostnummer(postnummer: number, pris: string, kon: string, maerke: string, str: string, typ: string, lyn: string, dage: string) {
+    console.log(postnummer);
+    console.log(pris);
+    console.log(kon);
+    console.log(maerke);
+    console.log(str);
+    console.log(typ);
+    console.log(lyn);
+    console.log(dage);
     this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/tilbudMedGiventPostnummer', postnummer).subscribe(
       (response: Response) => {
         const data = response.text();
         const obj: TilbudTilBrugere[] = JSON.parse(data.toString());
-        console.log('DETTE ER BLEVET HENTET FRA SERVEREN MED GIVET POSTNUMMER: ' + data);
-
+        // console.log('DETTE ER BLEVET HENTET FRA SERVEREN MED GIVET POSTNUMMER: ' + data);
+       // console.log('LÆNGDEN AF OBJ ER: ' + obj.length);
         this.tilbuddeneV4.splice(0, this.tilbuddeneV4.length);
-        this.fraObjTilListen(obj);
+        this.fraObjTilListen(obj, pris, kon, maerke, str, typ, lyn, dage);
       },
       (error) => console.log(error),
     );
   }
-  fraObjTilListen(obj: TilbudTilBrugere[]) {
+  fraObjTilListen(obj: TilbudTilBrugere[], pris: string, kon: string, maerke: string, str: string, typ: string, lyn: string, dage: string) {
     const midlerArr: TilbudTilBrugere[] = [];
    // const midlArr = new TilbudTilBrugere[obj.length];
     for (let o = 0; o < obj.length; o++) {
@@ -106,8 +114,147 @@ export class TilbudService {
       midlerArr.push(tilll);
      this.tilbuddeneV4.push(tilll);
     }
+    this.reducerUdfraKrav(pris, kon, maerke, str, typ, lyn, dage);
   }
 
+  private reducerUdfraKrav(pris: string, kon: string, maerke: string, str: string, typ: string, lyn: string, dage: string) {
+    // vælger tilbud som stemmer overens med priskrav
+    const pris2: number = this.prisUdfraIndex(pris);
+    const type2: string = this.typeUdfraIndex(typ);
+    const count: number = this.tilbuddeneV4.length;
+    const sletDisseID: number[] = [];
+    for (let o = 0; o < count; o++) {
+      let erBlevetNoteret = false;
+      // tjekker for prisen
+      if (this.tilbuddeneV4[o].tilbud.pris > pris2 && !erBlevetNoteret) {
+        console.log('PRIS-------IF');
+        sletDisseID.push(o);
+        erBlevetNoteret = true;
+      }
+      // tjekker for typen
+      if (this.tilbuddeneV4[o].tilbud.korekort_type !== type2 && !erBlevetNoteret) {
+        console.log('Tilbud med indeks : ' + o + 'skal slettes');
+        sletDisseID.push(o);
+        erBlevetNoteret = true;
+
+      }
+    }
+    for (let k = 0; k < sletDisseID.length; k++) {
+      this.tilbuddeneV4.splice(sletDisseID[k] - k, 1) ;
+      // console.log('længden af v4: ' + this.tilbuddeneV4.length);
+    }
+  }
+
+  private prisUdfraIndex(pris: string) {
+    switch (pris) {
+      case '1':
+        return 8000;
+        break;
+      case '2':
+       return 8500;
+       break;
+      case '3':
+        return 9000;
+        break;
+      case '4':
+        return 9500;
+        break;
+      case '5':
+        return 10000;
+        break;
+      case '6':
+        return 10500;
+        break;
+      case '7':
+        return 11000;
+        break;
+      case '8':
+        return 11500;
+        break;
+      case '9':
+        return 12000;
+        break;
+      case '10':
+        return 12500;
+        break;
+      case '11':
+        return 13000;
+        break;
+      case '12':
+        return 13500;
+        break;
+      case '13':
+        return 14000;
+        break;
+      case '14':
+        return 14500;
+        break;
+      case '15':
+        return 15000;
+        break;
+      case '16':
+        return 15500;
+        break;
+      case '17':
+        return 16000;
+        break;
+      case '18':
+        return 16500;
+        break;
+      case '19':
+        return 17000;
+        break;
+    }
+  }
+  private typeUdfraIndex(type: string) {
+    switch (type) {
+      case '1':
+        return 'AM';
+        break;
+      case '2':
+        return 'A1';
+        break;
+      case '3':
+        return 'A2';
+        break;
+      case '4':
+        return 'A';
+        break;
+      case '5':
+        return 'B';
+        break;
+      case '6':
+        return 'BE';
+        break;
+      case '7':
+        return 'B1';
+        break;
+      case '8':
+        return 'C1';
+        break;
+      case '9':
+        return 'C1E';
+        break;
+      case '10':
+        return 'C';
+        break;
+      case '11':
+        return 'CE';
+        break;
+      case '12':
+        return 'D1';
+        break;
+      case '13':
+        return 'D1E';
+        break;
+      case '14':
+        return 'D';
+        break;
+      case '15':
+        return 'DE';
+        break;
+    }
+  }
 }
 
 
