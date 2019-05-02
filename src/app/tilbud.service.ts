@@ -11,43 +11,17 @@ import {Koreskole} from './Model/koreskole.model';
 export class TilbudService {
 
   private tilg: TilgangeligeDage = new TilgangeligeDage();
-  private tilbud1 = new TilbudTilBrugere();
-  private tilbud2 = new TilbudTilBrugere();
   private tilbuddeneV4: TilbudTilBrugere[] = new Array();
-  private tilbuddene: TilbudTilBrugere[];
-  private tilbuddene2: TilbudTilBrugere[];
   constructor(private http: Http) {
-    this.tilbud1.tilbud.koreskole_id = 's175132';
-    this.tilbud1.tilbud.pris = 13449;
-    this.tilbud1.tilbud.korekort_type = 'A';
-    this.tilbud1.tilbud.lynkursus = 1;
-    this.tilbud1.tilbud.bilmarke = 'Toyota';
-    this.tilbud1.tilbud.bilstorrelse = 'Stor bil';
-    this.tilbud1.tilbud.kon = 'kvinde';
-    this.tilbud1.tilbud.beskrivelse = 'Hos os bliver du en god bilist';
-    this.tilbud1.tilbud.tilgangeligeDage = this.tilg;
-    this.tilbud1.tilbud.id = 1234;
-
-    this.tilbud1.koreskole.id = 's175132';
-    this.tilbud1.koreskole.navn = 'Jacobs køreskole';
-    this.tilbud1.koreskole.adresse = 'Toftebakken 15';
-    this.tilbud1.koreskole.postnummer = 3790;
-//    this.tilbud1.koreskole.telefonnummer 12345678;
-    this.tilbud1.koreskole.mail = 'koreskolen@bæ.dk';
-    this.tilbuddene2 = [this.tilbud1];
-    this.tilbuddene2.push(this.tilbud1);
   }
   henttilbudTilBruger() {
     this.http.get('http://localhost:8080/koereskole_REST/webresources/generic/getAlleTilbud').subscribe(
       (response: Response) => {
         const data = response.text();
-       // console.log(data.toString());
         const obj: TilbudTilBrugere[] = JSON.parse(data.toString());
        console.log('GAMLE MÅDE ' + obj[0].tilbud.tilgangeligeDage.tilgangelig_mandag);
-      //  var customer: ITilbudTilBruger[] = JSON.parse(data.toString()) as ITilbudTilBruger[];
-      //  console.log(customer[0].tilbud.tilgangeligeDage.tilgangelig_fredag);
-      //  console.log(customer[0].tilbud.tilgangeligeDage.tilgangelig_mandag);
-      //  console.log(customer[0].tilbud.pris);
+
+        this.tilbuddeneV4.splice(0, this.tilbuddeneV4.length);
         this.fraObjTilListen(obj);
       },
       (error) => console.log(error),
@@ -55,7 +29,6 @@ export class TilbudService {
     return this.tilbuddeneV4;
   }
   hentTilbudMedId(index: number) {
-    return this.tilbuddene[index];
   }
   hentTilbudMedPostnummer(postnummer: number) {
     this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/tilbudMedGiventPostnummer', postnummer).subscribe(
@@ -63,13 +36,16 @@ export class TilbudService {
         const data = response.text();
         const obj: TilbudTilBrugere[] = JSON.parse(data.toString());
         console.log('DETTE ER BLEVET HENTET FRA SERVEREN MED GIVET POSTNUMMER: ' + data);
+
+        this.tilbuddeneV4.splice(0, this.tilbuddeneV4.length);
         this.fraObjTilListen(obj);
       },
       (error) => console.log(error),
     );
   }
   fraObjTilListen(obj: TilbudTilBrugere[]) {
-    this.tilbuddeneV4.splice(0, this.tilbuddeneV4.length);
+    const midlerArr: TilbudTilBrugere[] = [];
+   // const midlArr = new TilbudTilBrugere[obj.length];
     for (let o = 0; o < obj.length; o++) {
       const tilll = new TilbudTilBrugere();
       // tilbud
@@ -127,14 +103,11 @@ export class TilbudService {
       tilll.koreskole.postnummer = obj[o].koreskole.postnummer;
       tilll.koreskole.telefonnummer = obj[o].koreskole.telefonnummer;
       tilll.koreskole.mail = obj[o].koreskole.mail;
-      this.tilbuddeneV4.push(tilll);
+      midlerArr.push(tilll);
+     this.tilbuddeneV4.push(tilll);
     }
   }
 
 }
 
-interface ITilbudTilBruger {
-  koreskole: Koreskole;
-  tilbud: Tilbud;
-}
 
