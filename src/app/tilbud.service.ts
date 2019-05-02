@@ -6,6 +6,7 @@ import {Http, Response} from '@angular/http';
 import {MyObjModel} from './Model/myObj.model';
 import {Tilbud} from './Model/tilbud.model';
 import {Koreskole} from './Model/koreskole.model';
+import {el} from '@angular/platform-browser/testing/src/browser_util';
 
 @Injectable()
 export class TilbudService {
@@ -121,6 +122,7 @@ export class TilbudService {
     // vælger tilbud som stemmer overens med priskrav
     const pris2: number = this.prisUdfraIndex(pris);
     const type2: string = this.typeUdfraIndex(typ);
+    const lyn2: number =  this.lynUdfraBool(lyn);
     const count: number = this.tilbuddeneV4.length;
     const sletDisseID: number[] = [];
     for (let o = 0; o < count; o++) {
@@ -140,6 +142,12 @@ export class TilbudService {
       // tjekker for køn (der er toLoweCase fordi det er startet med stor i angu og småt i DB
       if (this.tilbuddeneV4[o].tilbud.kon !== kon.toLowerCase() && !erBlevetNoteret) {
         console.log('KØN---------IF');
+        sletDisseID.push(o);
+        erBlevetNoteret = true;
+      }
+      // tjekker for lynkursus
+      if (this.tilbuddeneV4[o].tilbud.lynkursus !== lyn2 && !erBlevetNoteret) {
+        console.log('LYN---------IF');
         sletDisseID.push(o);
         erBlevetNoteret = true;
       }
@@ -258,6 +266,14 @@ export class TilbudService {
       case '15':
         return 'DE';
         break;
+    }
+  }
+
+  private lynUdfraBool(lyn: string) {
+    if (lyn) {
+      return 1;
+    } else {
+      return 0 ;
     }
   }
 }
