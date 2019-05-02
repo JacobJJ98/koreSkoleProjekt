@@ -133,10 +133,15 @@ export class TilbudService {
       }
       // tjekker for typen
       if (this.tilbuddeneV4[o].tilbud.korekort_type !== type2 && !erBlevetNoteret) {
-        console.log('Tilbud med indeks : ' + o + 'skal slettes');
+        console.log('TYPE------IF');
         sletDisseID.push(o);
         erBlevetNoteret = true;
-
+      }
+      // tjekker for køn (der er toLoweCase fordi det er startet med stor i angu og småt i DB
+      if (this.tilbuddeneV4[o].tilbud.kon !== kon.toLowerCase() && !erBlevetNoteret) {
+        console.log('KØN---------IF');
+        sletDisseID.push(o);
+        erBlevetNoteret = true;
       }
     }
     for (let k = 0; k < sletDisseID.length; k++) {
