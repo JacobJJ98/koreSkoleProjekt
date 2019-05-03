@@ -88,17 +88,8 @@ export class KoreskoleSideService {
   sletTilbud(id: number) {
     this.tilbuddene.splice(id, 1);
   }
-  opdaterTilbud(tilbud: Tilbud) {
-  const t = new Tilbud();
-    t.pris = tilbud.pris;
-    t.korekort_type = tilbud.korekort_type;
-    t.lynkursus = tilbud.lynkursus;
-    t.bilmarke = tilbud.bilmarke;
-    t.bilstorrelse = tilbud.bilstorrelse;
-    t.kon = tilbud.kon;
-    t.beskrivelse = tilbud.beskrivelse;
-    t.tilgangeligeDage = tilbud.tilgangeligeDage;
-    return t;
+  opdaterTilbud(index: number, tilbud: Tilbud) {
+    this.tilbuddene[index] = tilbud;
   }
 
 
