@@ -2,6 +2,98 @@
   <div class="col-xs-12">
     <form [formGroup]="tilbudForm">
 
+
+      <!-- radio buttons -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <br>
+            <label> Mand
+              <input value="mand" class="checkbox" formControlName="kon" type="radio">
+            </label>
+            <br>
+            <label> Kvinde
+              <input value="kvinde" class="checkbox" formControlName="kon" type="radio">
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Select Basic -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="bilmærke">Bilmærke</label>
+            <select id="bilmærke" class="form-control" formControlName="bilmærke">
+              <option value="VW">VW</option>
+              <option value="Audi">Audi</option>
+              <option value="Mercedes">Mercedes</option>
+              <option value="Citroén">Citroén</option>
+              <option value="Honda">Honda</option>
+              <option value="Opel">Opel</option>
+              <option value="Peugeot">Peugeot</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Select Basic -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="bilstr">Bil Størrelse</label>
+            <select id="bilstr" class="form-control" formControlName="bilstr">
+              <option value="lille">Lille bil</option>
+              <option value="mellem">Medium bil</option>
+              <option value="stor">Stor bil</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <!-- Select Basic -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="type">Kørekort Type</label>
+          <select id="type" class="form-control" formControlName="type">
+            <option value="AM">AM</option>
+            <option value="A1">A1</option>
+            <option value="A2">A2</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="BE">BE</option>
+            <option value="B1">B1</option>
+            <option value="C1">C1</option>
+            <option value="C1E">C1E</option>
+            <option value="C">C</option>
+            <option value="CE">CE</option>
+            <option value="D1">D1</option>
+            <option value="D1E">D1E</option>
+            <option value="D">D</option>
+            <option value="DE">DE</option>
+          </select>
+        </div>
+      </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="lyn">Lynkursus</label>
+              <input id="lyn" class="checkbox" formControlName="lyn" type="checkbox"><br>
+          </div>
+        </div>
+      </div>
+
+
       <!-- Tilgængelige dage -->
       <div class="row">
         <div class="col-xs-12">
@@ -65,7 +157,8 @@
           </div>
         </div>
       </div>
-
     </form>
+    <button class="btn-danger" (click)="onDelete()">Slet Tilbud</button>
+    <button class="btn-success" (click)="onUpdate()">Opdater Tilbud</button>
   </div>
 </div>

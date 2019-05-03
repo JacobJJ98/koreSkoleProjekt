@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {TilbudService} from '../../../tilbud.service';
 import {TilbudTilBrugere} from '../../../Model/tilbudTilBrugere.model';
 import {KoreskoleSideService} from '../../koreskoleSide.service';
 import {Tilbud} from '../../../Model/tilbud.model';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, NgForm} from '@angular/forms';
 import {TilgangeligeDage} from '../../../Model/tilgængeligedage.model';
 
 @Component({
@@ -14,23 +14,11 @@ import {TilgangeligeDage} from '../../../Model/tilgængeligedage.model';
 })
 export class MinetilbudEditComponent implements OnInit {
   id: number;
-  status_valuess: any = ['VW', 'Audi', 'Mercedes', 'Citroén', 'Honda', 'Opel', 'Peugeot']; // Burde nok samled i en klasse med andet data så det hele kan ændres på én gang
-  statuss: any = 'Audi';
   tilbudForm: FormGroup;
-  konnn = ['Mand', 'Kvinde'];
-
-  status: any = '47';
-  status_values: any = ['45', '46', '47'];
-  countries: string[] = ['USA', 'UK', 'Canada'];
-  default: string = 'UK';
-
-  countryForm: FormGroup;
+  private t = new Tilbud();
 
   constructor(private route: ActivatedRoute, private router: Router, private tilbudsservice: KoreskoleSideService) {
-    this.countryForm = new FormGroup({
-      country: new FormControl(null)
-    });
-    this.countryForm.controls['country'].setValue(this.default, {onlySelf: true});
+
   }
 
   ngOnInit() {
@@ -48,12 +36,15 @@ export class MinetilbudEditComponent implements OnInit {
     console.log(tilbud);
     this.tilbudForm = new FormGroup({
       'beskrivelse': new FormControl(tilbud.beskrivelse),
-      'kon': new FormControl(tilbud.kon),
       'bilmarke': new FormControl(tilbud.bilmarke),
       'pris': new FormControl(tilbud.pris),
-
-      'tilg': new FormControl(['mandag','','onsdag','','','',''])
+      'tilg': new FormControl(['mandag','','onsdag','','','','']),
       //'tilg': new FormControl(this.tilgangObjTilArray(tilbud.tilgangeligeDage))
+      'lyn': new FormControl(tilbud.lynkursus),
+      'type': new FormControl(tilbud.korekort_type),
+      'bilstr': new FormControl(tilbud.bilstorrelse),
+      'bilmærke': new FormControl(tilbud.bilmarke),
+      'kon': new FormControl(tilbud.kon),
     });
   }
   tilgangObjTilArray(tilg: TilgangeligeDage) {
@@ -101,5 +92,11 @@ export class MinetilbudEditComponent implements OnInit {
       list[6] = '';
     }
     return list;
+  }
+  onDelete() {
+    this.tilbudsservice.sletTilbud(this.id);
+  }
+  onUpdate() {
+    //this.tilbudsservice.tilbuddene[this.id] = blabla
   }
 }

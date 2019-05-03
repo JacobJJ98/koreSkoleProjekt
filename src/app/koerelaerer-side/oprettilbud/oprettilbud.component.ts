@@ -14,7 +14,7 @@ export class OprettilbudComponent implements OnInit {
   @ViewChild('f') form: NgForm;
   private tilbud1 = new Tilbud();
   private TilgangeligeDage = new TilgangeligeDage();
-  konnn = ['Mand', 'Kvinde'];
+  konnn = ['mand', 'kvinde'];
   constructor(private tilbudsservice: KoreskoleSideService) { }
 
   ngOnInit() {

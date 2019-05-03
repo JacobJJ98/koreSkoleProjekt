@@ -15,7 +15,7 @@ export class KoreskoleSideService {
   private tilg: TilgangeligeDage = new TilgangeligeDage();
   private tilbud1 = new Tilbud;
   private tilbud2 = new Tilbud;
-  private tilbuddene: Tilbud[] = new Array();
+  tilbuddene: Tilbud[] = new Array();
   constructor(private authService: AuthService, private http: Http) {
 
     this.brugernavn = this.authService.brugernavnAuth;
@@ -30,10 +30,10 @@ export class KoreskoleSideService {
 
     this.tilbud1.koreskole_id = 's175132';
     this.tilbud1.pris = 6;
-    this.tilbud1.korekort_type = 'A';
+    this.tilbud1.korekort_type = 'A2';
     this.tilbud1.lynkursus = 1;
-    this.tilbud1.bilmarke = 'Toyota';
-    this.tilbud1.bilstorrelse = 'Stor bil';
+    this.tilbud1.bilmarke = 'Audi';
+    this.tilbud1.bilstorrelse = 'mellem';
     this.tilbud1.kon = 'kvinde';
     this.tilbud1.beskrivelse = 'Hos os bliver du en god bilist';
     this.tilbud1.tilgangeligeDage = this.tilg;
@@ -41,11 +41,11 @@ export class KoreskoleSideService {
 
     this.tilbud2.koreskole_id = 's175132';
     this.tilbud2.pris = 2;
-    this.tilbud2.korekort_type = 'xcvvA';
-    this.tilbud2.lynkursus = 1;
-    this.tilbud2.bilmarke = 'Toyoxcvxta';
-    this.tilbud2.bilstorrelse = 'Stoxcvr bil';
-    this.tilbud2.kon = 'kvinde';
+    this.tilbud2.korekort_type = 'AM';
+    this.tilbud2.lynkursus = 0;
+    this.tilbud2.bilmarke = 'Honda';
+    this.tilbud2.bilstorrelse = 'stor';
+    this.tilbud2.kon = 'mand';
     this.tilbud2.beskrivelse = 'Hos os bliver xcvvvvvvvdu en god bixcvxlist';
     this.tilbud2.tilgangeligeDage = this.tilg;
     this.tilbud2.id = 1234;
@@ -84,6 +84,21 @@ export class KoreskoleSideService {
   }
   addTilbud(tilbud: Tilbud) {
     this.tilbuddene.push(tilbud);
+  }
+  sletTilbud(id: number) {
+    this.tilbuddene.splice(id, 1);
+  }
+  opdaterTilbud(tilbud: Tilbud) {
+  const t = new Tilbud();
+    t.pris = tilbud.pris;
+    t.korekort_type = tilbud.korekort_type;
+    t.lynkursus = tilbud.lynkursus;
+    t.bilmarke = tilbud.bilmarke;
+    t.bilstorrelse = tilbud.bilstorrelse;
+    t.kon = tilbud.kon;
+    t.beskrivelse = tilbud.beskrivelse;
+    t.tilgangeligeDage = tilbud.tilgangeligeDage;
+    return t;
   }
 
 

@@ -47,9 +47,9 @@
           <label class="col-md-4 control-label" for="selectbasic">Bilstørrelse</label>
           <div class="col-md-4">
             <select id="selectbasic" name="bilstr" class="form-control" ngModel required>
-              <option value="1">Lille bil</option>
-              <option value="2">Medium bil</option>
-              <option value="3">Stor bil</option>
+              <option value="lille">Lille bil</option>
+              <option value="mellem">Medium bil</option>
+              <option value="stor">Stor bil</option>
             </select>
           </div>
         </div>
@@ -147,7 +147,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="selectbasic">Beskrivelse</label>
           <div class="col-md-4">
-            <input id="selectbasic3" name="beskrivelse" type="text" placeholder="Beskrivelse" class="form-control input-md" #beskrivelse ngModel required>
+            <textarea id="selectbasic3" name="beskrivelse" type="text" rows="3" class="form-control input-md" #beskrivelse ngModel required></textarea>
           </div>
         </div>
       </div>
