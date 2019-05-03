@@ -23,7 +23,10 @@ export class LoginSideComponent implements OnInit {
 
   onLogin(brugernavn: String, kodeord: String) {
     this.samletString = brugernavn + ' ' + kodeord;
-    console.log(this.samletString);
+    const splitted = this.samletString.split(' ', 2);
+    this.authService.brugernavnAuth = splitted[0];
+    this.authService.passwordAuth = splitted[1];
+    console.log(splitted[1]);
     this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/login', this.samletString).subscribe(
       (response: Response) => {
         const data = response;
