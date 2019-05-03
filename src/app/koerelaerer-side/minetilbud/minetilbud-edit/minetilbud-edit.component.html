@@ -3,18 +3,20 @@
     <form [formGroup]="tilbudForm">
 
       <!-- Tilgængelige dage -->
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="onskedeDage">Ønskede dage</label>
-        <div class="col-md-4">
-          <select id="dage" name="dage" class="form-control" multiple="multiple" ngModel required>
-            <option value="mandag">Mandag</option>
-            <option value="tirsdag">Tirsdag</option>
-            <option value="onsdag">Onsdag</option>
-            <option value="torsdag">Torsdag</option>
-            <option value="fredag">Fredag</option>
-            <option value="lørdag">Lørdag</option>
-            <option value="søndag">Søndag</option>
-          </select>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="tilgangelig">Tilgængelige dage</label>
+              <select id="tilgangelig" class="form-control" formControlName="tilg" multiple="multiple">
+                <option value="mandag">Mandag</option>
+                <option value="tirsdag">Tirsdag</option>
+                <option value="onsdag">Onsdag</option>
+                <option value="torsdag">Torsdag</option>
+                <option value="fredag">Fredag</option>
+                <option value="lørdag">Lørdag</option>
+                <option value="søndag">Søndag</option>
+              </select>
+          </div>
         </div>
       </div>
 
