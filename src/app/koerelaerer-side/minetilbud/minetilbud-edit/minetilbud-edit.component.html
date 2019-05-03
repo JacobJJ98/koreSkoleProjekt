@@ -5,54 +5,49 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
+            <label for="sel1">Pris</label>
+            <select
+              class="form-control"
+              id="sel1"
+              formControlName="pris">
+              <option value="1">8000 kr</option>
+              <option value="2">8500 kr</option>
+              <option value="3">9000 kr</option>
+              <option value="4">9500 kr</option>
+              <option value="5">10.000 kr</option>
+              <option value="6">10.500 kr</option>
+              <option value="7">11.000 kr</option>
+              <option value="8">11.500 kr</option>
+              <option value="9">12.000 kr</option>
+              <option value="10">12.500 kr</option>
+              <option value="11">13.000 kr</option>
+              <option value="12">13.500 kr</option>
+              <option value="13">14.000 kr</option>
+              <option value="14">14.500 kr</option>
+              <option value="15">15.000 kr</option>
+              <option value="16">15.500 kr</option>
+              <option value="17">16.000 kr</option>
+              <option value="18">16.500 kr</option>
+              <option value="19">17.000 kr</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
             <label for="description">Beskrivelse</label>
             <textarea
               type="text"
               id="description"
               class="form-control"
               formControlName="beskrivelse"
-              rows="6"></textarea>
+              rows="3"></textarea>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-xs-12" formArrayName="ingredients">
-          <div
-            class="row"
-            *ngFor="let ingredientCtrl of recipeForm.get('ingredients').controls; let i = index"
-            [formGroupName]="i"
-            style="margin-top: 10px;">
-            <div class="col-xs-8">
-              <input
-                type="text"
-                class="form-control"
-                formControlName="name">
-            </div>
-            <div class="col-xs-2">
-              <input
-                type="number"
-                class="form-control"
-                formControlName="amount">
-            </div>
-            <div class="col-xs-2">
-              <button
-                type="button"
-                class="btn btn-danger"
-                (click)="onDeleteIngredient(i)">X</button>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-xs-12">
-              <button
-                type="submit"
-                class="btn btn-success"
-                [disabled]="!recipeForm.valid">Gem ændringer</button>
-              <button type="button" class="btn btn-danger" (click)="onCancel()">Slet Tilbud</button>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </form>
   </div>
 </div>

@@ -5,7 +5,7 @@ import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 
 @Injectable()
-export class Tilbud2Service {
+export class KoreskoleSideService {
 
   private brugernavn;
   private password;
@@ -18,17 +18,17 @@ export class Tilbud2Service {
   constructor(private authService: AuthService, private http: Http) {
 
     this.brugernavn = this.authService.brugernavnAuth;
-    console.log('brugernavn: '+this.brugernavn);
+    console.log('brugernavn: ' + this.brugernavn);
     this.password = this.authService.passwordAuth;
-    console.log('password: '+this.password);
+    console.log('password: ' + this.password);
 
-    this.samletString = this.brugernavn+' '+this.password;
-    console.log('Samlet string: '+this.samletString);
+    this.samletString = this.brugernavn + ' ' + this.password;
+    console.log('Samlet string: ' + this.samletString);
 
     this.henttilbud();
 
     this.tilbud1.koreskole_id = 's175132';
-    this.tilbud1.pris = 13449;
+    this.tilbud1.pris = 6;
     this.tilbud1.korekort_type = 'A';
     this.tilbud1.lynkursus = 1;
     this.tilbud1.bilmarke = 'Toyota';
@@ -39,7 +39,7 @@ export class Tilbud2Service {
     this.tilbud1.id = 1234;
 
     this.tilbud2.koreskole_id = 's175132';
-    this.tilbud2.pris = 13449;
+    this.tilbud2.pris = 2;
     this.tilbud2.korekort_type = 'xcvvA';
     this.tilbud2.lynkursus = 1;
     this.tilbud2.bilmarke = 'Toyoxcvxta';

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Tilbud} from '../../../Model/tilbud.model';
 import {TilbudService} from '../../../tilbud.service';
 import {TilbudTilBrugere} from '../../../Model/tilbudTilBrugere.model';
-import {Tilbud2Service} from '../../../model2/tilbud2.service';
+import {KoreskoleSideService} from '../../koreskoleSide.service';
 
 @Component({
   selector: 'app-minetilbud-liste',
@@ -11,7 +11,7 @@ import {Tilbud2Service} from '../../../model2/tilbud2.service';
 })
 export class MinetilbudListeComponent implements OnInit {
   tilbud: Tilbud[];
-  constructor(private tilbudsservice: Tilbud2Service) { }
+  constructor(private tilbudsservice: KoreskoleSideService) { }
 
   ngOnInit() {
     this.tilbud = this.tilbudsservice.henttilbud();

@@ -90,10 +90,10 @@
           <label class="col-md-4 control-label" for="bilmærke">Ønskede dage</label>
           <div class="col-md-4">
             <select id="dage" name="dage" class="form-control" multiple="multiple" ngModel required>
-              <option value="Mandag">Mandag</option>
-              <option value="Tirsdag">Tirsdag</option>
-              <option value="Onsdag">Onsdag</option>
-              <option value="Torsdag">Torsdag</option>
+              <option value="1">Mandag</option>
+              <option value="2">Tirsdag</option>
+              <option value="3">Onsdag</option>
+              <option value="4">Torsdag</option>
               <option value="Fredag">Fredag</option>
               <option value="Lørdag">Lørdag</option>
               <option value="Søndag">Søndag</option>
@@ -109,7 +109,34 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="selectbasic">Pris i kr.</label>
           <div class="col-md-4">
-            <input id="selectbasic2" name="prisen" type="number" placeholder="Kørekort pris" class="form-control input-md" #postnr ngModel required>
+            <select
+              class="form-control"
+              name="prisen"
+              id="prisen"
+              ngModel required
+              >
+              <option value="1">8000 kr</option>
+              <option value="2">8500 kr</option>
+              <option value="3">9000 kr</option>
+              <option value="4">9500 kr</option>
+              <option value="5">10.000 kr</option>
+              <option value="6">10.500 kr</option>
+              <option value="7">11.000 kr</option>
+              <option value="8">11.500 kr</option>
+              <option value="9">12.000 kr</option>
+              <option value="10">12.500 kr</option>
+              <option value="11">13.000 kr</option>
+              <option value="12">13.500 kr</option>
+              <option value="13">14.000 kr</option>
+              <option value="14">14.500 kr</option>
+              <option value="15">15.000 kr</option>
+              <option value="16">15.500 kr</option>
+              <option value="17">16.000 kr</option>
+              <option value="18">16.500 kr</option>
+              <option value="19">17.000 kr</option>
+            </select>
+
+
           </div>
         </div>
       </div>

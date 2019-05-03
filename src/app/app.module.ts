@@ -22,7 +22,7 @@ import { MinprofilComponent } from './koerelaerer-side/minprofil/minprofil.compo
 import { MinetilbudStandardComponent } from './koerelaerer-side/minetilbud/minetilbud-standard/minetilbud-standard.component';
 import { MinetilbudListeComponent } from './koerelaerer-side/minetilbud/minetilbud-liste/minetilbud-liste.component';
 import { MinetilbudEditComponent } from './koerelaerer-side/minetilbud/minetilbud-edit/minetilbud-edit.component';
-import {Tilbud2Service} from './model2/tilbud2.service';
+import {KoreskoleSideService} from './koerelaerer-side/koreskoleSide.service';
 import { MinetilbudItemComponent } from './koerelaerer-side/minetilbud/minetilbud-liste/minetilbud-item/minetilbud-item.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
@@ -55,7 +55,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [AuthGuard, AuthService, TilbudService, Tilbud2Service],
+  providers: [AuthGuard, AuthService, TilbudService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

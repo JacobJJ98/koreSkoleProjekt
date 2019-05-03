@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {Tilbud2Service} from '../../model2/tilbud2.service';
+import {KoreskoleSideService} from '../koreskoleSide.service';
 import {Tilbud} from '../../Model/tilbud.model';
 import {element} from 'protractor';
 import {TilgangeligeDage} from '../../Model/tilgængeligedage.model';
@@ -15,7 +15,7 @@ export class OprettilbudComponent implements OnInit {
   private tilbud1 = new Tilbud();
   private TilgangeligeDage = new TilgangeligeDage();
   konnn = ['Mand', 'Kvinde'];
-  constructor(private tilbudsservice: Tilbud2Service) { }
+  constructor(private tilbudsservice: KoreskoleSideService) { }
 
   ngOnInit() {
   }
@@ -29,6 +29,8 @@ export class OprettilbudComponent implements OnInit {
     this.tilbud1.lynkursus = this.lynkursusBooleantilBit(this.form.value.lynkurus);
     // this.tilbud1.tilgængeligedage = this.fraArrayTilObject(this.form.dage);
     this.tilbud1.pris = this.form.value.prisen;
+    console.log('prisen er sat til: '+this.tilbud1.pris);
+    console.log('prisen value: ' + this.form.value.prisen);
     this.tilbud1.beskrivelse = this.form.value.beskrivelse;
     this.tilbudsservice.addTilbud(this.tilbud1);
     // console.log(this.tilbud1);

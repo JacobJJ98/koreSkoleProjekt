@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {TilbudService} from '../../../tilbud.service';
 import {TilbudTilBrugere} from '../../../Model/tilbudTilBrugere.model';
-import {Tilbud2Service} from '../../../model2/tilbud2.service';
+import {KoreskoleSideService} from '../../koreskoleSide.service';
 import {Tilbud} from '../../../Model/tilbud.model';
 import {FormControl, FormGroup} from '@angular/forms';
 
@@ -25,7 +25,7 @@ export class MinetilbudEditComponent implements OnInit {
 
   countryForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private router: Router, private tilbudsservice: Tilbud2Service) {
+  constructor(private route: ActivatedRoute, private router: Router, private tilbudsservice: KoreskoleSideService) {
     this.countryForm = new FormGroup({
       country: new FormControl(null)
     });
@@ -47,7 +47,8 @@ export class MinetilbudEditComponent implements OnInit {
     this.tilbudForm = new FormGroup({
       'beskrivelse': new FormControl(tilbud.beskrivelse),
       'kon': new FormControl(tilbud.kon),
-      'bilmarke': new FormControl(tilbud.bilmarke)
+      'bilmarke': new FormControl(tilbud.bilmarke),
+      'pris': new FormControl(tilbud.pris)
     });
   }
 }
