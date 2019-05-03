@@ -11,10 +11,8 @@ import {TilbudService} from '../tilbud.service';
   styleUrls: ['./login-side.component.css']
 })
 export class LoginSideComponent implements OnInit {
-  lol: String = 'stand';
-  bk: string;
+
   samletString: String;
-  b;
 
   constructor(private http: Http, private authService: AuthService, private tilbudTilBrugerService: TilbudService) { }
 
@@ -22,38 +20,20 @@ export class LoginSideComponent implements OnInit {
 
   }
 
-  logIn(brugernavn: HTMLInputElement, kode: HTMLInputElement) {
-    this.bk = brugernavn.value + ' ' + kode.value;
-    this.http.get('http://localhost:8080/koereskole_REST/webresources/generic/alleTilbud').subscribe(
-      (response: Response) => {
-        const data = response.text();
-        console.log(data);
-
-        // this.lol = response.text().toString();
-      },
-      (error) => console.log(error),
-    );
-  }
 
   onLogin(brugernavn: String, kodeord: String) {
     this.samletString = brugernavn + ' ' + kodeord;
-    this.b = this.loginRest(this.samletString);
-    if (this.b = 'true') {
-      this.authService.login();
-    }
-  }
-  onLogout(brugernavn: String, kodeord: String) {
-      this.authService.logout();
-  }
-  loginRest(string: String) {
-    this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/login', string).subscribe(
+    console.log(this.samletString);
+    this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/login', this.samletString).subscribe(
       (response: Response) => {
         const data = response;
-        console.log('DETTE ER BLEVET HENTET FRA SERVEREN MED GIVET POSTNUMMER: ' + data + data.text() + data.toString()
-          + data.statusText.toString());
-        return data;
+        console.log('true = 1, false = 0: ' + data.text());
+        if (data.text().toString().match('1')) {
+          this.authService.login();
+        }
       },
       (error) => console.log(error),
     );
   }
+
 }
