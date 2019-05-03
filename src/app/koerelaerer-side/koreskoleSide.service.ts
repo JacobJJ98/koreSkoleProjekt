@@ -49,7 +49,7 @@ export class KoreskoleSideService {
     this.tilbud2.beskrivelse = 'Hos os bliver xcvvvvvvvdu en god bixcvxlist';
     this.tilbud2.tilgangeligeDage = this.tilg;
     this.tilbud2.id = 1234;
-    // this.tilbuddene = [this.tilbud1, this.tilbud2];
+    this.tilbuddene = [this.tilbud1, this.tilbud2];
   }
   henttilbud() {
 
@@ -138,7 +138,7 @@ export class KoreskoleSideService {
       }
       // her slutter oversættelse af dage!!
       tilbud.id = obj[o].id;
-      this.tilbuddene.push(tilbud);
+      // this.tilbuddene.push(tilbud);
     }
    // console.log(this.tilbuddene);
   }
