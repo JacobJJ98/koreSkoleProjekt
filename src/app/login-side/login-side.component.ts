@@ -39,4 +39,7 @@ export class LoginSideComponent implements OnInit {
     );
   }
 
+  login() {
+    this.authService.login();
+  }
 }
