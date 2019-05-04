@@ -16,8 +16,8 @@ export class KoreskoleSideService {
   private tilg: TilgangeligeDage = new TilgangeligeDage();
   private tilbud1 = new Tilbud;
   private tilbud2 = new Tilbud;
-  tilbuddene: Tilbud[] = new Array();
-  tilbudChanged = new Subject<Tilbud[]>();
+  private tilbuddene: Tilbud[] = new Array();
+  private tilbudChanged = new Subject<Tilbud[]>();
 
   constructor(private authService: AuthService, private http: Http) {
 
