@@ -4,6 +4,7 @@ import {AuthService} from '../auth.service';
 import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {TilbudTilBrugere} from '../Model/tilbudTilBrugere.model';
+import {Subject} from 'rxjs';
 
 @Injectable()
 export class KoreskoleSideService {
@@ -16,6 +17,8 @@ export class KoreskoleSideService {
   private tilbud1 = new Tilbud;
   private tilbud2 = new Tilbud;
   tilbuddene: Tilbud[] = new Array();
+  tilbudChanged = new Subject<Tilbud[]>();
+
   constructor(private authService: AuthService, private http: Http) {
 
     this.brugernavn = this.authService.brugernavnAuth;
@@ -74,9 +77,6 @@ export class KoreskoleSideService {
       },
       (error) => console.log(error),
     );
-
-
-
     return this.tilbuddene;
   }
   hentTilbudMedIndex(index: number) {
@@ -84,12 +84,15 @@ export class KoreskoleSideService {
   }
   addTilbud(tilbud: Tilbud) {
     this.tilbuddene.push(tilbud);
+    this.tilbudChanged.next(this.tilbuddene.slice());
   }
   sletTilbud(id: number) {
     this.tilbuddene.splice(id, 1);
+    this.tilbudChanged.next(this.tilbuddene.slice());
   }
   opdaterTilbud(index: number, tilbud: Tilbud) {
     this.tilbuddene[index] = tilbud;
+    this.tilbudChanged.next(this.tilbuddene.slice());
   }
 
 

@@ -97,6 +97,7 @@ export class MinetilbudEditComponent implements OnInit {
     this.tilbudsservice.sletTilbud(this.id);
   }
   onUpdate() {
+    this.tilbudsservice.opdaterTilbud(this.id, this.tilbudForm.value);
     //this.tilbudsservice.tilbuddene[this.id] = blabla
   }
 }
