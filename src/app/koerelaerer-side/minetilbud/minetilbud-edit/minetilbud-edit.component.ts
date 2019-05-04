@@ -40,10 +40,9 @@ export class MinetilbudEditComponent implements OnInit {
       'pris': new FormControl(tilbud.pris),
       'tilg': new FormControl(['mandag','','onsdag','','','','']),
       //'tilg': new FormControl(this.tilgangObjTilArray(tilbud.tilgangeligeDage))
-      'lyn': new FormControl(tilbud.lynkursus),
-      'type': new FormControl(tilbud.korekort_type),
-      'bilstr': new FormControl(tilbud.bilstorrelse),
-      'bilmærke': new FormControl(tilbud.bilmarke),
+      'lynkursus': new FormControl(tilbud.lynkursus),
+      'korekort_type': new FormControl(tilbud.korekort_type),
+      'bilstorrelse': new FormControl(tilbud.bilstorrelse),
       'kon': new FormControl(tilbud.kon),
     });
   }

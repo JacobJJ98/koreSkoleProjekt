@@ -91,6 +91,10 @@ export class KoreskoleSideService {
     this.tilbudChanged.next(this.tilbuddene.slice());
   }
   opdaterTilbud(index: number, tilbud: Tilbud) {
+    console.log('køn ' + tilbud.kon);
+    console.log('bilmærke ' + tilbud.bilmarke);
+    console.log('bilstørrelse ' + tilbud.bilstorrelse);
+    console.log('kørekort type ' + tilbud.korekort_type);
     this.tilbuddene[index] = tilbud;
     this.tilbudChanged.next(this.tilbuddene.slice());
   }

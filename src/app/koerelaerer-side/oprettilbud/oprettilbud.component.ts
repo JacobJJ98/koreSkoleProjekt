@@ -24,7 +24,6 @@ export class OprettilbudComponent implements OnInit {
     this.tilbud1.kon = this.form.value.gender;
     this.tilbud1.bilmarke = this.form.value.bilmærke;
     this.tilbud1.bilstorrelse = this.form.value.bilstr;
-    this.tilbud1.bilstorrelse = this.form.value.bilstr;
     this.tilbud1.korekort_type = this.form.value.kktype;
     this.tilbud1.lynkursus = this.lynkursusBooleantilBit(this.form.value.lynkurus);
     // @ts-ignore  //Den giver fejl her, men det er ikke noget problem da fraArrayTilObject returnerer et korrekt TilgængeligeDage objekt
