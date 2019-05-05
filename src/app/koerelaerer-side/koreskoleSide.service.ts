@@ -83,8 +83,22 @@ export class KoreskoleSideService {
     return this.tilbuddene[index];
   }
   addTilbud(tilbud: Tilbud) {
+    // let svaret = false;
     this.tilbuddene.push(tilbud);
     this.tilbudChanged.next(this.tilbuddene.slice());
+    // console.log('INDE FRA ADDTILBUD :');
+    // console.log(tilbud);
+    const jsonTilbud: string = JSON.stringify(tilbud);
+    // console.log('EFTER PARSE: ' + jsonTilbud);
+    const stringArr: string[] = [this.brugernavn, this.password, jsonTilbud];
+    const jsonStringArr: string = JSON.stringify(stringArr);
+    this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/opretTilbud', jsonStringArr).subscribe(
+      (response: Response) => {
+        const data = response;
+        // console.log('SVAR FRA SERVER: ' + data.text());
+      },
+      (error) => console.log(error),
+    );
   }
   sletTilbud(id: number) {
     this.tilbuddene.splice(id, 1);

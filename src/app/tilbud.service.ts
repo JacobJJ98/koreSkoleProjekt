@@ -59,7 +59,8 @@ export class TilbudService {
       const tilll = new TilbudTilBrugere();
       // tilbud
       // tilll.tilbud.koreskole_id = obj[o].tilbud.koreskole_id;
-      tilll.tilbud.pris = obj[o].tilbud.pris;
+      const prisikr: number = this.prisUdfraIndex(obj[o].tilbud.pris.toString());
+      tilll.tilbud.pris = prisikr;
       tilll.tilbud.korekort_type = obj[o].tilbud.korekort_type;
       tilll.tilbud.lynkursus = obj[o].tilbud.lynkursus;
       tilll.tilbud.bilmarke = obj[o].tilbud.bilmarke;
@@ -120,7 +121,8 @@ export class TilbudService {
 
   private reducerUdfraKrav(pris: string, kon: string, maerke: string, str: string, typ: string, lyn: string, dage: string) {
     // vælger tilbud som stemmer overens med priskrav
-    const pris2: number = this.prisUdfraIndex(pris);
+     const pris2: number = this.prisUdfraIndex(pris);
+    const prisv2: number = +pris;
     const type2: string = this.typeUdfraIndex(typ);
     const lyn2: number =  this.lynUdfraBool(lyn);
     const str2: string  = this.strUdfraIndex(str);
@@ -143,7 +145,7 @@ export class TilbudService {
         erBlevetNoteret = true;
       }
       // tjekker for køn (der er toLoweCase fordi det er startet med stor i angu og småt i DB
-      if (this.tilbuddeneV4[o].tilbud.kon !== kon.toLowerCase() && !erBlevetNoteret) {
+      if (this.tilbuddeneV4[o].tilbud.kon.toLowerCase() !== kon.toLowerCase() && !erBlevetNoteret) {
         console.log('KØN---------IF');
         sletDisseID.push(o);
         erBlevetNoteret = true;
@@ -161,7 +163,7 @@ export class TilbudService {
         erBlevetNoteret = true;
       }
       // tjekker for mærke
-      if (!this.tilbuddeneV4[o].tilbud.bilmarke.includes(maerke.toString().toLowerCase()) && !erBlevetNoteret) {
+      if (!this.tilbuddeneV4[o].tilbud.bilmarke.toLowerCase().includes(maerke.toString().toLowerCase()) && !erBlevetNoteret) {
         console.log('MÆRKE---------IF');
         sletDisseID.push(o);
         erBlevetNoteret = true;

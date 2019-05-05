@@ -4,6 +4,7 @@ import {KoreskoleSideService} from '../koreskoleSide.service';
 import {Tilbud} from '../../Model/tilbud.model';
 import {element} from 'protractor';
 import {TilgangeligeDage} from '../../Model/tilgængeligedage.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-oprettilbud',
@@ -15,7 +16,7 @@ export class OprettilbudComponent implements OnInit {
   private tilbud1 = new Tilbud();
   private TilgangeligeDage = new TilgangeligeDage();
   konnn = ['mand', 'kvinde'];
-  constructor(private tilbudsservice: KoreskoleSideService) { }
+  constructor(private tilbudsservice: KoreskoleSideService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -28,15 +29,19 @@ export class OprettilbudComponent implements OnInit {
     this.tilbud1.lynkursus = this.lynkursusBooleantilBit(this.form.value.lynkurus);
     // @ts-ignore  //Den giver fejl her, men det er ikke noget problem da fraArrayTilObject returnerer et korrekt TilgængeligeDage objekt
     this.tilbud1.tilgangeligeDage = this.fraArrayTilObject(this.form.value.dage);
+    // let tilgang: TilgangeligeDage = new TilgangeligeDage();
+    // tilgang = this.fraArrayTilObject(this.form.value.dage);
+    console.log(this.fraArrayTilObject(this.form.value.dage));
     console.log('her er dagene: ' + this.form.value.dage);
+    console.log(this.form.value.dage);
     this.tilbud1.pris = this.form.value.prisen;
     console.log('prisen er sat til: ' + this.tilbud1.pris);
     console.log('prisen value: ' + this.form.value.prisen);
     this.tilbud1.beskrivelse = this.form.value.beskrivelse;
     this.tilbudsservice.addTilbud(this.tilbud1);
-    // console.log(this.tilbud1);
-    console.log(this.form);
-    console.log(this.tilbud1);
+   // her mangler noget validering i forhold til om tilbuddet bliver oprettet ordenligt! men det drillede!!
+      // console.log('Tilbud oprettet!');
+      this.router.navigate(['/korelaerer/minetilbud']);
   }
   lynkursusBooleantilBit(bo: Boolean) {
     let bit = 0;
@@ -48,39 +53,39 @@ export class OprettilbudComponent implements OnInit {
     return bit;
   }
   fraArrayTilObject(ar: String[]) {
-    const til: TilgangeligeDage = new TilgangeligeDage();
-    til.tilgangelig_mandag = 0;
-    til.tilgangelig_tirsdag = 0;
-    til.tilgangelig_onsdag = 0;
-    til.tilgangelig_torsdag = 0;
-    til.tilgangelig_fredag = 0;
-    til.tilgangelig_lordag = 0;
-    til.tilgangelig_sondag = 0;
+    const tilgang: TilgangeligeDage = new TilgangeligeDage();
+    tilgang.tilgangelig_mandag = 0;
+    tilgang.tilgangelig_tirsdag = 0;
+    tilgang.tilgangelig_onsdag = 0;
+    tilgang.tilgangelig_torsdag = 0;
+    tilgang.tilgangelig_fredag = 0;
+    tilgang.tilgangelig_lordag = 0;
+    tilgang.tilgangelig_sondag = 0;
 
     for (const entry of ar) {
       if (entry.match('mandag')) {
-        til.tilgangelig_mandag = 1;
+        tilgang.tilgangelig_mandag = 1;
       }
       if (entry.match('tirsdag')) {
-        til.tilgangelig_tirsdag = 1;
+        tilgang.tilgangelig_tirsdag = 1;
       }
       if (entry.match('onsdag')) {
-        til.tilgangelig_onsdag = 1;
+        tilgang.tilgangelig_onsdag = 1;
       }
       if (entry.match('torsdag')) {
-        til.tilgangelig_torsdag = 1;
+        tilgang.tilgangelig_torsdag = 1;
       }
       if (entry.match('fredag')) {
-        til.tilgangelig_fredag = 1;
+       tilgang.tilgangelig_fredag = 1;
       }
       if (entry.match('lørdag')) {
-        til.tilgangelig_lordag = 1;
+        tilgang.tilgangelig_lordag = 1;
       }
       if (entry.match('søndag')) {
-        til.tilgangelig_sondag = 1;
+        tilgang.tilgangelig_sondag = 1;
       }
     }
 
-    return til;
+    return tilgang;
     }
 }
