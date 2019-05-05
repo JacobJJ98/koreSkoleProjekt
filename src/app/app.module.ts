@@ -29,6 +29,7 @@ import { TilbudService } from './tilbud.service';
 import { KoreskoleSideService } from './koerelaerer-side/koreskoleSide.service';
 
 import { AuthGuard } from './auth-guard.service';
+import { OpretkoreskoleSideComponent } from './login-side/opretkoreskole-side/opretkoreskole-side.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { AuthGuard } from './auth-guard.service';
     OprettilbudComponent,
     SoegComponent,
     VisTilbudSoegComponent,
+    OpretkoreskoleSideComponent,
   ],
   imports: [
     AppRoutingModule,

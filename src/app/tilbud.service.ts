@@ -314,6 +314,21 @@ export class TilbudService {
     }
     return '';
   }
+
+  opretKoreskole(brugernavn: string, password: string, koreskole: Koreskole) {
+  const jsonkoreskole: string = JSON.stringify(koreskole);
+  const stringArr: string[] = [brugernavn, password, jsonkoreskole];
+  const jsonStringArr: string = JSON.stringify(stringArr);
+    this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/opretKøreskole', jsonStringArr).subscribe(
+      (response: Response) => {
+        const data = response.text();
+        console.log('SVAR FRA SERVER OPRET KORESKOLE:');
+        console.log(data);
+        if () 
+      },
+      (error) => console.log(error),
+    );
+  }
 }
 
 

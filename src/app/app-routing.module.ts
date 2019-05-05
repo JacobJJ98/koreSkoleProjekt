@@ -10,11 +10,13 @@ import {OprettilbudComponent} from './koerelaerer-side/oprettilbud/oprettilbud.c
 import {MinprofilComponent} from './koerelaerer-side/minprofil/minprofil.component';
 import {MinetilbudStandardComponent} from './koerelaerer-side/minetilbud/minetilbud-standard/minetilbud-standard.component';
 import {MinetilbudEditComponent} from './koerelaerer-side/minetilbud/minetilbud-edit/minetilbud-edit.component';
+import {OpretkoreskoleSideComponent} from './login-side/opretkoreskole-side/opretkoreskole-side.component';
 
 const appRoutes: Routes = [
   { path: '', component: ForsideComponent},
 
   { path: 'erdukoerelaerer', component: LoginSideComponent},
+  { path: 'opretkoreskole', component: OpretkoreskoleSideComponent},
 
   {
     path: 'korelaerer',
