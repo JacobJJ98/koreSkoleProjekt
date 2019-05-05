@@ -48,38 +48,39 @@ export class OprettilbudComponent implements OnInit {
     return bit;
   }
   fraArrayTilObject(ar: String[]) {
-    TilgangeligeDage.prototype.tilgangelig_mandag = 0;
-    TilgangeligeDage.prototype.tilgangelig_tirsdag = 0;
-    TilgangeligeDage.prototype.tilgangelig_onsdag = 0;
-    TilgangeligeDage.prototype.tilgangelig_torsdag = 0;
-    TilgangeligeDage.prototype.tilgangelig_fredag = 0;
-    TilgangeligeDage.prototype.tilgangelig_lordag = 0;
-    TilgangeligeDage.prototype.tilgangelig_sondag = 0;
+    const til: TilgangeligeDage = new TilgangeligeDage();
+    til.tilgangelig_mandag = 0;
+    til.tilgangelig_tirsdag = 0;
+    til.tilgangelig_onsdag = 0;
+    til.tilgangelig_torsdag = 0;
+    til.tilgangelig_fredag = 0;
+    til.tilgangelig_lordag = 0;
+    til.tilgangelig_sondag = 0;
 
     for (const entry of ar) {
       if (entry.match('mandag')) {
-        TilgangeligeDage.prototype.tilgangelig_mandag = 1;
+        til.tilgangelig_mandag = 1;
       }
       if (entry.match('tirsdag')) {
-        TilgangeligeDage.prototype.tilgangelig_tirsdag = 1;
+        til.tilgangelig_tirsdag = 1;
       }
       if (entry.match('onsdag')) {
-        TilgangeligeDage.prototype.tilgangelig_onsdag = 1;
+        til.tilgangelig_onsdag = 1;
       }
       if (entry.match('torsdag')) {
-        TilgangeligeDage.prototype.tilgangelig_torsdag = 1;
+        til.tilgangelig_torsdag = 1;
       }
       if (entry.match('fredag')) {
-        TilgangeligeDage.prototype.tilgangelig_fredag = 1;
+        til.tilgangelig_fredag = 1;
       }
       if (entry.match('lørdag')) {
-        TilgangeligeDage.prototype.tilgangelig_lordag = 1;
+        til.tilgangelig_lordag = 1;
       }
       if (entry.match('søndag')) {
-        TilgangeligeDage.prototype.tilgangelig_sondag = 1;
+        til.tilgangelig_sondag = 1;
       }
     }
 
-    return TilgangeligeDage;
+    return til;
     }
 }
