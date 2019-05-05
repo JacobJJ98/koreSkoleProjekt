@@ -20,7 +20,7 @@ export class TilbudService {
       (response: Response) => {
         const data = response.text();
         const obj: TilbudTilBrugere[] = JSON.parse(data.toString());
-       console.log('GAMLE MÅDE ' + obj[0].tilbud.tilgangeligeDage.tilgangelig_mandag);
+       // console.log('GAMLE MÅDE ' + obj[0].tilbud.tilgangeligeDage.tilgangelig_mandag);
 
         this.tilbuddeneV4.splice(0, this.tilbuddeneV4.length);
         // this.fraObjTilListen(obj);

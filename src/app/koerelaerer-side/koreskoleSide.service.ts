@@ -64,7 +64,7 @@ export class KoreskoleSideService {
     this.tilbud2.tilgangeligeDage.tilgangelig_lordag = 0;
     this.tilbud2.tilgangeligeDage.tilgangelig_sondag = 0;
     this.tilbud2.id = 1234;
-    this.tilbuddene = [this.tilbud1, this.tilbud2];
+    // this.tilbuddene = [this.tilbud1, this.tilbud2];
   }
   henttilbud() {
 
@@ -108,6 +108,7 @@ export class KoreskoleSideService {
       (response: Response) => {
         const data = response;
         // console.log('SVAR FRA SERVER: ' + data.text());
+        this.henttilbud();
       },
       (error) => console.log(error),
     );
@@ -121,12 +122,28 @@ export class KoreskoleSideService {
     console.log('bilmærke ' + tilbud.bilmarke);
     console.log('bilstørrelse ' + tilbud.bilstorrelse);
     console.log('kørekort type ' + tilbud.korekort_type);
+    tilbud.id = this.tilbuddene[index].id;
     this.tilbuddene[index] = tilbud;
     this.tilbudChanged.next(this.tilbuddene.slice());
+
+    const jsonTilbud: string = JSON.stringify(this.tilbuddene[index]);
+    // console.log('EFTER PARSE: ' + jsonTilbud);
+    const stringArr: string[] = [this.brugernavn, this.password, this.tilbuddene[index].id, jsonTilbud];
+    const jsonStringArr: string = JSON.stringify(stringArr);
+    this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/aendreTilbud', jsonStringArr).subscribe(
+      (response: Response) => {
+        const data = response;
+        console.log('SVAR FRA SERVER: UPDATE----- ' + data.text());
+        // this.henttilbud();
+      },
+      (error) => console.log(error),
+    );
+
   }
 
 
   private fraObjTilListen(obj: Tilbud[]) {
+    this.tilbuddene.splice(0, this.tilbuddene.length);
     for (let o = 0; o < obj.length; o++) {
       const tilbud = new Tilbud();
       // tilbud
@@ -177,7 +194,7 @@ export class KoreskoleSideService {
       }
       // her slutter oversættelse af dage!!
       tilbud.id = obj[o].id;
-      // this.tilbuddene.push(tilbud);
+       this.tilbuddene.push(tilbud);
     }
    // console.log(this.tilbuddene);
   }

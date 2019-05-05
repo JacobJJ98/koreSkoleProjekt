@@ -12,7 +12,7 @@ export class MinetilbudComponent implements OnInit {
   constructor(private tilbudsservice: TilbudService) { }
 
   ngOnInit() {
-    this.tilbudene = this.tilbudsservice.henttilbudTilBruger();
+    // this.tilbudene = this.tilbudsservice.henttilbudTilBruger();
   }
 
 }
