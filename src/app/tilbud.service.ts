@@ -324,7 +324,6 @@ export class TilbudService {
         const data = response.text();
         console.log('SVAR FRA SERVER OPRET KORESKOLE:');
         console.log(data);
-        if () 
       },
       (error) => console.log(error),
     );
