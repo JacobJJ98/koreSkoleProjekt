@@ -32,14 +32,14 @@ export class MinetilbudEditComponent implements OnInit {
   }
   initForm() {
     const tilbud = this.tilbudsservice.hentTilbudMedIndex(this.id);
-    console.log('Det tilgængelige tilbud: ' + tilbud.tilgangeligeDage);
-    console.log(tilbud);
+    console.log(tilbud.tilgangeligeDage.tilgangelig_mandag);
+    console.log('gggggg'+tilbud.tilgangeligeDage);
     this.tilbudForm = new FormGroup({
       'beskrivelse': new FormControl(tilbud.beskrivelse),
       'bilmarke': new FormControl(tilbud.bilmarke),
       'pris': new FormControl(tilbud.pris),
-      'tilg': new FormControl(['mandag','','onsdag','','','','']),
-      //'tilg': new FormControl(this.tilgangObjTilArray(tilbud.tilgangeligeDage))
+      //'tilg': new FormControl(any['mandag','','onsdag','','','','']),
+      'tilgangelig': new FormControl(this.tilgangObjTilArray(tilbud.tilgangeligeDage)),
       'lynkursus': new FormControl(tilbud.lynkursus),
       'korekort_type': new FormControl(tilbud.korekort_type),
       'bilstorrelse': new FormControl(tilbud.bilstorrelse),
@@ -47,7 +47,8 @@ export class MinetilbudEditComponent implements OnInit {
     });
   }
   tilgangObjTilArray(tilg: TilgangeligeDage) {
-    const list: String[] = new Array(6);
+    console.log('tilg obj: '+tilg);
+    const list: any[] = new Array(6);
     if (tilg.tilgangelig_mandag === 1) {
       list[0] = 'mandag';
     }
@@ -79,7 +80,7 @@ export class MinetilbudEditComponent implements OnInit {
       list[4] = '';
     }
     if (tilg.tilgangelig_lordag === 1) {
-      list[5] = 'lørdag';
+      list[5] = 'lordag';
     }
     else {
       list[5] = '';
@@ -90,6 +91,7 @@ export class MinetilbudEditComponent implements OnInit {
     else {
       list[6] = '';
     }
+    console.log('Listen: '+list);
     return list;
   }
   onDelete() {

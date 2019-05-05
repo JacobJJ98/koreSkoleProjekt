@@ -17,7 +17,7 @@ export class KoreskoleSideService {
   private tilbud1 = new Tilbud;
   private tilbud2 = new Tilbud;
   private tilbuddene: Tilbud[] = new Array();
-  private tilbudChanged = new Subject<Tilbud[]>();
+  tilbudChanged = new Subject<Tilbud[]>();
 
   constructor(private authService: AuthService, private http: Http) {
 
