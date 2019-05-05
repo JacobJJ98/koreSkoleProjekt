@@ -1,0 +1,76 @@
+<h1>Opret dig som køreskole her</h1>
+<hr>
+<form class="form-horizontal" #f="ngForm" >
+  <fieldset>
+    <div class="row">
+      <div class="column">
+
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="brugernavninput">Brugernavn</label>
+          <div class="col-md-4">
+            <input id="brugernavninput" name="brugernavninput" type="text" placeholder="Indtast brugernavn" class="form-control input-md" ngModel required>
+
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="passwordinput">Password</label>
+          <div class="col-md-4">
+            <input id="passwordinput" name="passwordinput" type="text" placeholder="Indtast password" class="form-control input-md" ngModel required>
+
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="navninput">Navn</label>
+          <div class="col-md-4">
+            <input id="navninput" name="navninput" type="text" placeholder="Køreskolens navn" class="form-control input-md" ngModel required>
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="adrinput">Adresse</label>
+          <div class="col-md-4">
+            <input id="adrinput" name="adrinput" type="text" placeholder="Adressen" class="form-control input-md" ngModel required>
+
+          </div>
+        </div>
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="postnummerinput">Postnummer</label>
+          <div class="col-md-4">
+            <input id="postnummerinput" name="postnummerinput" type="text" placeholder="Postnummer" class="form-control input-md" ngModel required>
+
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="nummerinput">Telefonnummer</label>
+          <div class="col-md-4">
+            <input id="nummerinput" name="nummerinput" type="text" placeholder="Telefonnummer" class="form-control input-md" ngModel required >
+
+          </div>
+        </div>
+
+
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="mailinput">Mail</label>
+          <div class="col-md-4">
+            <input id="mailinput" name="mailinput" type="text" placeholder="Mail" class="form-control input-md" ngModel required email>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</form>
+<div  align="center">
+  <button (click)="onOpretKoreskole()" [disabled]="!f.valid">Opret køreskole</button>
+</div>
