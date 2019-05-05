@@ -16,6 +16,7 @@ export class MinetilbudEditComponent implements OnInit {
   id: number;
   tilbudForm: FormGroup;
   private t = new Tilbud();
+  @ViewChild('f') form: NgForm;
 
   constructor(private route: ActivatedRoute, private router: Router, private tilbudsservice: KoreskoleSideService) {
 
@@ -98,7 +99,57 @@ export class MinetilbudEditComponent implements OnInit {
     this.tilbudsservice.sletTilbud(this.id);
   }
   onUpdate() {
-    this.tilbudsservice.opdaterTilbud(this.id, this.tilbudForm.value);
+    let t: Tilbud = new Tilbud();
+    t.beskrivelse = this.form.value.beskrivelse;
+    t.bilmarke = this.form.value.bilmarke;
+    t.pris = this.form.value.pris;
+    t.tilgangeligeDage = this.fraArrayTilObject(this.form.value.tilgangelig);
+    t.lynkursus = this.form.value.lynkursus;
+    t.korekort_type = this.form.value.korekort_type;
+    t.kon = this.form.value.kon;
+    t.bilstorrelse = this.form.value.bilstorrelse;
+
+    console.log(t);
+    //console.log('1: '+t.tilgangeligeDage.tilgangeligstring_mandag);
+    //console.log('2: '+t.tilgangeligeDage.tilgangelig_mandag);
+    //t.tilgangeligeDage = this.fraArrayTilObject(this.form.value.dage);
+    this.tilbudsservice.opdaterTilbud(this.id, t);
     //this.tilbudsservice.tilbuddene[this.id] = blabla
+  }
+  fraArrayTilObject(ar: String[]) {
+    const tilgang: TilgangeligeDage = new TilgangeligeDage();
+    tilgang.tilgangelig_mandag = 0;
+    tilgang.tilgangelig_tirsdag = 0;
+    tilgang.tilgangelig_onsdag = 0;
+    tilgang.tilgangelig_torsdag = 0;
+    tilgang.tilgangelig_fredag = 0;
+    tilgang.tilgangelig_lordag = 0;
+    tilgang.tilgangelig_sondag = 0;
+
+    for (const entry of ar) {
+      if (entry.match('mandag')) {
+        tilgang.tilgangelig_mandag = 1;
+      }
+      if (entry.match('tirsdag')) {
+        tilgang.tilgangelig_tirsdag = 1;
+      }
+      if (entry.match('onsdag')) {
+        tilgang.tilgangelig_onsdag = 1;
+      }
+      if (entry.match('torsdag')) {
+        tilgang.tilgangelig_torsdag = 1;
+      }
+      if (entry.match('fredag')) {
+        tilgang.tilgangelig_fredag = 1;
+      }
+      if (entry.match('lordag')) {
+        tilgang.tilgangelig_lordag = 1;
+      }
+      if (entry.match('sondag')) {
+        tilgang.tilgangelig_sondag = 1;
+      }
+    }
+
+    return tilgang;
   }
 }

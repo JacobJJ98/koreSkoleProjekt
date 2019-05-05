@@ -78,10 +78,10 @@ export class OprettilbudComponent implements OnInit {
       if (entry.match('fredag')) {
        tilgang.tilgangelig_fredag = 1;
       }
-      if (entry.match('lørdag')) {
+      if (entry.match('lordag')) {
         tilgang.tilgangelig_lordag = 1;
       }
-      if (entry.match('søndag')) {
+      if (entry.match('sondag')) {
         tilgang.tilgangelig_sondag = 1;
       }
     }

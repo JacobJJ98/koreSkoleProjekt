@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12">
-    <form [formGroup]="tilbudForm">
+    <form [formGroup]="tilbudForm" #f="ngForm">
 
 
       <!-- radio buttons -->
@@ -99,7 +99,7 @@
         <div class="col-xs-12">
           <div class="form-group">
             <label for="tilgangelig">Tilgængelige dage</label>
-              <select id="tilgangelig" class="form-control" formControlName="tilgangelig" multiple="multiple">
+              <select id="tilgangelig" name="dage" class="form-control" formControlName="tilgangelig" multiple="multiple">
                 <option value="mandag">Mandag</option>
                 <option value="tirsdag">Tirsdag</option>
                 <option value="onsdag">Onsdag</option>

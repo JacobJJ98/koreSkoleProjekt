@@ -39,7 +39,13 @@ export class KoreskoleSideService {
     this.tilbud1.bilstorrelse = 'mellem';
     this.tilbud1.kon = 'kvinde';
     this.tilbud1.beskrivelse = 'Hos os bliver du en god bilist';
-    this.tilbud1.tilgangeligeDage = this.tilg;
+    this.tilbud1.tilgangeligeDage.tilgangelig_mandag = 1;
+    this.tilbud1.tilgangeligeDage.tilgangelig_tirsdag = 0;
+    this.tilbud1.tilgangeligeDage.tilgangelig_onsdag = 0;
+    this.tilbud1.tilgangeligeDage.tilgangelig_torsdag = 1;
+    this.tilbud1.tilgangeligeDage.tilgangelig_fredag = 1;
+    this.tilbud1.tilgangeligeDage.tilgangelig_lordag = 0;
+    this.tilbud1.tilgangeligeDage.tilgangelig_sondag = 0;
     this.tilbud1.id = 1234;
 
     this.tilbud2.koreskole_id = 's175132';
@@ -50,7 +56,13 @@ export class KoreskoleSideService {
     this.tilbud2.bilstorrelse = 'stor';
     this.tilbud2.kon = 'mand';
     this.tilbud2.beskrivelse = 'Hos os bliver xcvvvvvvvdu en god bixcvxlist';
-    this.tilbud2.tilgangeligeDage = this.tilg;
+    this.tilbud2.tilgangeligeDage.tilgangelig_mandag = 0;
+    this.tilbud2.tilgangeligeDage.tilgangelig_tirsdag = 1;
+    this.tilbud2.tilgangeligeDage.tilgangelig_onsdag = 1;
+    this.tilbud2.tilgangeligeDage.tilgangelig_torsdag = 0;
+    this.tilbud2.tilgangeligeDage.tilgangelig_fredag = 0;
+    this.tilbud2.tilgangeligeDage.tilgangelig_lordag = 0;
+    this.tilbud2.tilgangeligeDage.tilgangelig_sondag = 0;
     this.tilbud2.id = 1234;
     this.tilbuddene = [this.tilbud1, this.tilbud2];
   }
