@@ -5,6 +5,7 @@ import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {TilbudTilBrugere} from '../Model/tilbudTilBrugere.model';
 import {Subject} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class KoreskoleSideService {
@@ -19,7 +20,7 @@ export class KoreskoleSideService {
   private tilbuddene: Tilbud[] = new Array();
   tilbudChanged = new Subject<Tilbud[]>();
 
-  constructor(private authService: AuthService, private http: Http) {
+  constructor(private authService: AuthService, private http: Http, private router: Router) {
 
     this.brugernavn = this.authService.brugernavnAuth;
     console.log('brugernavn: ' + this.brugernavn);
@@ -113,9 +114,21 @@ export class KoreskoleSideService {
       (error) => console.log(error),
     );
   }
-  sletTilbud(id: number) {
-    this.tilbuddene.splice(id, 1);
+  sletTilbud(indeks: number) {
+    const id: number = this.tilbuddene[indeks].id;
+    this.tilbuddene.splice(indeks, 1);
     this.tilbudChanged.next(this.tilbuddene.slice());
+    const stringArr: string[] = [this.brugernavn, this.password, id];
+    const jsonStringArr: string = JSON.stringify(stringArr);
+    this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/sletTilbud', jsonStringArr).subscribe(
+      (response: Response) => {
+        const data = response;
+        console.log('SVAR FRA SERVER: SLET----- ' + data.text());
+        // this.henttilbud();
+        this.router.navigate(['/korelaerer/minetilbud']);
+      },
+      (error) => console.log(error),
+    );
   }
   opdaterTilbud(index: number, tilbud: Tilbud) {
     console.log('køn ' + tilbud.kon);
@@ -135,6 +148,7 @@ export class KoreskoleSideService {
         const data = response;
         console.log('SVAR FRA SERVER: UPDATE----- ' + data.text());
         // this.henttilbud();
+        this.router.navigate(['/korelaerer/minetilbud']);
       },
       (error) => console.log(error),
     );
