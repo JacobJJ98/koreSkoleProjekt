@@ -19,7 +19,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { OprettilbudComponent } from './koerelaerer-side/oprettilbud/oprettilbud.component';
 import { SoegComponent } from './forside/soeg/soeg.component';
 import { VisTilbudSoegComponent } from './forside/vis-tilbud-soeg/vis-tilbud-soeg.component';
-
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HttpModule } from '@angular/http';
@@ -57,7 +57,10 @@ import { OpretkoreskoleSideComponent } from './login-side/opretkoreskole-side/op
     BrowserModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ConfirmationPopoverModule.forRoot({
+      confirmButtonType: 'danger' // set defaults here
+    })
   ],
   providers: [AuthGuard, AuthService, TilbudService],
   bootstrap: [AppComponent]

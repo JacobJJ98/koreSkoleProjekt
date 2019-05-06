@@ -17,6 +17,10 @@ export class MinetilbudEditComponent implements OnInit {
   tilbudForm: FormGroup;
   private t = new Tilbud();
   @ViewChild('f') form: NgForm;
+  public popoverTitle: string = 'Er du sikker?';
+  public popoverMessage: string = 'Når først et tilbud er slettet, kan det ikke genskabes!';
+  public confirmClicked: boolean = false;
+  public cancelClicked: boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private tilbudsservice: KoreskoleSideService) {
 
