@@ -130,7 +130,33 @@ export class TilbudService {
     const sletDisseID: number[] = [];
     for (let o = 0; o < count; o++) {
       let erBlevetNoteret = false;
-
+  // tjekker for de ønskede dage
+      for (let n = 0; n < 1; n++) {
+        if (dage.includes('Mandag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_mandag === 1) {
+          break;
+        }
+        if (dage.includes('Tirsdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_tirsdag === 1) {
+          break;
+        }
+        if (dage.includes('Onsdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_onsdag === 1) {
+          break;
+        }
+        if (dage.includes('Torsdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_torsdag === 1) {
+          break;
+        }
+        if (dage.includes('Fredag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_fredag === 1) {
+          break;
+        }
+        if (dage.includes('Lørdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_lordag === 1) {
+          break;
+        }
+        if (dage.includes('Søndag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_sondag === 1) {
+          break;
+        }
+        console.log('DAGE---------IF');
+        sletDisseID.push(o);
+        erBlevetNoteret = true;
+      }
 
       // tjekker for prisen
       if (this.tilbuddeneV4[o].tilbud.pris > pris2 && !erBlevetNoteret) {
@@ -163,7 +189,7 @@ export class TilbudService {
         erBlevetNoteret = true;
       }
       // tjekker for mærke
-      if (!this.tilbuddeneV4[o].tilbud.bilmarke.toLowerCase().includes(maerke.toString().toLowerCase()) && !erBlevetNoteret) {
+      if (!maerke.toString().toLowerCase().includes(this.tilbuddeneV4[o].tilbud.bilmarke.toString().toLowerCase()) && !erBlevetNoteret) {
         console.log('MÆRKE---------IF');
         sletDisseID.push(o);
         erBlevetNoteret = true;
