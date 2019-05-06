@@ -132,25 +132,25 @@ export class TilbudService {
       let erBlevetNoteret = false;
   // tjekker for de ønskede dage
       for (let n = 0; n < 1; n++) {
-        if (dage.includes('Mandag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_mandag === 1) {
+        if (dage.toString().toLowerCase().includes('mandag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_mandag === 1) {
           break;
         }
-        if (dage.includes('Tirsdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_tirsdag === 1) {
+        if (dage.toString().toLowerCase().includes('tirsdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_tirsdag === 1) {
           break;
         }
-        if (dage.includes('Onsdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_onsdag === 1) {
+        if (dage.toString().toLowerCase().includes('onsdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_onsdag === 1) {
           break;
         }
-        if (dage.includes('Torsdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_torsdag === 1) {
+        if (dage.toString().toLowerCase().includes('torsdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_torsdag === 1) {
           break;
         }
-        if (dage.includes('Fredag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_fredag === 1) {
+        if (dage.toString().toLowerCase().includes('fredag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_fredag === 1) {
           break;
         }
-        if (dage.includes('Lørdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_lordag === 1) {
+        if (dage.toString().toLowerCase().includes('sørdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_lordag === 1) {
           break;
         }
-        if (dage.includes('Søndag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_sondag === 1) {
+        if (dage.toString().toLowerCase().includes('søndag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_sondag === 1) {
           break;
         }
         console.log('DAGE---------IF');
