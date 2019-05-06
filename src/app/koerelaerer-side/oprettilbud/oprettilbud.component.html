@@ -1,3 +1,7 @@
+<div  align="center">
+  <h3 class="h3">Opret tilbud</h3>
+</div>
+
 <form class="form-horizontal" #f="ngForm" >
   <fieldset>
 
@@ -113,7 +117,8 @@
               class="form-control"
               name="prisen"
               id="prisen"
-              ngModel required
+              ngModel
+              required
               >
               <option value="1">8000 kr</option>
               <option value="2">8500 kr</option>
@@ -147,7 +152,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="selectbasic">Beskrivelse</label>
           <div class="col-md-4">
-            <textarea id="selectbasic3" name="beskrivelse" type="text" rows="3" class="form-control input-md" #beskrivelse ngModel required></textarea>
+            <textarea id="selectbasic3" name="beskrivelse" type="text" rows="3" class="form-control input-md" #beskrivelse ngModel required placeholder="Beskrivelse"></textarea>
           </div>
         </div>
       </div>
@@ -159,10 +164,10 @@
   </fieldset>
 </form>
 
-<div class="col-md-10">
-  <button class="btn-primary" (click)="onClick()">Opret Tilbud</button>
-</div>
 
+<p align="center">
+  <button class="btn btn-primary mb-2" (click)="onClick()" [disabled]="!f.valid">Opret Tilbud</button>
+</p>
 
 
 
