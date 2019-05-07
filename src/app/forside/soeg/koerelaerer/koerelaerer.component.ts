@@ -7,7 +7,7 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./koerelaerer.component.css']
 })
 export class KoerelaererComponent implements OnInit, AfterViewInit {
-  konnn = ['Mand', 'Kvinde', 'Andet'];
+  konnn = ['Mand', 'Kvinde'];
   @ViewChild('str') str: ElementRef;
   @ViewChild('køn') køn: ElementRef;
   @ViewChild('f') form: NgForm;
