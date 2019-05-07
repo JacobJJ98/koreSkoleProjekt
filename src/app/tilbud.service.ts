@@ -32,15 +32,15 @@ export class TilbudService {
   hentTilbudMedId(index: number) {
   }
   hentTilbudMedPostnummer(postnummer: number, pris: string, kon: string, maerke: string, str: string, typ: string, lyn: string, dage: string) {
-    console.log(postnummer);
-    console.log(pris);
-    console.log(kon);
-    console.log(maerke);
-    console.log(str);
-    console.log(typ);
-    console.log(lyn);
-    console.log(dage);
-    this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/tilbudMedGiventPostnummer', postnummer).subscribe(
+    console.log('POSTNUMMER: ' + postnummer);
+    console.log('PRIS: ' + pris);
+    console.log('KØN: ' + kon);
+    console.log('MÆRKE: ' + maerke);
+    console.log('STØRRELSEN: ' + str);
+    console.log('TYPE: ' + typ);
+    console.log('LYN: ' + lyn);
+    console.log('DAGE: ' + dage);
+    this.http.get('http://localhost:8080/koereskole_REST/webresources/generic/tilbudMedGiventPostnummer/' + postnummer).subscribe(
       (response: Response) => {
         const data = response.text();
         const obj: TilbudTilBrugere[] = JSON.parse(data.toString());
@@ -129,49 +129,82 @@ export class TilbudService {
     const count: number = this.tilbuddeneV4.length;
     const sletDisseID: number[] = [];
     for (let o = 0; o < count; o++) {
+      let prisBool = true;
+      let konBool = true;
+      let  maerkeBool = true;
+      let strBool = true;
+      let typeBool = true;
+      let dageBool = true;
       let erBlevetNoteret = false;
+      if (pris.length === 0) {
+       // console.log('PRISEN ER IKKE NULL');
+        prisBool = false;
+      }
+      if (kon.length === 0) {
+      // console.log('KØN ER NULL');
+        konBool = false;
+      }
+      if (maerke.length === 0) {
+      // console.log('Mærke ER NULL');
+        maerkeBool = false;
+      }
+      if (str.length === 0) {
+       // console.log('STØRRELSEN ER NULL');
+        strBool = false;
+      }
+      if (typ.length === 0) {
+      // console.log('TYPEN ER NULL');
+        typeBool = false;
+      }
+      if (dage.length === 0) {
+       // console.log('DAGE ER NULL');
+        dageBool = false;
+      }
   // tjekker for de ønskede dage
-      for (let n = 0; n < 1; n++) {
-        if (dage.toString().toLowerCase().includes('mandag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_mandag === 1) {
-          break;
+      if (dageBool) {
+
+        for (let n = 0; n < 1; n++) {
+          if (dage.toString().toLowerCase().includes('mandag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_mandag === 1) {
+            break;
+          }
+          if (dage.toString().toLowerCase().includes('tirsdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_tirsdag === 1) {
+            break;
+          }
+          if (dage.toString().toLowerCase().includes('onsdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_onsdag === 1) {
+            break;
+          }
+          if (dage.toString().toLowerCase().includes('torsdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_torsdag === 1) {
+            break;
+          }
+          if (dage.toString().toLowerCase().includes('fredag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_fredag === 1) {
+            break;
+          }
+          if (dage.toString().toLowerCase().includes('sørdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_lordag === 1) {
+            break;
+          }
+          if (dage.toString().toLowerCase().includes('søndag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_sondag === 1) {
+            break;
+          }
+          console.log('DAGE---------IF');
+          sletDisseID.push(o);
+          erBlevetNoteret = true;
         }
-        if (dage.toString().toLowerCase().includes('tirsdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_tirsdag === 1) {
-          break;
-        }
-        if (dage.toString().toLowerCase().includes('onsdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_onsdag === 1) {
-          break;
-        }
-        if (dage.toString().toLowerCase().includes('torsdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_torsdag === 1) {
-          break;
-        }
-        if (dage.toString().toLowerCase().includes('fredag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_fredag === 1) {
-          break;
-        }
-        if (dage.toString().toLowerCase().includes('sørdag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_lordag === 1) {
-          break;
-        }
-        if (dage.toString().toLowerCase().includes('søndag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_sondag === 1) {
-          break;
-        }
-        console.log('DAGE---------IF');
-        sletDisseID.push(o);
-        erBlevetNoteret = true;
       }
 
       // tjekker for prisen
-      if (this.tilbuddeneV4[o].tilbud.pris > pris2 && !erBlevetNoteret) {
+      if (this.tilbuddeneV4[o].tilbud.pris > pris2 && !erBlevetNoteret && prisBool) {
         console.log('PRIS-------IF');
         sletDisseID.push(o);
         erBlevetNoteret = true;
       }
       // tjekker for typen
-      if (this.tilbuddeneV4[o].tilbud.korekort_type !== type2 && !erBlevetNoteret) {
+      if (this.tilbuddeneV4[o].tilbud.korekort_type !== type2 && !erBlevetNoteret && typeBool) {
         console.log('TYPE------IF');
         sletDisseID.push(o);
         erBlevetNoteret = true;
       }
       // tjekker for køn (der er toLoweCase fordi det er startet med stor i angu og småt i DB
-      if (this.tilbuddeneV4[o].tilbud.kon.toLowerCase() !== kon.toLowerCase() && !erBlevetNoteret) {
+      if (this.tilbuddeneV4[o].tilbud.kon.toLowerCase() !== kon.toLowerCase() && !erBlevetNoteret && konBool) {
         console.log('KØN---------IF');
         sletDisseID.push(o);
         erBlevetNoteret = true;
@@ -183,18 +216,17 @@ export class TilbudService {
         erBlevetNoteret = true;
       }
       // tjekekr for størrelse
-      if (this.tilbuddeneV4[o].tilbud.bilstorrelse !== str2 && !erBlevetNoteret) {
+      if (this.tilbuddeneV4[o].tilbud.bilstorrelse !== str2 && !erBlevetNoteret && strBool) {
         console.log('STØRRELSE---------IF');
         sletDisseID.push(o);
         erBlevetNoteret = true;
       }
       // tjekker for mærke
-      if (!maerke.toString().toLowerCase().includes(this.tilbuddeneV4[o].tilbud.bilmarke.toString().toLowerCase()) && !erBlevetNoteret) {
+      if (!maerke.toString().toLowerCase().includes(this.tilbuddeneV4[o].tilbud.bilmarke.toString().toLowerCase()) && !erBlevetNoteret && maerkeBool) {
         console.log('MÆRKE---------IF');
         sletDisseID.push(o);
         erBlevetNoteret = true;
       }
-
     }
     for (let k = 0; k < sletDisseID.length; k++) {
       this.tilbuddeneV4.splice(sletDisseID[k] - k, 1) ;

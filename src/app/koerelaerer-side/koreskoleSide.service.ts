@@ -120,7 +120,7 @@ export class KoreskoleSideService {
     this.tilbudChanged.next(this.tilbuddene.slice());
     const stringArr: string[] = [this.brugernavn, this.password, id];
     const jsonStringArr: string = JSON.stringify(stringArr);
-    this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/sletTilbud', jsonStringArr).subscribe(
+    this.http.delete('http://localhost:8080/koereskole_REST/webresources/generic/sletTilbud/' + id + '/' + this.brugernavn + '/' + this.password).subscribe(
       (response: Response) => {
         const data = response;
         console.log('SVAR FRA SERVER: SLET----- ' + data.text());
@@ -143,7 +143,9 @@ export class KoreskoleSideService {
     // console.log('EFTER PARSE: ' + jsonTilbud);
     const stringArr: string[] = [this.brugernavn, this.password, this.tilbuddene[index].id, jsonTilbud];
     const jsonStringArr: string = JSON.stringify(stringArr);
-    this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/aendreTilbud', jsonStringArr).subscribe(
+    console.log('BODYEN I VORES POST METODE SKAL VÆRE PUT: ' + jsonStringArr);
+
+    this.http.put('http://localhost:8080/koereskole_REST/webresources/generic/aendreTilbud', jsonStringArr).subscribe(
       (response: Response) => {
         const data = response;
         console.log('SVAR FRA SERVER: UPDATE----- ' + data.text());
