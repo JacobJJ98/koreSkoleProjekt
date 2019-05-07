@@ -38,10 +38,18 @@ export class OprettilbudComponent implements OnInit {
     console.log('prisen er sat til: ' + this.tilbud1.pris);
     console.log('prisen value: ' + this.form.value.prisen);
     this.tilbud1.beskrivelse = this.form.value.beskrivelse;
-    this.tilbudsservice.addTilbud(this.tilbud1);
-   // her mangler noget validering i forhold til om tilbuddet bliver oprettet ordenligt! men det drillede!!
-      // console.log('Tilbud oprettet!');
-      this.router.navigate(['/korelaerer/minetilbud']);
+    this.tilbudsservice.addTilbudV2(this.tilbud1).subscribe(
+      (returStreng: string) => {
+        console.log('INDE I COMPOENENTET(opretTilbud): ' + returStreng);
+        if (returStreng.includes('0')) {
+          window.alert('Der skete en fejl, prøv igen!');
+        } else {
+          window.alert('Tilbuddet er oprettet!');
+          this.router.navigate(['/korelaerer/minetilbud']);
+        }
+      },
+      (error) => console.log(error),
+    );
   }
   lynkursusBooleantilBit(bo: Boolean) {
     let bit = 0;

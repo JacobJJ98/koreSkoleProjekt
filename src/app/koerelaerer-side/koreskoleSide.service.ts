@@ -6,6 +6,7 @@ import {Http, Response} from '@angular/http';
 import {TilbudTilBrugere} from '../Model/tilbudTilBrugere.model';
 import {Subject} from 'rxjs';
 import {Router} from '@angular/router';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class KoreskoleSideService {
@@ -95,6 +96,7 @@ export class KoreskoleSideService {
   hentTilbudMedIndex(index: number) {
     return this.tilbuddene[index];
   }
+  // gammel metode
   addTilbud(tilbud: Tilbud) {
     // let svaret = false;
     this.tilbuddene.push(tilbud);
@@ -213,6 +215,23 @@ export class KoreskoleSideService {
        this.tilbuddene.push(tilbud);
     }
    // console.log(this.tilbuddene);
+  }
+
+  addTilbudV2(tilbud1: Tilbud) {
+    this.tilbuddene.push(tilbud1);
+    this.tilbudChanged.next(this.tilbuddene.slice());
+    const jsonTilbud: string = JSON.stringify(tilbud1);
+    const stringArr: string[] = [this.brugernavn, this.password, jsonTilbud];
+    const jsonStringArr: string = JSON.stringify(stringArr);
+    return this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/opretTilbud', jsonStringArr).pipe(
+      map(
+        (response: Response) => {
+          const data = response.text();
+          console.log(data);
+          return data;
+        }
+      )
+    );
   }
 }
 
