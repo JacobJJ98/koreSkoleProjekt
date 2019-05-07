@@ -233,5 +233,38 @@ export class KoreskoleSideService {
       )
     );
   }
+
+  // prøvet at lave det på den "nye" måde, men det drillede iforhold til edit osv
+  henttilbudV2() {
+    return this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/getTilbudKoreskole', this.samletString).pipe(
+      map(
+        (response: Response) => {
+          const data = response.json();
+          console.log('DE HENTEDE TILBUD');
+          console.log(data);
+          return data;
+        }
+      )
+    );
+  }
+
+  opdaterTilbudV2(id: number, t: Tilbud) {
+    t.id = this.tilbuddene[id].id;
+    this.tilbuddene[id] = t;
+    this.tilbudChanged.next(this.tilbuddene.slice());
+
+    const jsonTilbud: string = JSON.stringify(this.tilbuddene[id]);
+    const stringArr: string[] = [this.brugernavn, this.password, this.tilbuddene[id].id, jsonTilbud];
+    const jsonStringArr: string = JSON.stringify(stringArr);
+    return this.http.put('http://localhost:8080/koereskole_REST/webresources/generic/aendreTilbud', jsonStringArr).pipe(
+      map(
+        (response: Response) => {
+          const data = response.text();
+          console.log(data);
+          return data;
+        }
+      )
+    );
+  }
 }
 

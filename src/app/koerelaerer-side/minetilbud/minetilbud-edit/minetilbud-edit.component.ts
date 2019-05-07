@@ -17,10 +17,10 @@ export class MinetilbudEditComponent implements OnInit {
   tilbudForm: FormGroup;
   private t = new Tilbud();
   @ViewChild('f') form: NgForm;
-  public popoverTitle: string = 'Er du sikker?';
-  public popoverMessage: string = 'Når først et tilbud er slettet, kan det ikke genskabes!';
-  public confirmClicked: boolean = false;
-  public cancelClicked: boolean = false;
+  public popoverTitle = 'Er du sikker?';
+  public popoverMessage = 'Når først et tilbud er slettet, kan det ikke genskabes!';
+  public confirmClicked = false;
+  public cancelClicked = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private tilbudsservice: KoreskoleSideService) {
 
@@ -38,12 +38,12 @@ export class MinetilbudEditComponent implements OnInit {
   initForm() {
     const tilbud = this.tilbudsservice.hentTilbudMedIndex(this.id);
     console.log(tilbud.tilgangeligeDage.tilgangelig_mandag);
-    console.log('gggggg'+tilbud.tilgangeligeDage);
+    console.log('gggggg' + tilbud.tilgangeligeDage);
     this.tilbudForm = new FormGroup({
       'beskrivelse': new FormControl(tilbud.beskrivelse),
       'bilmarke': new FormControl(tilbud.bilmarke),
       'pris': new FormControl(tilbud.pris),
-      //'tilg': new FormControl(any['mandag','','onsdag','','','','']),
+      // 'tilg': new FormControl(any['mandag','','onsdag','','','','']),
       'tilgangelig': new FormControl(this.tilgangObjTilArray(tilbud.tilgangeligeDage)),
       'lynkursus': new FormControl(tilbud.lynkursus),
       'korekort_type': new FormControl(tilbud.korekort_type),
@@ -52,58 +52,51 @@ export class MinetilbudEditComponent implements OnInit {
     });
   }
   tilgangObjTilArray(tilg: TilgangeligeDage) {
-    console.log('tilg obj: '+tilg);
+    console.log('tilg obj: ' + tilg);
     const list: any[] = new Array(6);
     if (tilg.tilgangelig_mandag === 1) {
       list[0] = 'mandag';
-    }
-    else {
+    } else {
       list[0] = '';
     }
     if (tilg.tilgangelig_tirsdag === 1) {
       list[1] = 'tirsdag';
-    }
-    else {
+    } else {
       list[1] = '';
     }
     if (tilg.tilgangelig_onsdag === 1) {
       list[2] = 'onsdag';
-    }
-    else {
+    } else {
       list[2] = '';
     }
     if (tilg.tilgangelig_torsdag === 1) {
       list[3] = 'torsdag';
-    }
-    else {
+    } else {
       list[3] = '';
     }
     if (tilg.tilgangelig_fredag === 1) {
       list[4] = 'fredag';
-    }
-    else {
+    } else {
       list[4] = '';
     }
     if (tilg.tilgangelig_lordag === 1) {
       list[5] = 'lordag';
-    }
-    else {
+    } else {
       list[5] = '';
     }
     if (tilg.tilgangelig_sondag === 1) {
       list[6] = 'sondag';
-    }
-    else {
+    } else {
       list[6] = '';
     }
-    console.log('Listen: '+list);
+    console.log('Listen: ' + list);
     return list;
   }
   onDelete() {
     this.tilbudsservice.sletTilbud(this.id);
   }
   onUpdate() {
-    let t: Tilbud = new Tilbud();
+    const t: Tilbud = new Tilbud();
     t.beskrivelse = this.form.value.beskrivelse;
     t.bilmarke = this.form.value.bilmarke;
     t.pris = this.form.value.pris;
@@ -114,11 +107,22 @@ export class MinetilbudEditComponent implements OnInit {
     t.bilstorrelse = this.form.value.bilstorrelse;
 
     console.log(t);
-    //console.log('1: '+t.tilgangeligeDage.tilgangeligstring_mandag);
-    //console.log('2: '+t.tilgangeligeDage.tilgangelig_mandag);
-    //t.tilgangeligeDage = this.fraArrayTilObject(this.form.value.dage);
-    this.tilbudsservice.opdaterTilbud(this.id, t);
-    //this.tilbudsservice.tilbuddene[this.id] = blabla
+    // console.log('1: '+t.tilgangeligeDage.tilgangeligstring_mandag);
+    // console.log('2: '+t.tilgangeligeDage.tilgangelig_mandag);
+    // t.tilgangeligeDage = this.fraArrayTilObject(this.form.value.dage);
+    // this.tilbudsservice.opdaterTilbud(this.id, t);
+    this.tilbudsservice.opdaterTilbudV2(this.id, t).subscribe(
+      (returStreng: string) => {
+        console.log('INDE I COMPOENENTET(logind): ' + returStreng);
+        if (returStreng.includes('false')) {
+          window.alert('Der skete en fejl, prøv igen!');
+        } else {
+          window.alert('Tilbud ' + (this.id + 1) + ' i listen er blevet opdateret!');
+         //  this.router.navigate(['/korelaerer/minetilbud']);
+        }
+      },
+      (error) => console.log(error),
+    );
   }
   fraArrayTilObject(ar: String[]) {
     const tilgang: TilgangeligeDage = new TilgangeligeDage();

@@ -23,6 +23,17 @@ export class MinetilbudListeComponent implements OnInit, OnDestroy {
         }
       );
     this.tilbud = this.tilbudsservice.henttilbud();
+    /*
+    HERINDE er det forsøgt at lave på en "ny" måde, men det ødelagde edit listen :P
+    this.tilbudsservice.henttilbudV2().subscribe(
+      (returObjekt: Tilbud[]) => {
+        console.log('INDE I COMPOENENTET(LISTECOMP): ' + returObjekt);
+        console.log(returObjekt);
+        this.tilbud = returObjekt;
+      },
+      (error) => console.log(error),
+    );
+    */
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
