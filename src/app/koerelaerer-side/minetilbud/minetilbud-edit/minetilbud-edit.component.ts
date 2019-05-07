@@ -93,7 +93,19 @@ export class MinetilbudEditComponent implements OnInit {
     return list;
   }
   onDelete() {
-    this.tilbudsservice.sletTilbud(this.id);
+   // this.tilbudsservice.sletTilbud(this.id);
+    this.tilbudsservice.sletTilbudV2(this.id).subscribe(
+      (returStreng: string) => {
+        console.log('INDE I COMPOENENTET(MT EDIT): ' + returStreng);
+        if (returStreng.includes('0')) {
+          window.alert('Der skete en fejl, prøv igen!');
+        } else {
+          window.alert('Tilbud ' + (this.id + 1) + ' i listen er blevet slettet!');
+          //  this.router.navigate(['/korelaerer/minetilbud']);
+        }
+      },
+      (error) => console.log(error),
+    );
   }
   onUpdate() {
     const t: Tilbud = new Tilbud();

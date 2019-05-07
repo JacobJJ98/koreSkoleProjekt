@@ -266,5 +266,23 @@ export class KoreskoleSideService {
       )
     );
   }
+
+  sletTilbudV2(index: number) {
+    const id: number = this.tilbuddene[index].id;
+    const stringArr: string[] = [this.brugernavn, this.password, id];
+    return this.http.delete('http://localhost:8080/koereskole_REST/webresources/generic/sletTilbud/' + id + '/' + this.brugernavn + '/' + this.password).pipe(
+      map(
+        (response: Response) => {
+          const data = response.text();
+          console.log(data);
+          if (data.includes('1')) {
+            this.tilbuddene.splice(index, 1);
+            this.tilbudChanged.next(this.tilbuddene.slice());
+          }
+          return data;
+        }
+      )
+    );
+  }
 }
 
