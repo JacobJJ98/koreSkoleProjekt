@@ -31,7 +31,6 @@ export class OpretkoreskoleSideComponent implements OnInit {
 
     this.opretkoreskoleservice.opretKoreskolen(this.form.value.brugernavninput, this.form.value.passwordinput, ks).subscribe(
       (returStreng: string) => {
-        // this.opretkoreskoleservice.tilbuddeneV4 = tilbudTilbrugere;
         console.log('INDE I COMPOENENTET: ' + returStreng);
         if (returStreng.includes('false')) {
           window.alert('Der skete en fejl, prøv igen!');

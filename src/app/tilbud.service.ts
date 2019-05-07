@@ -13,7 +13,7 @@ import {map} from 'rxjs/operators';
 export class TilbudService {
 
   private tilg: TilgangeligeDage = new TilgangeligeDage();
-  public tilbuddeneV4: TilbudTilBrugere[] = new Array();
+  private tilbuddeneV4: TilbudTilBrugere[] = new Array();
   constructor(private http: Http) {
   }
   henttilbudTilBruger() {
