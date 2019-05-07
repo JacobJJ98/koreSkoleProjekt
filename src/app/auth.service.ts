@@ -18,6 +18,7 @@ export class AuthService {
     );
     return promise;
   }
+  // bliver ikke brugt længere, men turde ikke slettes endnu
   login(samletstreng: String) {
     console.log('Login metode STARTER');
     this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/login', samletstreng).subscribe(
