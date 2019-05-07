@@ -7,12 +7,13 @@ import {MyObjModel} from './Model/myObj.model';
 import {Tilbud} from './Model/tilbud.model';
 import {Koreskole} from './Model/koreskole.model';
 import {el} from '@angular/platform-browser/testing/src/browser_util';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class TilbudService {
 
   private tilg: TilgangeligeDage = new TilgangeligeDage();
-  private tilbuddeneV4: TilbudTilBrugere[] = new Array();
+  public tilbuddeneV4: TilbudTilBrugere[] = new Array();
   constructor(private http: Http) {
   }
   henttilbudTilBruger() {
@@ -373,6 +374,7 @@ export class TilbudService {
     return '';
   }
 
+  // gammel måde
   opretKoreskole(brugernavn: string, password: string, koreskole: Koreskole) {
   const jsonkoreskole: string = JSON.stringify(koreskole);
   const stringArr: string[] = [brugernavn, password, jsonkoreskole];
@@ -384,6 +386,21 @@ export class TilbudService {
         console.log(data);
       },
       (error) => console.log(error),
+    );
+  }
+
+  opretKoreskolen(brugernavn: string, password: string, koreskole: Koreskole) {
+    const jsonkoreskole: string = JSON.stringify(koreskole);
+    const stringArr: string[] = [brugernavn, password, jsonkoreskole];
+    const jsonStringArr: string = JSON.stringify(stringArr);
+    return this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/opretKøreskole', jsonStringArr).pipe(
+      map(
+        (response: Response) => {
+          const data = response.text();
+          console.log(data);
+          return data;
+        }
+      )
     );
   }
 }
