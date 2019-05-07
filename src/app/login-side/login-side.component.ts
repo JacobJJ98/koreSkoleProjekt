@@ -30,6 +30,18 @@ export class LoginSideComponent implements OnInit {
     this.authService.passwordAuth = splitted[1];
     console.log(splitted[1]);
 
-    this.authService.login(brugernavn + ' ' + kodeord);
+    // this.authService.login(brugernavn + ' ' + kodeord);
+    this.authService.loginV2(brugernavn + ' ' + kodeord).subscribe(
+      (returStreng: string) => {
+        console.log('INDE I COMPOENENTET(logind): ' + returStreng);
+        if (returStreng.includes('0')) {
+          window.alert('Der skete en fejl, prøv igen!');
+        } else {
+          window.alert('Du er logget ind din store klovn!');
+           this.router.navigate(['/korelaerer/minetilbud']);
+        }
+      },
+      (error) => console.log(error),
+    );
   }
 }
