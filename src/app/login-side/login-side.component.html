@@ -1,25 +1,36 @@
-<form class="form-horizontal">
+<br>
+<br><br>
+<br><br>
+<br><br>
+<br>
+<form class="form-horizontal" #f="ngForm" >
+
   <fieldset>
-
+    <div class="wrapper" align="center">
     <!-- Form Name -->
-    <legend>Login</legend>
-
+    <div class="h1">Login</div>
+      <br>
     <!-- Text input-->
+    </div>
+
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput">Brugernavn</label>
       <div class="col-md-4">
-        <input #brugernavn id="textinput" name="textinput" type="text" placeholder="Brugernavn" class="form-control input-md" required="required">
+        <input #brugernavn id="textinput" name="textinput" type="text" placeholder="Brugernavn" class="form-control input-md"  required ngModel>
       </div>
     </div>
+
 
     <!-- Search input-->
     <div class="form-group">
       <label class="col-md-4 control-label" for="searchinput">Password</label>
       <div class="col-md-4">
-        <input #kode id="searchinput" name="searchinput" type="search" placeholder="Password" class="form-control input-md" required="required">
+        <input #kode id="searchinput" name="searchinput" type="search" placeholder="Password" class="form-control input-md" required ngModel>
       </div>
     </div>
-    <hr>
+
+
+    <br>
 
 
 
@@ -28,10 +39,20 @@
 
 </form>
 
-<button (click)="onLogin(brugernavn.value,kode.value)">TEST med REST</button>
+<div class="wrapper" align="center">
 
-<button class="btn btn-default" (click)="login()" routerLink="/korelaerer">Login uden om rest</button>
-<button class="btn btn-default" (click)="onLogout()">Logout Metode</button>
-<button class="btn-primary" routerLink="/korelaerer">Login</button>
-<button class="btn-primary" routerLink="/opretkoreskole">Opret køreskole</button>
 
+<button [disabled]="!f.valid" class="btn btn-success" (click)="onLogin(brugernavn.value,kode.value)"><span class="glyphicon glyphicon-refresh spinning" *ngIf="status"></span>  Login   </button>
+
+
+<br>
+<br>
+<button class="btn btn-primary" routerLink="/opretkoreskole">Opret køreskole</button>
+<br>
+<br>
+
+<div *ngIf="fejlLogin" class="alert alert-danger col-md-4 col-md-offset-4" align="center" >
+  <strong>Login Fejlede!</strong> Der skete en fejl, prøv igen.
+</div>
+
+</div>

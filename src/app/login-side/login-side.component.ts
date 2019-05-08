@@ -14,6 +14,8 @@ import {Router} from '@angular/router';
 export class LoginSideComponent implements OnInit {
 
   samletString: String;
+  status: Boolean = false;
+  fejlLogin: Boolean = false;
 
   constructor(private http: Http, private authService: AuthService, private tilbudTilBrugerService: TilbudService, private router: Router) { }
 
@@ -23,6 +25,7 @@ export class LoginSideComponent implements OnInit {
 
 
   onLogin(brugernavn: String, kodeord: String) {
+    this.status = true;
     this.samletString = brugernavn + ' ' + kodeord;
     this.authService.samletString = this.samletString;
     const splitted = this.samletString.split(' ', 2);
@@ -35,10 +38,12 @@ export class LoginSideComponent implements OnInit {
       (returStreng: string) => {
         console.log('INDE I COMPOENENTET(logind): ' + returStreng);
         if (returStreng.includes('0')) {
-          window.alert('Der skete en fejl, prøv igen!');
+          this.fejlLogin = true;
+          //window.alert('Der skete en fejl, prøv igen!');
+          this.status = false;
         } else {
-          window.alert('Du er logget ind din store klovn!');
-           this.router.navigate(['/korelaerer/minetilbud']);
+          //window.alert('Du er logget ind din store klovn!');
+          this.router.navigate(['/korelaerer/minetilbud']);
         }
       },
       (error) => console.log(error),
