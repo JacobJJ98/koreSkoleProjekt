@@ -30,47 +30,10 @@ export class KoreskoleSideService {
 
     this.samletString = this.brugernavn + ' ' + this.password;
     console.log('Samlet string: ' + this.samletString);
-
-   // this.henttilbud();
-
-    this.tilbud1.koreskole_id = 's175132';
-    this.tilbud1.pris = 6;
-    this.tilbud1.korekort_type = 'A2';
-    this.tilbud1.lynkursus = 1;
-    this.tilbud1.bilmarke = 'Audi';
-    this.tilbud1.bilstorrelse = 'mellem';
-    this.tilbud1.kon = 'kvinde';
-    this.tilbud1.beskrivelse = 'Hos os bliver du en god bilist';
-    this.tilbud1.tilgangeligeDage.tilgangelig_mandag = 1;
-    this.tilbud1.tilgangeligeDage.tilgangelig_tirsdag = 0;
-    this.tilbud1.tilgangeligeDage.tilgangelig_onsdag = 0;
-    this.tilbud1.tilgangeligeDage.tilgangelig_torsdag = 1;
-    this.tilbud1.tilgangeligeDage.tilgangelig_fredag = 1;
-    this.tilbud1.tilgangeligeDage.tilgangelig_lordag = 0;
-    this.tilbud1.tilgangeligeDage.tilgangelig_sondag = 0;
-    this.tilbud1.id = 1234;
-
-    this.tilbud2.koreskole_id = 's175132';
-    this.tilbud2.pris = 2;
-    this.tilbud2.korekort_type = 'AM';
-    this.tilbud2.lynkursus = 0;
-    this.tilbud2.bilmarke = 'Honda';
-    this.tilbud2.bilstorrelse = 'stor';
-    this.tilbud2.kon = 'mand';
-    this.tilbud2.beskrivelse = 'Hos os bliver xcvvvvvvvdu en god bixcvxlist';
-    this.tilbud2.tilgangeligeDage.tilgangelig_mandag = 0;
-    this.tilbud2.tilgangeligeDage.tilgangelig_tirsdag = 1;
-    this.tilbud2.tilgangeligeDage.tilgangelig_onsdag = 1;
-    this.tilbud2.tilgangeligeDage.tilgangelig_torsdag = 0;
-    this.tilbud2.tilgangeligeDage.tilgangelig_fredag = 0;
-    this.tilbud2.tilgangeligeDage.tilgangelig_lordag = 0;
-    this.tilbud2.tilgangeligeDage.tilgangelig_sondag = 0;
-    this.tilbud2.id = 1234;
-    // this.tilbuddene = [this.tilbud1, this.tilbud2];
   }
   henttilbud() {
 
-    this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/getTilbudKoreskole', this.samletString).subscribe(
+    this.http.post('http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/getTilbudKoreskole', this.samletString).subscribe(
       (response: Response) => {
         const data = response;
        // console.log('hent Tilbud' + data.text());
@@ -107,7 +70,7 @@ export class KoreskoleSideService {
     // console.log('EFTER PARSE: ' + jsonTilbud);
     const stringArr: string[] = [this.brugernavn, this.password, jsonTilbud];
     const jsonStringArr: string = JSON.stringify(stringArr);
-    this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/opretTilbud', jsonStringArr).subscribe(
+    this.http.post('http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/opretTilbud', jsonStringArr).subscribe(
       (response: Response) => {
         const data = response;
         // console.log('SVAR FRA SERVER: ' + data.text());
@@ -116,18 +79,22 @@ export class KoreskoleSideService {
       (error) => console.log(error),
     );
   }
-  sletTilbud(indeks: number) {
+  sletTilbudFraListen(indeks: number) {
     const id: number = this.tilbuddene[indeks].id;
     this.tilbuddene.splice(indeks, 1);
     this.tilbudChanged.next(this.tilbuddene.slice());
+  }
+  sletTilbud(indeks: number) {
+    const id: number = this.tilbuddene[indeks].id;
     const stringArr: string[] = [this.brugernavn, this.password, id];
     const jsonStringArr: string = JSON.stringify(stringArr);
-    this.http.delete('http://localhost:8080/koereskole_REST/webresources/generic/sletTilbud/' + id + '/' + this.brugernavn + '/' + this.password).subscribe(
+    this.http.delete('http://dist.saluton.dk:5401/koereskole_REST/webresources/generic//sletTilbud/'
+      + id + '/' + this.brugernavn + '/' + this.password).subscribe(
       (response: Response) => {
         const data = response;
         console.log('SVAR FRA SERVER: SLET----- ' + data.text());
         // this.henttilbud();
-        this.router.navigate(['/korelaerer/minetilbud']);
+        //this.router.navigate(['/korelaerer/minetilbud']);
       },
       (error) => console.log(error),
     );
@@ -147,7 +114,7 @@ export class KoreskoleSideService {
     const jsonStringArr: string = JSON.stringify(stringArr);
     console.log('BODYEN I VORES POST METODE SKAL VÆRE PUT: ' + jsonStringArr);
 
-    this.http.put('http://localhost:8080/koereskole_REST/webresources/generic/aendreTilbud', jsonStringArr).subscribe(
+    this.http.put('http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/aendreTilbud', jsonStringArr).subscribe(
       (response: Response) => {
         const data = response;
         console.log('SVAR FRA SERVER: UPDATE----- ' + data.text());
@@ -223,7 +190,7 @@ export class KoreskoleSideService {
     const jsonTilbud: string = JSON.stringify(tilbud1);
     const stringArr: string[] = [this.brugernavn, this.password, jsonTilbud];
     const jsonStringArr: string = JSON.stringify(stringArr);
-    return this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/opretTilbud', jsonStringArr).pipe(
+    return this.http.post('http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/opretTilbud', jsonStringArr).pipe(
       map(
         (response: Response) => {
           const data = response.text();
@@ -236,7 +203,7 @@ export class KoreskoleSideService {
 
   // prøvet at lave det på den "nye" måde, men det drillede iforhold til edit osv
   henttilbudV2() {
-    return this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/getTilbudKoreskole', this.samletString).pipe(
+    return this.http.post('http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/getTilbudKoreskole', this.samletString).pipe(
       map(
         (response: Response) => {
           const data = response.json();
@@ -256,7 +223,7 @@ export class KoreskoleSideService {
     const jsonTilbud: string = JSON.stringify(this.tilbuddene[id]);
     const stringArr: string[] = [this.brugernavn, this.password, this.tilbuddene[id].id, jsonTilbud];
     const jsonStringArr: string = JSON.stringify(stringArr);
-    return this.http.put('http://localhost:8080/koereskole_REST/webresources/generic/aendreTilbud', jsonStringArr).pipe(
+    return this.http.put('http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/aendreTilbud', jsonStringArr).pipe(
       map(
         (response: Response) => {
           const data = response.text();
@@ -270,7 +237,7 @@ export class KoreskoleSideService {
   sletTilbudV2(index: number) {
     const id: number = this.tilbuddene[index].id;
     const stringArr: string[] = [this.brugernavn, this.password, id];
-    return this.http.delete('http://localhost:8080/koereskole_REST/webresources/generic/sletTilbud/' + id + '/' + this.brugernavn + '/' + this.password).pipe(
+    return this.http.delete('http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/sletTilbud/' + id + '/' + this.brugernavn + '/' + this.password).pipe(
       map(
         (response: Response) => {
           const data = response.text();

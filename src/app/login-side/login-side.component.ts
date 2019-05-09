@@ -37,13 +37,13 @@ export class LoginSideComponent implements OnInit {
     this.authService.loginV2(brugernavn + ' ' + kodeord).subscribe(
       (returStreng: string) => {
         console.log('INDE I COMPOENENTET(logind): ' + returStreng);
-        if (returStreng.includes('0')) {
+        if (returStreng.includes('1')) {
+          this.router.navigate(['/korelaerer/minetilbud']);
+        } else {
+          //window.alert('Du er logget ind din store klovn!');
           this.fejlLogin = true;
           //window.alert('Der skete en fejl, prøv igen!');
           this.status = false;
-        } else {
-          //window.alert('Du er logget ind din store klovn!');
-          this.router.navigate(['/korelaerer/minetilbud']);
         }
       },
       (error) => console.log(error),

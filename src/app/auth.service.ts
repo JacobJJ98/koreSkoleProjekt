@@ -43,7 +43,7 @@ export class AuthService {
   }
 
   loginV2(samletstreng: String) {
-    return this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/login', samletstreng).pipe(
+    return this.http.post('http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/login', samletstreng).pipe(
       map(
         (response: Response) => {
           const data = response.text();

@@ -16,6 +16,8 @@ export class OprettilbudComponent implements OnInit {
   private tilbud1 = new Tilbud();
   private TilgangeligeDage = new TilgangeligeDage();
   konnn = ['mand', 'kvinde'];
+  status: Boolean = false;
+  fejlLogin: Boolean = false;
   constructor(private tilbudsservice: KoreskoleSideService, private router: Router) { }
 
   ngOnInit() {
@@ -38,18 +40,19 @@ export class OprettilbudComponent implements OnInit {
     console.log('prisen er sat til: ' + this.tilbud1.pris);
     console.log('prisen value: ' + this.form.value.prisen);
     this.tilbud1.beskrivelse = this.form.value.beskrivelse;
+    this.status = true;
     this.tilbudsservice.addTilbudV2(this.tilbud1).subscribe(
+
       (returStreng: string) => {
         console.log('INDE I COMPOENENTET(opretTilbud): ' + returStreng);
-        if (returStreng.includes('0')) {
-          window.alert('Der skete en fejl, prøv igen!');
-        } else {
-          window.alert('Tilbuddet er oprettet!');
+        if (returStreng.includes('1')) {
           this.router.navigate(['/korelaerer/minetilbud']);
+        } else {
+          this.fejlLogin = true;
+          this.status = false;
         }
       },
-      (error) => console.log(error),
-    );
+      (error) => console.log(error));
   }
   lynkursusBooleantilBit(bo: Boolean) {
     let bit = 0;

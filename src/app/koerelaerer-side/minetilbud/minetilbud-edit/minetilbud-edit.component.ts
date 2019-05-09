@@ -21,6 +21,8 @@ export class MinetilbudEditComponent implements OnInit {
   public popoverMessage = 'Når først et tilbud er slettet, kan det ikke genskabes!';
   public confirmClicked = false;
   public cancelClicked = false;
+  status: Boolean = false;
+  fejlLogin: Boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private tilbudsservice: KoreskoleSideService) {
 
@@ -93,15 +95,19 @@ export class MinetilbudEditComponent implements OnInit {
     return list;
   }
   onDelete() {
+    this.status = true;
    // this.tilbudsservice.sletTilbud(this.id);
     this.tilbudsservice.sletTilbudV2(this.id).subscribe(
       (returStreng: string) => {
         console.log('INDE I COMPOENENTET(MT EDIT): ' + returStreng);
-        if (returStreng.includes('0')) {
-          window.alert('Der skete en fejl, prøv igen!');
-        } else {
+        if (returStreng.includes('1')) {
+          this.tilbudsservice.sletTilbudFraListen(this.id);
           window.alert('Tilbud ' + (this.id + 1) + ' i listen er blevet slettet!');
           //  this.router.navigate(['/korelaerer/minetilbud']);
+        } else {
+          //window.alert('Der skete en fejl, prøv igen!');
+          //Lav en fejl
+          this.fejlLogin = true;
         }
       },
       (error) => console.log(error),

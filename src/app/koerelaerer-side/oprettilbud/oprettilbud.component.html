@@ -165,9 +165,19 @@
 </form>
 
 
+
+
+
 <p align="center">
-  <button class="btn btn-primary mb-2" (click)="onClick()" [disabled]="!f.valid">Opret Tilbud</button>
+<button [disabled]="!f.valid" class="btn btn-success" (click)="onClick()"><span class="glyphicon glyphicon-refresh spinning" *ngIf="status" ></span>  Opret Tilbud   </button>
 </p>
+<br>
+<br>
+<div *ngIf="fejlLogin" class="alert alert-danger col-md-4 col-md-offset-4" align="center" >
+  <strong>Opret Tilbud fejlede!</strong> Der skete en fejl, prøv igen.
+</div>
+
+
 
 
 
