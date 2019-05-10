@@ -12,7 +12,7 @@ export class KoreskoleSideService {
   private brugernavn;
   private password;
   private samletString;
-  private url: String = 'http://localhost:8080/koereskole_REST/webresources/generic/';
+  private url: String = 'http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/';
   private tilbuddene: Tilbud[] = new Array();
   tilbudChanged = new Subject<Tilbud[]>();
 

@@ -14,7 +14,7 @@ export class TilbudService {
 
   private tilg: TilgangeligeDage = new TilgangeligeDage();
   private tilbuddeneV4: TilbudTilBrugere[] = new Array();
-  private url: String = 'http://localhost:8080/koereskole_REST/webresources/generic/';
+  private url: String = 'http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/';
   constructor(private http: Http) {
   }
   henttilbudTilBruger() {
