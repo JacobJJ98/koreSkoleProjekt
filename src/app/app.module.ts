@@ -30,7 +30,7 @@ import { KoreskoleSideService } from './koerelaerer-side/koreskoleSide.service';
 
 import { AuthGuard } from './auth-guard.service';
 import { OpretkoreskoleSideComponent } from './login-side/opretkoreskole-side/opretkoreskole-side.component';
-import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 @NgModule({
   declarations: [
     AppComponent,
