@@ -1,9 +1,7 @@
-import {TilgangeligeDage} from '../Model/tilgængeligedage.model';
 import {Tilbud} from '../Model/tilbud.model';
 import {AuthService} from '../auth.service';
 import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
-import {TilbudTilBrugere} from '../Model/tilbudTilBrugere.model';
 import {Subject} from 'rxjs';
 import {Router} from '@angular/router';
 import {map} from 'rxjs/operators';
@@ -14,41 +12,22 @@ export class KoreskoleSideService {
   private brugernavn;
   private password;
   private samletString;
-
-  private tilg: TilgangeligeDage = new TilgangeligeDage();
-  private tilbud1 = new Tilbud;
-  private tilbud2 = new Tilbud;
+  private url: String = 'http://localhost:8080/koereskole_REST/webresources/generic/';
   private tilbuddene: Tilbud[] = new Array();
   tilbudChanged = new Subject<Tilbud[]>();
 
   constructor(private authService: AuthService, private http: Http, private router: Router) {
 
     this.brugernavn = this.authService.brugernavnAuth;
-    console.log('brugernavn: ' + this.brugernavn);
     this.password = this.authService.passwordAuth;
-    console.log('password: ' + this.password);
-
     this.samletString = this.brugernavn + ' ' + this.password;
     console.log('Samlet string: ' + this.samletString);
   }
   henttilbud() {
-
-    this.http.post('http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/getTilbudKoreskole', this.samletString).subscribe(
+    this.http.post(this.url + 'getTilbudKoreskole', this.samletString).subscribe(
       (response: Response) => {
         const data = response;
-       // console.log('hent Tilbud' + data.text());
-        // console.log(data.text());
         const obj: Tilbud[] = JSON.parse(data.text());
-       // console.log('Det hentede bilmærke: ' + obj[0].bilmarke);
-       // console.log('Det hentede størrelse: ' + obj[0].bilstorrelse);
-       // console.log('Det hentede lynkursus: ' + obj[0].lynkursus);
-       // console.log('Det hentede køn: ' + obj[0].kon);
-       // console.log('Det hentede pris: ' + obj[0].pris);
-       // console.log('Det hentede ID: ' + obj[0].id);
-       // console.log('Det hentede beskrivelse: ' + obj[0].beskrivelse);
-       // console.log('Det hentede koreskoleID: ' + obj[0].koreskole_id);
-       // console.log('Det hentede type: ' + obj[0].korekort_type);
-       // console.log(obj[0].tilgangeligeDage);
 
         this.fraObjTilListen(obj);
       },
@@ -59,74 +38,6 @@ export class KoreskoleSideService {
   hentTilbudMedIndex(index: number) {
     return this.tilbuddene[index];
   }
-  // gammel metode
-  addTilbud(tilbud: Tilbud) {
-    // let svaret = false;
-    this.tilbuddene.push(tilbud);
-    this.tilbudChanged.next(this.tilbuddene.slice());
-    // console.log('INDE FRA ADDTILBUD :');
-    // console.log(tilbud);
-    const jsonTilbud: string = JSON.stringify(tilbud);
-    // console.log('EFTER PARSE: ' + jsonTilbud);
-    const stringArr: string[] = [this.brugernavn, this.password, jsonTilbud];
-    const jsonStringArr: string = JSON.stringify(stringArr);
-    this.http.post('http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/opretTilbud', jsonStringArr).subscribe(
-      (response: Response) => {
-        const data = response;
-        // console.log('SVAR FRA SERVER: ' + data.text());
-        this.henttilbud();
-      },
-      (error) => console.log(error),
-    );
-  }
-  sletTilbudFraListen(indeks: number) {
-    const id: number = this.tilbuddene[indeks].id;
-    this.tilbuddene.splice(indeks, 1);
-    this.tilbudChanged.next(this.tilbuddene.slice());
-  }
-  sletTilbud(indeks: number) {
-    const id: number = this.tilbuddene[indeks].id;
-    const stringArr: string[] = [this.brugernavn, this.password, id];
-    const jsonStringArr: string = JSON.stringify(stringArr);
-    this.http.delete('http://dist.saluton.dk:5401/koereskole_REST/webresources/generic//sletTilbud/'
-      + id + '/' + this.brugernavn + '/' + this.password).subscribe(
-      (response: Response) => {
-        const data = response;
-        console.log('SVAR FRA SERVER: SLET----- ' + data.text());
-        // this.henttilbud();
-        //this.router.navigate(['/korelaerer/minetilbud']);
-      },
-      (error) => console.log(error),
-    );
-  }
-  opdaterTilbud(index: number, tilbud: Tilbud) {
-    console.log('køn ' + tilbud.kon);
-    console.log('bilmærke ' + tilbud.bilmarke);
-    console.log('bilstørrelse ' + tilbud.bilstorrelse);
-    console.log('kørekort type ' + tilbud.korekort_type);
-    tilbud.id = this.tilbuddene[index].id;
-    this.tilbuddene[index] = tilbud;
-    this.tilbudChanged.next(this.tilbuddene.slice());
-
-    const jsonTilbud: string = JSON.stringify(this.tilbuddene[index]);
-    // console.log('EFTER PARSE: ' + jsonTilbud);
-    const stringArr: string[] = [this.brugernavn, this.password, this.tilbuddene[index].id, jsonTilbud];
-    const jsonStringArr: string = JSON.stringify(stringArr);
-    console.log('BODYEN I VORES POST METODE SKAL VÆRE PUT: ' + jsonStringArr);
-
-    this.http.put('http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/aendreTilbud', jsonStringArr).subscribe(
-      (response: Response) => {
-        const data = response;
-        console.log('SVAR FRA SERVER: UPDATE----- ' + data.text());
-        // this.henttilbud();
-        this.router.navigate(['/korelaerer/minetilbud']);
-      },
-      (error) => console.log(error),
-    );
-
-  }
-
-
   private fraObjTilListen(obj: Tilbud[]) {
     this.tilbuddene.splice(0, this.tilbuddene.length);
     for (let o = 0; o < obj.length; o++) {
@@ -190,7 +101,7 @@ export class KoreskoleSideService {
     const jsonTilbud: string = JSON.stringify(tilbud1);
     const stringArr: string[] = [this.brugernavn, this.password, jsonTilbud];
     const jsonStringArr: string = JSON.stringify(stringArr);
-    return this.http.post('http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/opretTilbud', jsonStringArr).pipe(
+    return this.http.post(this.url + 'opretTilbud', jsonStringArr).pipe(
       map(
         (response: Response) => {
           const data = response.text();
@@ -201,33 +112,30 @@ export class KoreskoleSideService {
     );
   }
 
-  // prøvet at lave det på den "nye" måde, men det drillede iforhold til edit osv
-  henttilbudV2() {
-    return this.http.post('http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/getTilbudKoreskole', this.samletString).pipe(
-      map(
-        (response: Response) => {
-          const data = response.json();
-          console.log('DE HENTEDE TILBUD');
-          console.log(data);
-          return data;
-        }
-      )
-    );
-  }
-
+  /*
+  Man burde nok først køre følgende hvis man får et 1 tilbage:
+  t.id = this.tilbuddene[id].id;
+    this.tilbuddene[id] = t;
+    Men det kan vi ikke pga. at metoden er PUT??? eller hva
+    For det virker fint med DELETE og POST metoder
+   */
   opdaterTilbudV2(id: number, t: Tilbud) {
     t.id = this.tilbuddene[id].id;
     this.tilbuddene[id] = t;
     this.tilbudChanged.next(this.tilbuddene.slice());
-
     const jsonTilbud: string = JSON.stringify(this.tilbuddene[id]);
     const stringArr: string[] = [this.brugernavn, this.password, this.tilbuddene[id].id, jsonTilbud];
     const jsonStringArr: string = JSON.stringify(stringArr);
-    return this.http.put('http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/aendreTilbud', jsonStringArr).pipe(
+    return this.http.put(this.url + 'aendreTilbud', jsonStringArr).pipe(
       map(
         (response: Response) => {
           const data = response.text();
           console.log(data);
+          if (data.includes('1')) {
+            // t.id = this.tilbuddene[id].id;
+           // this.tilbuddene[id] = t;
+           // this.tilbudChanged.next(this.tilbuddene.slice());
+          }
           return data;
         }
       )
@@ -237,7 +145,7 @@ export class KoreskoleSideService {
   sletTilbudV2(index: number) {
     const id: number = this.tilbuddene[index].id;
     const stringArr: string[] = [this.brugernavn, this.password, id];
-    return this.http.delete('http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/sletTilbud/' + id + '/' + this.brugernavn + '/' + this.password).pipe(
+    return this.http.delete(this.url + 'sletTilbud/' + id + '/' + this.brugernavn + '/' + this.password).pipe(
       map(
         (response: Response) => {
           const data = response.text();

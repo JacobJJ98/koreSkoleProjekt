@@ -6,7 +6,7 @@ import {KoreskoleSideService} from '../../koreskoleSide.service';
 import {Tilbud} from '../../../Model/tilbud.model';
 import {FormControl, FormGroup, NgForm} from '@angular/forms';
 import {TilgangeligeDage} from '../../../Model/tilgængeligedage.model';
-
+import Swal, { SweetAlertOptions } from 'sweetalert2';
 @Component({
   selector: 'app-minetilbud-edit',
   templateUrl: './minetilbud-edit.component.html',
@@ -21,8 +21,6 @@ export class MinetilbudEditComponent implements OnInit {
   public popoverMessage = 'Når først et tilbud er slettet, kan det ikke genskabes!';
   public confirmClicked = false;
   public cancelClicked = false;
-  status: Boolean = false;
-  fejlLogin: Boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private tilbudsservice: KoreskoleSideService) {
 
@@ -40,12 +38,10 @@ export class MinetilbudEditComponent implements OnInit {
   initForm() {
     const tilbud = this.tilbudsservice.hentTilbudMedIndex(this.id);
     console.log(tilbud.tilgangeligeDage.tilgangelig_mandag);
-    console.log('gggggg' + tilbud.tilgangeligeDage);
     this.tilbudForm = new FormGroup({
       'beskrivelse': new FormControl(tilbud.beskrivelse),
       'bilmarke': new FormControl(tilbud.bilmarke),
       'pris': new FormControl(tilbud.pris),
-      // 'tilg': new FormControl(any['mandag','','onsdag','','','','']),
       'tilgangelig': new FormControl(this.tilgangObjTilArray(tilbud.tilgangeligeDage)),
       'lynkursus': new FormControl(tilbud.lynkursus),
       'korekort_type': new FormControl(tilbud.korekort_type),
@@ -95,19 +91,20 @@ export class MinetilbudEditComponent implements OnInit {
     return list;
   }
   onDelete() {
-    this.status = true;
-   // this.tilbudsservice.sletTilbud(this.id);
     this.tilbudsservice.sletTilbudV2(this.id).subscribe(
       (returStreng: string) => {
         console.log('INDE I COMPOENENTET(MT EDIT): ' + returStreng);
         if (returStreng.includes('1')) {
-          this.tilbudsservice.sletTilbudFraListen(this.id);
-          window.alert('Tilbud ' + (this.id + 1) + ' i listen er blevet slettet!');
-          //  this.router.navigate(['/korelaerer/minetilbud']);
+          //this.tilbudsservice.sletTilbudFraListen(this.id);
+          this.router.navigate(['/korelaerer/minetilbud']);
+          Swal.fire({
+            type: 'success',
+            title: 'Tilbud slettet!',
+            showConfirmButton: false,
+            timer: 1000
+          });
         } else {
-          //window.alert('Der skete en fejl, prøv igen!');
-          //Lav en fejl
-          this.fejlLogin = true;
+          window.alert('Der skete en fejl, prøv igen!');
         }
       },
       (error) => console.log(error),
@@ -124,19 +121,19 @@ export class MinetilbudEditComponent implements OnInit {
     t.kon = this.form.value.kon;
     t.bilstorrelse = this.form.value.bilstorrelse;
 
-    console.log(t);
-    // console.log('1: '+t.tilgangeligeDage.tilgangeligstring_mandag);
-    // console.log('2: '+t.tilgangeligeDage.tilgangelig_mandag);
-    // t.tilgangeligeDage = this.fraArrayTilObject(this.form.value.dage);
-    // this.tilbudsservice.opdaterTilbud(this.id, t);
     this.tilbudsservice.opdaterTilbudV2(this.id, t).subscribe(
       (returStreng: string) => {
         console.log('INDE I COMPOENENTET(logind): ' + returStreng);
-        if (returStreng.includes('false')) {
-          window.alert('Der skete en fejl, prøv igen!');
+        if (returStreng.includes('1')) {
+          Swal.fire({
+            type: 'success',
+            title: 'Ændringer gemt!',
+            showConfirmButton: false,
+            timer: 1000
+          });
+          //this.router.navigate(['/korelaerer/minetilbud']);
         } else {
-          window.alert('Tilbud ' + (this.id + 1) + ' i listen er blevet opdateret!');
-         //  this.router.navigate(['/korelaerer/minetilbud']);
+          window.alert('Der skete en fejl, prøv igen!');
         }
       },
       (error) => console.log(error),

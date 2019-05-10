@@ -30,7 +30,7 @@ import { KoreskoleSideService } from './koerelaerer-side/koreskoleSide.service';
 
 import { AuthGuard } from './auth-guard.service';
 import { OpretkoreskoleSideComponent } from './login-side/opretkoreskole-side/opretkoreskole-side.component';
-
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +58,7 @@ import { OpretkoreskoleSideComponent } from './login-side/opretkoreskole-side/op
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
+    SweetAlert2Module.forRoot(),
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger' // set defaults here
     })

@@ -44,6 +44,7 @@ export class LoginSideComponent implements OnInit {
           this.fejlLogin = true;
           //window.alert('Der skete en fejl, prøv igen!');
           this.status = false;
+
         }
       },
       (error) => console.log(error),

@@ -2,7 +2,6 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {KoreskoleSideService} from '../koreskoleSide.service';
 import {Tilbud} from '../../Model/tilbud.model';
-import {element} from 'protractor';
 import {TilgangeligeDage} from '../../Model/tilgængeligedage.model';
 import {Router} from '@angular/router';
 
@@ -14,7 +13,6 @@ import {Router} from '@angular/router';
 export class OprettilbudComponent implements OnInit {
   @ViewChild('f') form: NgForm;
   private tilbud1 = new Tilbud();
-  private TilgangeligeDage = new TilgangeligeDage();
   konnn = ['mand', 'kvinde'];
   status: Boolean = false;
   fejlLogin: Boolean = false;
@@ -29,16 +27,8 @@ export class OprettilbudComponent implements OnInit {
     this.tilbud1.bilstorrelse = this.form.value.bilstr;
     this.tilbud1.korekort_type = this.form.value.kktype;
     this.tilbud1.lynkursus = this.lynkursusBooleantilBit(this.form.value.lynkurus);
-    // @ts-ignore  //Den giver fejl her, men det er ikke noget problem da fraArrayTilObject returnerer et korrekt TilgængeligeDage objekt
     this.tilbud1.tilgangeligeDage = this.fraArrayTilObject(this.form.value.dage);
-    // let tilgang: TilgangeligeDage = new TilgangeligeDage();
-    // tilgang = this.fraArrayTilObject(this.form.value.dage);
-    console.log(this.fraArrayTilObject(this.form.value.dage));
-    console.log('her er dagene: ' + this.form.value.dage);
-    console.log(this.form.value.dage);
     this.tilbud1.pris = this.form.value.prisen;
-    console.log('prisen er sat til: ' + this.tilbud1.pris);
-    console.log('prisen value: ' + this.form.value.prisen);
     this.tilbud1.beskrivelse = this.form.value.beskrivelse;
     this.status = true;
     this.tilbudsservice.addTilbudV2(this.tilbud1).subscribe(
@@ -96,7 +86,6 @@ export class OprettilbudComponent implements OnInit {
         tilgang.tilgangelig_sondag = 1;
       }
     }
-
     return tilgang;
     }
 }
