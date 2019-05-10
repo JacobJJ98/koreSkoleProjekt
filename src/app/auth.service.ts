@@ -13,7 +13,7 @@ export class AuthService {
   isAuthenticated() {
     const promise = new Promise(
       (resolve, reject) => {
-        resolve(this.loggedIn === true);
+        resolve(this.loggedIn);
       }
     );
     return promise;

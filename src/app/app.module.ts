@@ -11,7 +11,6 @@ import { KoerelaererSideComponent } from './koerelaerer-side/koerelaerer-side.co
 import { LoginSideComponent } from './login-side/login-side.component';
 import { MinetilbudComponent } from './koerelaerer-side/minetilbud/minetilbud.component';
 import { MinprofilComponent } from './koerelaerer-side/minprofil/minprofil.component';
-import { MinetilbudStandardComponent } from './koerelaerer-side/minetilbud/minetilbud-standard/minetilbud-standard.component';
 import { MinetilbudListeComponent } from './koerelaerer-side/minetilbud/minetilbud-liste/minetilbud-liste.component';
 import { MinetilbudEditComponent } from './koerelaerer-side/minetilbud/minetilbud-edit/minetilbud-edit.component';
 import { MinetilbudItemComponent } from './koerelaerer-side/minetilbud/minetilbud-liste/minetilbud-item/minetilbud-item.component';
@@ -42,7 +41,6 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     LoginSideComponent,
     MinetilbudComponent,
     MinprofilComponent,
-    MinetilbudStandardComponent,
     MinetilbudListeComponent,
     MinetilbudEditComponent,
     MinetilbudItemComponent,

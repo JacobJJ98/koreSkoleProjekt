@@ -8,7 +8,6 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {MinetilbudComponent} from './koerelaerer-side/minetilbud/minetilbud.component';
 import {OprettilbudComponent} from './koerelaerer-side/oprettilbud/oprettilbud.component';
 import {MinprofilComponent} from './koerelaerer-side/minprofil/minprofil.component';
-import {MinetilbudStandardComponent} from './koerelaerer-side/minetilbud/minetilbud-standard/minetilbud-standard.component';
 import {MinetilbudEditComponent} from './koerelaerer-side/minetilbud/minetilbud-edit/minetilbud-edit.component';
 import {OpretkoreskoleSideComponent} from './login-side/opretkoreskole-side/opretkoreskole-side.component';
 
