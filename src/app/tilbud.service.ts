@@ -14,10 +14,11 @@ export class TilbudService {
 
   private tilg: TilgangeligeDage = new TilgangeligeDage();
   private tilbuddeneV4: TilbudTilBrugere[] = new Array();
+  private url: String = 'http://localhost:8080/koereskole_REST/webresources/generic/';
   constructor(private http: Http) {
   }
   henttilbudTilBruger() {
-    this.http.get('http://localhost:8080/koereskole_REST/webresources/generic/getAlleTilbud').subscribe(
+    this.http.get(this.url + 'alleTilbud').subscribe(
       (response: Response) => {
         const data = response.text();
         const obj: TilbudTilBrugere[] = JSON.parse(data.toString());
@@ -41,7 +42,7 @@ export class TilbudService {
     console.log('TYPE: ' + typ);
     console.log('LYN: ' + lyn);
     console.log('DAGE: ' + dage);
-    this.http.get('http://localhost:8080/koereskole_REST/webresources/generic/tilbudMedGiventPostnummer/' + postnummer).subscribe(
+    this.http.get(this.url + 'tilbudMedGiventPostnummer/' + postnummer).subscribe(
       (response: Response) => {
         const data = response.text();
         const obj: TilbudTilBrugere[] = JSON.parse(data.toString());
@@ -379,7 +380,7 @@ export class TilbudService {
   const jsonkoreskole: string = JSON.stringify(koreskole);
   const stringArr: string[] = [brugernavn, password, jsonkoreskole];
   const jsonStringArr: string = JSON.stringify(stringArr);
-    this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/opretKøreskole', jsonStringArr).subscribe(
+    this.http.post(this.url + 'opretKøreskole', jsonStringArr).subscribe(
       (response: Response) => {
         const data = response.text();
         console.log('SVAR FRA SERVER OPRET KORESKOLE:');
@@ -393,7 +394,7 @@ export class TilbudService {
     const jsonkoreskole: string = JSON.stringify(koreskole);
     const stringArr: string[] = [brugernavn, password, jsonkoreskole];
     const jsonStringArr: string = JSON.stringify(stringArr);
-    return this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/opretKøreskole', jsonStringArr).pipe(
+    return this.http.post(this.url + 'opretKøreskole', jsonStringArr).pipe(
       map(
         (response: Response) => {
           const data = response.text();

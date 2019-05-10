@@ -24,7 +24,7 @@ export class KoreskoleSideService {
     console.log('Samlet string: ' + this.samletString);
   }
   henttilbud() {
-    this.http.post(this.url + 'getTilbudKoreskole', this.samletString).subscribe(
+    this.http.post(this.url + 'tilbudKoreskole', this.samletString).subscribe(
       (response: Response) => {
         const data = response;
         const obj: Tilbud[] = JSON.parse(data.text());
