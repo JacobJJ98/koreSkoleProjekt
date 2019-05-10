@@ -4,13 +4,15 @@
       <a
         class="list-group-item"
         *ngFor="let tilbud of tilbudene">
-       <h2>Navn: {{ tilbud.koreskole.navn }}</h2>
-        <h3>Pris: {{ tilbud.tilbud.pris }} kr. </h3>
+       <h2 class="list-group-item-heading">Navn: {{ tilbud.koreskole.navn }}</h2>
+        <h3 class="list-group-item-warning">Pris: {{ tilbud.tilbud.pris }} kr. </h3>
         <h4>Bilmærke: {{ tilbud.tilbud.bilmarke }} </h4>
-        <h4>Kontakt os på {{ tilbud.koreskole.mail }} </h4>
-              <h4>Størrelse på bilen er {{ tilbud.tilbud.bilstorrelse }} </h4>
+        <h4>Størrelse på bilen er {{ tilbud.tilbud.bilstorrelse }} </h4>
+        <h4>Kørekort-type: {{ tilbud.tilbud.korekort_type }} </h4>
+        <h4>Kønnet på kørelæren vil være: {{ tilbud.tilbud.kon }} </h4>
+        <h4 *ngIf="tilbud.tilbud.lynkursus === 1">{{ 'Tilbuddet er et lynkurus' }} </h4>
         <h4>Undervisningsdage:  {{ tilbud.tilbud.tilgangeligeDage.tilgangeligstring_mandag }} {{ tilbud.tilbud.tilgangeligeDage.tilgangeligstring_tirsdag }} {{ tilbud.tilbud.tilgangeligeDage.tilgangeligstring_onsdag }} {{ tilbud.tilbud.tilgangeligeDage.tilgangeligstring_torsdag }} {{ tilbud.tilbud.tilgangeligeDage.tilgangeligstring_fredag }} {{ tilbud.tilbud.tilgangeligeDage.tilgangeligstring_lordag }} {{ tilbud.tilbud.tilgangeligeDage.tilgangeligstring_sondag }} </h4>
-
+        <h4>Kontakt os på {{ tilbud.koreskole.mail }} eller på mobil {{ tilbud.koreskole.telefonnummer}} </h4>
 
       </a>
     </div>
