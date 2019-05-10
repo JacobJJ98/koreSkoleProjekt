@@ -21,7 +21,7 @@ export class AuthService {
   // bliver ikke brugt længere, men turde ikke slettes endnu
   login(samletstreng: String) {
     console.log('Login metode STARTER');
-    this.http.post('http://localhost:8080/koereskole_REST/webresources/generic/login', samletstreng).subscribe(
+    this.http.post('http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/login', samletstreng).subscribe(
       (response: Response) => {
         const data = response;
         console.log('true = 1, false = 0: ' + data.text());

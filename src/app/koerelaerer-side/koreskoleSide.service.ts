@@ -12,7 +12,7 @@ export class KoreskoleSideService {
   private brugernavn;
   private password;
   private samletString;
-  private url: String = 'http://localhost:8080/koereskole_REST/webresources/generic/';
+  private url: String = 'http://dist.saluton.dk:5401/koereskole_REST/webresources/generic/';
   private tilbuddene: Tilbud[] = new Array();
   tilbudChanged = new Subject<Tilbud[]>();
 
@@ -24,7 +24,7 @@ export class KoreskoleSideService {
     console.log('Samlet string: ' + this.samletString);
   }
   henttilbud() {
-    this.http.post(this.url + 'getTilbudKoreskole', this.samletString).subscribe(
+    this.http.post(this.url + 'tilbudKoreskole', this.samletString).subscribe(
       (response: Response) => {
         const data = response;
         const obj: Tilbud[] = JSON.parse(data.text());
