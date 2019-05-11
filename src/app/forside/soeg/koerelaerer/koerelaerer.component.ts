@@ -15,10 +15,8 @@ export class KoerelaererComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit() {
-   // console.log('INDE FRA KØRERLÆRERSØG' + this.prisen.nativeElement.value );
 }
   hentBilStr() {
-   // console.log('INDE FRA KØRERLÆRERSØG' + this.prisen.nativeElement.value );
     return this.form.value.bilstr;
   }
 
@@ -27,12 +25,10 @@ export class KoerelaererComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // console.log(this.form);
   }
 
   hentMaerke() {
     const ss: string = this.form.value.bilmærke;
-    // ss.toString().toLowerCase();
     return ss;
   }
 

@@ -10,7 +10,6 @@ export class KoereskoleComponent implements OnInit {
   @ViewChild('postnr') postnr: ElementRef;
   @ViewChild('f') form: NgForm;
   constructor() {
- //  console.log(document.getElementById('selectbasic').toString());
 
   }
 

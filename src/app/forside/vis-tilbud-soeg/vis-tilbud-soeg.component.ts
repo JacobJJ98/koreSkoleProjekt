@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Tilbud} from '../../Model/tilbud.model';
-import {TilbudService} from '../../tilbud.service';
+import {SoegService} from '../../soeg.service';
 import {MyObjModel} from '../../Model/myObj.model';
 import {TilbudTilBrugere} from '../../Model/tilbudTilBrugere.model';
 import {KoereskoleComponent} from '../soeg/koereskole/koereskole.component';
@@ -18,7 +18,7 @@ export class VisTilbudSoegComponent implements OnInit, AfterViewInit {
 
 
 
-  constructor(private tilbudsservice: TilbudService) { }
+  constructor(private tilbudsservice: SoegService) { }
 
   ngOnInit() {
     this.tilbudene = this.tilbudsservice.henttilbudTilBruger();

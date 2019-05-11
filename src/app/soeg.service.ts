@@ -10,7 +10,7 @@ import {el} from '@angular/platform-browser/testing/src/browser_util';
 import {map} from 'rxjs/operators';
 
 @Injectable()
-export class TilbudService {
+export class SoegService {
 
   private tilg: TilgangeligeDage = new TilgangeligeDage();
   private tilbuddeneV4: TilbudTilBrugere[] = new Array();
@@ -22,20 +22,10 @@ export class TilbudService {
   }
 
   hentTilbudMedPostnummer(postnummer: number, pris: string, kon: string, maerke: string, str: string, typ: string, lyn: string, dage: string) {
-    console.log('POSTNUMMER: ' + postnummer);
-    console.log('PRIS: ' + pris);
-    console.log('KØN: ' + kon);
-    console.log('MÆRKE: ' + maerke);
-    console.log('STØRRELSEN: ' + str);
-    console.log('TYPE: ' + typ);
-    console.log('LYN: ' + lyn);
-    console.log('DAGE: ' + dage);
     this.http.get(this.url + 'tilbudMedGiventPostnummer/' + postnummer).subscribe(
       (response: Response) => {
         const data = response.text();
         const obj: TilbudTilBrugere[] = JSON.parse(data.toString());
-        // console.log('DETTE ER BLEVET HENTET FRA SERVEREN MED GIVET POSTNUMMER: ' + data);
-       // console.log('LÆNGDEN AF OBJ ER: ' + obj.length);
         this.tilbuddeneV4.splice(0, this.tilbuddeneV4.length);
         this.fraObjTilListen(obj, pris, kon, maerke, str, typ, lyn, dage);
       },

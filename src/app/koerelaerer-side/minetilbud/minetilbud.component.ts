@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TilbudService} from '../../tilbud.service';
+import {SoegService} from '../../soeg.service';
 import {TilbudTilBrugere} from '../../Model/tilbudTilBrugere.model';
 
 @Component({
@@ -8,11 +8,9 @@ import {TilbudTilBrugere} from '../../Model/tilbudTilBrugere.model';
   styleUrls: ['./minetilbud.component.css']
 })
 export class MinetilbudComponent implements OnInit {
-  tilbudene: TilbudTilBrugere[];
-  constructor(private tilbudsservice: TilbudService) { }
+  constructor() { }
 
   ngOnInit() {
-    // this.tilbudene = this.tilbudsservice.henttilbudTilBruger();
   }
 
 }

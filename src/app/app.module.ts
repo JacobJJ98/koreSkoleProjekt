@@ -24,7 +24,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpModule } from '@angular/http';
 
 import { AuthService } from './auth.service';
-import { TilbudService } from './tilbud.service';
+import { SoegService } from './soeg.service';
 import { KoreskoleSideService } from './koerelaerer-side/koreskoleSide.service';
 
 import { AuthGuard } from './auth-guard.service';
@@ -61,7 +61,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
       confirmButtonType: 'danger' // set defaults here
     })
   ],
-  providers: [AuthGuard, AuthService, TilbudService],
+  providers: [AuthGuard, AuthService, SoegService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

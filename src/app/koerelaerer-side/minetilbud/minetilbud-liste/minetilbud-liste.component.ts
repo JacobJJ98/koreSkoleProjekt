@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Tilbud} from '../../../Model/tilbud.model';
-import {TilbudService} from '../../../tilbud.service';
+import {SoegService} from '../../../soeg.service';
 import {TilbudTilBrugere} from '../../../Model/tilbudTilBrugere.model';
 import {KoreskoleSideService} from '../../koreskoleSide.service';
 import {Subscription} from 'rxjs';

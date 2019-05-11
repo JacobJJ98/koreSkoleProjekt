@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {TilbudService} from '../../tilbud.service';
+import {SoegService} from '../../soeg.service';
 import {Koreskole} from '../../Model/koreskole.model';
 import {error} from 'util';
 import {Router} from '@angular/router';
@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 
 export class OpretkoreskoleSideComponent implements OnInit {
   @ViewChild('f') form: NgForm;
-  constructor(private opretkoreskoleservice: TilbudService, private router: Router) { }
+  constructor(private opretkoreskoleservice: SoegService, private router: Router) { }
 
   ngOnInit() {
   }

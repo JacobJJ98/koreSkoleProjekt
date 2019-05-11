@@ -3,7 +3,7 @@ import {Http, Response} from '@angular/http/';
 import {AuthService} from '../auth.service';
 import {Koreskole} from '../Model/koreskole.model';
 import {MyObjModel} from '../Model/myObj.model';
-import {TilbudService} from '../tilbud.service';
+import {SoegService} from '../soeg.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -17,7 +17,7 @@ export class LoginSideComponent implements OnInit {
   status: Boolean = false;
   fejlLogin: Boolean = false;
 
-  constructor(private http: Http, private authService: AuthService, private tilbudTilBrugerService: TilbudService, private router: Router) { }
+  constructor(private http: Http, private authService: AuthService, private tilbudTilBrugerService: SoegService, private router: Router) { }
 
   ngOnInit() {
 

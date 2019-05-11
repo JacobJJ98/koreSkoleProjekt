@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {TilbudService} from '../../../tilbud.service';
+import {SoegService} from '../../../soeg.service';
 import {TilbudTilBrugere} from '../../../Model/tilbudTilBrugere.model';
 import {KoreskoleSideService} from '../../koreskoleSide.service';
 import {Tilbud} from '../../../Model/tilbud.model';
