@@ -8,7 +8,7 @@ import {map} from 'rxjs/operators';
 
 @Injectable()
 export class KoreskoleSideService {
-
+  firstTime = true;
   private brugernavn;
   private password;
   private samletString;
@@ -22,6 +22,9 @@ export class KoreskoleSideService {
     this.password = this.authService.passwordAuth;
     this.samletString = this.brugernavn + ' ' + this.password;
     console.log('Samlet string: ' + this.samletString);
+  }
+  getTilbud() {
+    return this.tilbuddene;
   }
   henttilbud() {
     this.http.post(this.url + 'tilbudKoreskole', this.samletString).subscribe(
