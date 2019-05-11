@@ -18,21 +18,9 @@ export class TilbudService {
   constructor(private http: Http) {
   }
   henttilbudTilBruger() {
-    this.http.get(this.url + 'alleTilbud').subscribe(
-      (response: Response) => {
-        const data = response.text();
-        const obj: TilbudTilBrugere[] = JSON.parse(data.toString());
-       // console.log('GAMLE MÅDE ' + obj[0].tilbud.tilgangeligeDage.tilgangelig_mandag);
-
-        this.tilbuddeneV4.splice(0, this.tilbuddeneV4.length);
-        // this.fraObjTilListen(obj);
-      },
-      (error) => console.log(error),
-    );
     return this.tilbuddeneV4;
   }
-  hentTilbudMedId(index: number) {
-  }
+
   hentTilbudMedPostnummer(postnummer: number, pris: string, kon: string, maerke: string, str: string, typ: string, lyn: string, dage: string) {
     console.log('POSTNUMMER: ' + postnummer);
     console.log('PRIS: ' + pris);
@@ -56,11 +44,8 @@ export class TilbudService {
   }
   fraObjTilListen(obj: TilbudTilBrugere[], pris: string, kon: string, maerke: string, str: string, typ: string, lyn: string, dage: string) {
     const midlerArr: TilbudTilBrugere[] = [];
-   // const midlArr = new TilbudTilBrugere[obj.length];
     for (let o = 0; o < obj.length; o++) {
       const tilll = new TilbudTilBrugere();
-      // tilbud
-      // tilll.tilbud.koreskole_id = obj[o].tilbud.koreskole_id;
       const prisikr: number = this.prisUdfraIndex(obj[o].tilbud.pris.toString());
       tilll.tilbud.pris = prisikr;
       tilll.tilbud.korekort_type = obj[o].tilbud.korekort_type;
@@ -143,23 +128,18 @@ export class TilbudService {
         prisBool = false;
       }
       if (kon.length === 0) {
-      // console.log('KØN ER NULL');
         konBool = false;
       }
       if (maerke.length === 0) {
-      // console.log('Mærke ER NULL');
         maerkeBool = false;
       }
       if (str.length === 0) {
-       // console.log('STØRRELSEN ER NULL');
         strBool = false;
       }
       if (typ.length === 0) {
-      // console.log('TYPEN ER NULL');
         typeBool = false;
       }
       if (dage.length === 0) {
-       // console.log('DAGE ER NULL');
         dageBool = false;
       }
   // tjekker for de ønskede dage
@@ -187,7 +167,6 @@ export class TilbudService {
           if (dage.toString().toLowerCase().includes('søndag') && this.tilbuddeneV4[o].tilbud.tilgangeligeDage.tilgangelig_sondag === 1) {
             break;
           }
-          console.log('DAGE---------IF');
           sletDisseID.push(o);
           erBlevetNoteret = true;
         }
@@ -195,44 +174,37 @@ export class TilbudService {
 
       // tjekker for prisen
       if (this.tilbuddeneV4[o].tilbud.pris > pris2 && !erBlevetNoteret && prisBool) {
-        console.log('PRIS-------IF');
         sletDisseID.push(o);
         erBlevetNoteret = true;
       }
       // tjekker for typen
       if (this.tilbuddeneV4[o].tilbud.korekort_type !== type2 && !erBlevetNoteret && typeBool) {
-        console.log('TYPE------IF');
         sletDisseID.push(o);
         erBlevetNoteret = true;
       }
       // tjekker for køn (der er toLoweCase fordi det er startet med stor i angu og småt i DB
       if (this.tilbuddeneV4[o].tilbud.kon.toLowerCase() !== kon.toLowerCase() && !erBlevetNoteret && konBool) {
-        console.log('KØN---------IF');
         sletDisseID.push(o);
         erBlevetNoteret = true;
       }
       // tjekker for lynkursus
       if (this.tilbuddeneV4[o].tilbud.lynkursus !== lyn2 && !erBlevetNoteret) {
-        console.log('LYN---------IF');
         sletDisseID.push(o);
         erBlevetNoteret = true;
       }
       // tjekekr for størrelse
       if (this.tilbuddeneV4[o].tilbud.bilstorrelse !== str2 && !erBlevetNoteret && strBool) {
-        console.log('STØRRELSE---------IF');
         sletDisseID.push(o);
         erBlevetNoteret = true;
       }
       // tjekker for mærke
       if (!maerke.toString().toLowerCase().includes(this.tilbuddeneV4[o].tilbud.bilmarke.toString().toLowerCase()) && !erBlevetNoteret && maerkeBool) {
-        console.log('MÆRKE---------IF');
         sletDisseID.push(o);
         erBlevetNoteret = true;
       }
     }
     for (let k = 0; k < sletDisseID.length; k++) {
       this.tilbuddeneV4.splice(sletDisseID[k] - k, 1) ;
-      // console.log('længden af v4: ' + this.tilbuddeneV4.length);
     }
   }
 
@@ -375,21 +347,6 @@ export class TilbudService {
     return '';
   }
 
-  // gammel måde
-  opretKoreskole(brugernavn: string, password: string, koreskole: Koreskole) {
-  const jsonkoreskole: string = JSON.stringify(koreskole);
-  const stringArr: string[] = [brugernavn, password, jsonkoreskole];
-  const jsonStringArr: string = JSON.stringify(stringArr);
-    this.http.post(this.url + 'opretKøreskole', jsonStringArr).subscribe(
-      (response: Response) => {
-        const data = response.text();
-        console.log('SVAR FRA SERVER OPRET KORESKOLE:');
-        console.log(data);
-      },
-      (error) => console.log(error),
-    );
-  }
-
   opretKoreskolen(brugernavn: string, password: string, koreskole: Koreskole) {
     const jsonkoreskole: string = JSON.stringify(koreskole);
     const stringArr: string[] = [brugernavn, password, jsonkoreskole];
@@ -398,7 +355,6 @@ export class TilbudService {
       map(
         (response: Response) => {
           const data = response.text();
-          console.log(data);
           return data;
         }
       )
