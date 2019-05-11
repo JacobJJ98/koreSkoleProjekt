@@ -130,7 +130,7 @@ export class MinetilbudEditComponent implements OnInit {
             showConfirmButton: false,
             timer: 1000
           });
-          //this.router.navigate(['/korelaerer/minetilbud']);
+          this.router.navigate(['/korelaerer/minetilbud']);
         } else {
           window.alert('Der skete en fejl, prøv igen!');
         }
