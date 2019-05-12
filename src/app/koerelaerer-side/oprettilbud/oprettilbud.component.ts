@@ -37,6 +37,8 @@ export class OprettilbudComponent implements OnInit {
         console.log('INDE I COMPOENENTET(opretTilbud): ' + returStreng);
         if (returStreng.includes('1')) {
           this.router.navigate(['/korelaerer/minetilbud']);
+          //henter tilbud ned fra server, så vi får det korrekte ID ind (hvis der skal laves en ændring)
+          this.tilbudsservice.henttilbud();
         } else {
           this.fejlLogin = true;
           this.status = false;
