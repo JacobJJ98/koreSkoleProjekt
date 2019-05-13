@@ -123,6 +123,7 @@ export class KoreskoleSideService {
     For det virker fint med DELETE og POST metoder
    */
   opdaterTilbudV2(id: number, t: Tilbud) {
+    console.log('HTTP METODEN!!');
     t.id = this.tilbuddene[id].id;
     this.tilbuddene[id] = t;
     this.tilbudChanged.next(this.tilbuddene.slice());

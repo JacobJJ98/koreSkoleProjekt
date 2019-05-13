@@ -114,7 +114,6 @@ export class SoegService {
       let dageBool = true;
       let erBlevetNoteret = false;
       if (pris.length === 0) {
-       // console.log('PRISEN ER IKKE NULL');
         prisBool = false;
       }
       if (kon.length === 0) {

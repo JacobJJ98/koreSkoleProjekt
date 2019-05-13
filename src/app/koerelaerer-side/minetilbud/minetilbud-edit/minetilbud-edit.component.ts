@@ -122,7 +122,7 @@ export class MinetilbudEditComponent implements OnInit {
 
     this.tilbudsservice.opdaterTilbudV2(this.id, t).subscribe(
       (returStreng: string) => {
-        console.log('INDE I COMPOENENTET(logind): ' + returStreng);
+        console.log('INDE I COMPOENENTET(minetilbud): ' + returStreng);
         if (returStreng.includes('1')) {
           Swal.fire({
             type: 'success',
