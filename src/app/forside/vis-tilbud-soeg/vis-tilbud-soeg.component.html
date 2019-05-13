@@ -12,6 +12,7 @@
         <h4>Kønnet på kørelæren vil være: {{ tilbud.tilbud.kon }} </h4>
         <h4 *ngIf="tilbud.tilbud.lynkursus === 1">{{ 'Tilbuddet er et lynkurus' }} </h4>
         <h4>Undervisningsdage:  {{ tilbud.tilbud.tilgangeligeDage.tilgangeligstring_mandag }} {{ tilbud.tilbud.tilgangeligeDage.tilgangeligstring_tirsdag }} {{ tilbud.tilbud.tilgangeligeDage.tilgangeligstring_onsdag }} {{ tilbud.tilbud.tilgangeligeDage.tilgangeligstring_torsdag }} {{ tilbud.tilbud.tilgangeligeDage.tilgangeligstring_fredag }} {{ tilbud.tilbud.tilgangeligeDage.tilgangeligstring_lordag }} {{ tilbud.tilbud.tilgangeligeDage.tilgangeligstring_sondag }} </h4>
+        <h4>Note: {{ tilbud.tilbud.beskrivelse }}</h4>
         <h4>Kontakt os på {{ tilbud.koreskole.mail }} eller på mobil {{ tilbud.koreskole.telefonnummer}} </h4>
 
       </a>
